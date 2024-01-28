@@ -1,0 +1,56 @@
+// Declare SCSS variables with developer-friendly names
+$blue-primary: #3554d1;
+$blue-dark: #163c8c;
+$blue-darker: #13357b;
+$yellow-highlight: #f8d448;
+$white: #ffffff;
+$blue-navy: #0d2857;
+
+$text-dark: #051036;
+$text-light: #697488;
+
+$border-gray: #dddddd;
+
+$bg-light: #f5f5f5;
+$bg-medium: #e5f0fd;
+$bg-dark: #ebfcea;
+
+// Apply SCSS variables to CSS variables in :root
+:root {
+  // Primary Colors
+  --color-primary: #{$blue-primary};
+  --color-dark-primary: #{$blue-dark};
+  --color-darker-primary: #{$blue-darker};
+  --color-highlight: #{$yellow-highlight};
+  --color-white: #{$white};
+  --color-navy: #{$blue-navy};
+
+  // Text Colors
+  --text-dark: #{$text-dark};
+  --text-light: #{$text-light};
+
+  // Border Color
+  --border-color: #{$border-gray};
+
+  // Background Colors
+  --bg-light: #{$bg-light};
+  --bg-medium: #{$bg-medium};
+  --bg-dark: #{$bg-dark};
+
+  // Font Weight
+  --font-weight-semibold: 600;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+
+  //Font size
+  --font-size-6rem: 6rem;
+  --font-size-4rem: 4rem;
+  --font-size-3rem: 3rem;
+  --font-size-2_6rem: 2.6rem; // Modified variable name
+  --font-size-2_2rem: 2.2rem;
+  --font-size-2rem: 2rem;
+  --font-size-1_8rem: 1.8rem;
+  --font-size-1_6rem: 1.6rem;
+  --font-size-1_5rem: 1.5rem;
+  --font-size-1_4rem: 1.4rem;
+}

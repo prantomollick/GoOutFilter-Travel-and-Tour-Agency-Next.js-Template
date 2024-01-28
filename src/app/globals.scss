@@ -1,0 +1,30 @@
+@import "./roots.scss";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  //This defines what 1rem is
+  //1rem = 10px; 10px/16px = 62.5%
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+  line-height: var(--font-weight-regular);
+  font-size: var(--font-size-1_4rem);
+}
+
+h1,
+h2,
+h3,
+p {
+  line-height: normal;
+}
