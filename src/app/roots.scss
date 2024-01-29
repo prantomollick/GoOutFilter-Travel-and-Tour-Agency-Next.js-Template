@@ -1,41 +1,58 @@
 // Declare SCSS variables with developer-friendly names
-$blue-primary: #3554d1;
-$blue-dark: #163c8c;
-$blue-darker: #13357b;
-$yellow-highlight: #f8d448;
-$white: #ffffff;
-$blue-navy: #0d2857;
+// Primary Colors
+$primary-blue: #3554d1;
+$dark-blue: #163c8c;
+$darker-blue: #13357b;
 
+// Accent Colors
+$highlight-yellow: #f8d448;
+
+// Neutral Colors
+$white: #ffffff;
+$dark-gray: #0d2857;
+$darkest-gray: #051036;
+
+// Text Colors
 $text-dark: #051036;
 $text-light: #697488;
 
-$border-gray: #dddddd;
+// Border Color
+$border-color: #dddddd;
 
-$bg-light: #f5f5f5;
-$bg-medium: #e5f0fd;
-$bg-dark: #ebfcea;
+// Background Colors
+$light-gray-bg: #f5f5f5;
+$blue-bg: #e5f0fd;
+$green-bg: #ebfcea;
 
 // Apply SCSS variables to CSS variables in :root
 :root {
   // Primary Colors
-  --color-primary: #{$blue-primary};
-  --color-dark-primary: #{$blue-dark};
-  --color-darker-primary: #{$blue-darker};
-  --color-highlight: #{$yellow-highlight};
-  --color-white: #{$white};
-  --color-navy: #{$blue-navy};
+  --primary-blue: #{$primary-blue};
+  --dark-blue: #{$dark-blue};
+  --darker-blue: #{$darker-blue};
+
+  // Accent Colors
+  --highlight-yellow: #{$highlight-yellow};
+
+  // Neutral Colors
+  --white: #{$white};
+  --dark-gray: #{$dark-gray};
+  --darkest-gray: #{$darkest-gray};
 
   // Text Colors
   --text-dark: #{$text-dark};
   --text-light: #{$text-light};
 
   // Border Color
-  --border-color: #{$border-gray};
+  --border-color: #{$border-color};
 
   // Background Colors
-  --bg-light: #{$bg-light};
-  --bg-medium: #{$bg-medium};
-  --bg-dark: #{$bg-dark};
+  --light-gray-bg: #{$light-gray-bg};
+  --blue-bg: #{$blue-bg};
+  --green-bg: #{$green-bg};
+
+  //fonts...
+  --font-primary: "Jost", sans-serif;
 
   // Font Weight
   --font-weight-semibold: 600;
@@ -53,4 +70,7 @@ $bg-dark: #ebfcea;
   --font-size-1_6rem: 1.6rem;
   --font-size-1_5rem: 1.5rem;
   --font-size-1_4rem: 1.4rem;
+
+  //border radius
+  --border-radius-small: 4px;
 }

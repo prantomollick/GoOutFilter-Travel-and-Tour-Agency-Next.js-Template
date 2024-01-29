@@ -12,19 +12,14 @@ html {
   //This defines what 1rem is
   //1rem = 10px; 10px/16px = 62.5%
   font-size: 62.5%;
-  box-sizing: border-box;
+  background-color: var(--dark-gray);
 }
 
 body {
-  font-family: "Jost", sans-serif;
-  font-weight: 400;
-  line-height: var(--font-weight-regular);
-  font-size: var(--font-size-1_4rem);
-}
-
-h1,
-h2,
-h3,
-p {
+  font-family: var(--font-primary), -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Arial;
+  font-weight: var(--font-weight-regular);
   line-height: normal;
+  font-size: var(--font-size-1_4rem);
+  padding: 1rem;
 }

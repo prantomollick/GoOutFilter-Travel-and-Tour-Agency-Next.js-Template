@@ -1,0 +1,32 @@
+.btn {
+  font-family: inherit;
+  font-size: var(--font-size-1_4rem);
+  font-weight: var(--font-weight-regular);
+  display: block;
+  padding: 15px 30px;
+  outline: none;
+  border: none;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+
+  &-link:link,
+  &-link:visited {
+    text-decoration: none;
+    font-size: var(--font-size-1_4rem);
+    padding: 15px 30px;
+    display: inline-block;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+  }
+
+  &-default {
+    color: var(--darkest-gray);
+    background-color: var(--white);
+  }
+
+  &-default-outline {
+    background-color: transparent;
+    color: var(--white);
+    border: 1px solid var(--white);
+  }
+}
