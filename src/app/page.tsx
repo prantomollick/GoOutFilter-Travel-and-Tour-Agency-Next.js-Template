@@ -7,7 +7,11 @@ export default function Home() {
     <>
       <Button color="blue">Become An Expert</Button>
       <div>&nbsp;</div>
-      <Button color="blue" variant="bordered">
+      <Button color="blue">Become An Expert</Button>
+      <div>&nbsp;</div>
+      <Button color="dark-blue">Become An Expert</Button>
+      <div>&nbsp;</div>
+      <Button color="darkest-gray" variant="bordered">
         Become An Expert
       </Button>
     </>

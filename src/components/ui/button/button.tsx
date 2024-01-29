@@ -40,10 +40,24 @@ function Button(props: ButtonProps | LinkProps) {
           ? "btn-blue-outline"
           : "btn-blue"
       }`
-    ]]: color === "blue"
-  });
+    ]]: color === "blue",
 
-  console.log(btnClass);
+    [styles[
+      `${
+        color === "dark-blue" && variant === "bordered"
+          ? "btn-dark-blue-outline"
+          : "btn-dark-blue"
+      }`
+    ]]: color === "dark-blue",
+
+    [styles[
+      `${
+        color === "darkest-gray" && variant === "bordered"
+          ? "btn-darkest-gray-outline"
+          : "btn-darkest-gray"
+      }`
+    ]]: color === "darkest-gray"
+  });
 
   if (isLinkProps(props)) {
     const { children, href, ...others } = props;

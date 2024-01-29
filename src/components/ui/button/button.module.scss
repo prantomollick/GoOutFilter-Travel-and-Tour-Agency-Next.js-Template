@@ -40,4 +40,37 @@
     color: var(--primary-blue);
     border: 1px solid var(--primary-blue);
   }
+
+  &-dark-blue {
+    color: var(--white);
+    background-color: var(--dark-blue);
+  }
+
+  &-dark-blue-outline {
+    background-color: transparent;
+    color: var(--dark-blue);
+    border: 1px solid var(--dark-blue);
+  }
+
+  &-darker-blue {
+    color: var(--white);
+    background-color: var(--darker-blue);
+  }
+
+  &-darker-blue-outline {
+    background-color: transparent;
+    color: var(--darker-blue);
+    border: 1px solid var(--darker-blue);
+  }
+
+  &-darkest-gray {
+    color: var(--white);
+    background-color: var(--darkest-gray);
+  }
+
+  &-darkest-gray-outline {
+    background-color: transparent;
+    color: var(--darkest-gray);
+    border: 1px solid var(--darkest-gray);
+  }
 }
