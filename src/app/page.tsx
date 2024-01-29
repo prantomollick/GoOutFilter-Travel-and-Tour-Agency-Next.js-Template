@@ -5,11 +5,9 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
-      <Button color="default" variant="bordered">
-        Become An Expert
-      </Button>
+      <Button color="blue">Become An Expert</Button>
       <div>&nbsp;</div>
-      <Button href="/" color="default" variant="bordered">
+      <Button color="blue" variant="bordered">
         Become An Expert
       </Button>
     </>

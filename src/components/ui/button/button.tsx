@@ -32,7 +32,15 @@ function Button(props: ButtonProps | LinkProps) {
           ? "btn-default-outline"
           : "btn-default"
       }`
-    ]]: color === "default"
+    ]]: color === "default",
+
+    [styles[
+      `${
+        color === "blue" && variant === "bordered"
+          ? "btn-blue-outline"
+          : "btn-blue"
+      }`
+    ]]: color === "blue"
   });
 
   console.log(btnClass);

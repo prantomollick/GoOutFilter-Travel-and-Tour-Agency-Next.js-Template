@@ -29,4 +29,15 @@
     color: var(--white);
     border: 1px solid var(--white);
   }
+
+  &-blue {
+    color: var(--white);
+    background-color: var(--primary-blue);
+  }
+
+  &-blue-outline {
+    background-color: transparent;
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
+  }
 }
