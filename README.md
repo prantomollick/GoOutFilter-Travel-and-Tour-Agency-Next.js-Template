@@ -1,3 +1,11 @@
+# GoOutFilter-Travel-and-Tour-Agency-Next.js-Template
+
+```bash
+git clone https://github.com/prantomollick/GoOutFilter-Travel-and-Tour-Agency-Next.js-Template.git
+cd GoOutFilter-Travel-and-Tour-Agency-Next.js-Template
+npm i
+```
+
 ## Getting Started
 
 ```bash
