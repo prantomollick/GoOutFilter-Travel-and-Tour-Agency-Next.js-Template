@@ -26,3 +26,5 @@ bun dev
 | `fontWeight`      | `normal`\| `medium` \| `semibold`                                     | The button font weight.               | `normal`                      |
 | `starticon`       | `ReactNode`                                                           | The button start content.             | -                             |
 | `endicon`         | `ReactNode`                                                           | The button end content.               | -                             |
+
+![Button different variations image](./screenshot//button-screenshot.jpeg)
