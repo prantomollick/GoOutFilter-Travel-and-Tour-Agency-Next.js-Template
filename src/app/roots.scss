@@ -9,6 +9,7 @@ $highlight-yellow: #f8d448;
 
 // Neutral Colors
 $white: #ffffff;
+$white-gray: #3554d10d;
 $dark-gray: #0d2857;
 $darkest-gray: #051036;
 
@@ -36,6 +37,7 @@ $green-bg: #ebfcea;
 
   // Neutral Colors
   --white: #{$white};
+  --white-gray: #{$white-gray};
   --dark-gray: #{$dark-gray};
   --darkest-gray: #{$darkest-gray};
 
@@ -73,6 +75,9 @@ $green-bg: #ebfcea;
 
   //border radius
   --border-radius-small: 4px;
+  --border-radius-medium: 12px;
+  --border-radius-large: 60px;
+  --border-radius-full: 9999px;
 
   //Shadow
   --box-shadow-1: 0 10px 35px 0 rgba(5, 16, 54, 0.1);

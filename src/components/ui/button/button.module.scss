@@ -1,7 +1,6 @@
 @mixin rippelEffect($class-name, $bg-color, $color, $active-shadow) {
   position: relative;
   overflow: hidden;
-
   transition: all 0.2s ease;
 
   &::before {
@@ -33,33 +32,57 @@
   }
 }
 
+@mixin hoverEffect($bg-color) {
+  transition: background-color 0.2s ease;
+  &:hover {
+    background-color: #{$bg-color};
+  }
+}
+
 .btn {
   font-family: inherit;
   font-size: var(--font-size-1_4rem);
-  font-weight: var(--font-weight-regular);
-  display: block;
-  padding: 15px 30px;
   outline: none;
   border: none;
-  border-radius: var(--border-radius-small);
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   &-link:link,
   &-link:visited {
     text-decoration: none;
     font-size: var(--font-size-1_4rem);
-    padding: 15px 30px;
-    display: inline-block;
-    border-radius: var(--border-radius-small);
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &-default {
+    color: var(--primary-blue);
+    background-color: var(--white-gray);
+  }
+
+  &-default-outline {
+    background-color: transparent;
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
+
+    @include rippelEffect(
+      &,
+      var(--white-gray),
+      var(--primary-blue),
+      var(--box-shadow-1)
+    );
+  }
+
+  &-white {
     color: var(--darkest-gray);
     background-color: var(--white);
   }
 
-  &-default-outline {
+  &-white-outline {
     background-color: transparent;
     color: var(--white);
     border: 1px solid var(--white);
@@ -75,6 +98,7 @@
   &-blue {
     color: var(--white);
     background-color: var(--primary-blue);
+    @include hoverEffect(var(--darkest-gray));
   }
 
   &-blue-outline {
@@ -117,6 +141,7 @@
     background-color: transparent;
     color: var(--darker-blue);
     border: 1px solid var(--darker-blue);
+
     @include rippelEffect(
       &,
       var(--darker-blue),
@@ -142,4 +167,50 @@
       var(--box-shadow-1)
     );
   }
+}
+
+.rounded-sm {
+  border-radius: var(--border-radius-small);
+}
+.rounded-md {
+  border-radius: var(--border-radius-medium);
+}
+.rounded-lg {
+  border-radius: var(--border-radius-large);
+}
+
+.rounded-full {
+  border-radius: var(--border-radius-full);
+}
+
+.btn-size-sm {
+  padding: 14px 29px;
+}
+
+.btn-size-md {
+  padding: 15px 30px;
+}
+
+.btn-size-lg {
+  padding: 19px 35px;
+}
+
+.font-normal {
+  font-weight: var(--font-weight-regular);
+}
+
+.font-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.font-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.gap-10px {
+  gap: 10px;
+}
+
+.gap-13px {
+  gap: 13px;
 }

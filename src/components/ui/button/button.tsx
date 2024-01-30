@@ -1,20 +1,36 @@
 import styles from "./button.module.scss";
 import Link from "next/link";
-import React, { ComponentPropsWithRef, ReactNode } from "react";
+import React, {
+  ComponentPropsWithRef,
+  PropsWithChildren,
+  ReactNode
+} from "react";
 import classNames from "classnames";
 
 interface GenericButtonProps {
-  children: ReactNode;
-  color?: "default" | "darkest-gray" | "blue" | "dark-blue" | "darker-blue";
+  color?:
+    | "default"
+    | "white"
+    | "darkest-gray"
+    | "blue"
+    | "dark-blue"
+    | "darker-blue";
   variant?: "bordered";
+  size?: "sm" | "md" | "lg";
+  radius?: "none" | "sm" | "md" | "lg" | "full";
+  fontWeight?: "normal" | "medium" | "semibold";
+  starticon?: ReactNode;
+  endicon?: ReactNode;
 }
 
 type ButtonProps = GenericButtonProps &
+  PropsWithChildren &
   ComponentPropsWithRef<"button"> & {
     href?: never;
   };
 
 type LinkProps = GenericButtonProps &
+  PropsWithChildren &
   ComponentPropsWithRef<"a"> & {
     href: string;
   };
@@ -24,9 +40,25 @@ function isLinkProps(props: ButtonProps | LinkProps): props is LinkProps {
 }
 
 function Button(props: ButtonProps | LinkProps) {
-  const { color = "default", variant } = props;
+  const {
+    color = "default",
+    variant,
+    size = "md",
+    radius = "none",
+    fontWeight = "normal",
+    starticon,
+    endicon
+  } = props;
 
-  const btnClass = renderColorVarientCssClass(color, variant);
+  const btnClass = renderColorVarientCssClass<GenericButtonProps>(
+    color,
+    variant,
+    size,
+    radius,
+    fontWeight,
+    starticon,
+    endicon
+  );
 
   if (isLinkProps(props)) {
     const { children, href, ...others } = props;
@@ -36,7 +68,9 @@ function Button(props: ButtonProps | LinkProps) {
         {...others}
         className={`${styles["btn-link"]} ${btnClass}`}
       >
+        {starticon}
         {children}
+        {endicon}
       </Link>
     );
   }
@@ -45,16 +79,24 @@ function Button(props: ButtonProps | LinkProps) {
 
   return (
     <button {...others} className={`${styles.btn} ${btnClass}`}>
+      {starticon}
       {children}
+      {endicon}
     </button>
   );
 }
 
-function renderColorVarientCssClass(
-  color: string,
-  variant: string | undefined
-) {
+function renderColorVarientCssClass<T extends GenericButtonProps>(
+  color: T["color"],
+  variant: T["variant"],
+  size: T["size"],
+  radius: T["radius"],
+  fontWeight: T["fontWeight"],
+  starticon: T["starticon"],
+  endicon: T["endicon"]
+): string {
   return classNames({
+    //button color, outline
     [styles[
       `${
         color === "default" && variant === "bordered"
@@ -62,6 +104,14 @@ function renderColorVarientCssClass(
           : "btn-default"
       }`
     ]]: color === "default",
+
+    [styles[
+      `${
+        color === "white" && variant === "bordered"
+          ? "btn-white-outline"
+          : "btn-white"
+      }`
+    ]]: color === "white",
 
     [styles[
       `${
@@ -93,7 +143,27 @@ function renderColorVarientCssClass(
           ? "btn-darkest-gray-outline"
           : "btn-darkest-gray"
       }`
-    ]]: color === "darkest-gray"
+    ]]: color === "darkest-gray",
+
+    //radius
+    [`${styles["rounded-sm"]}`]: radius === "sm",
+    [`${styles["rounded-md"]}`]: radius === "md",
+    [`${styles["rounded-lg"]}`]: radius === "lg",
+    [`${styles["rounded-full"]}`]: radius === "full",
+
+    //size
+    [`${styles["btn-size-sm"]}`]: size === "sm",
+    [`${styles["btn-size-md"]}`]: size === "md",
+    [`${styles["btn-size-lg"]}`]: size === "lg",
+
+    //font Wieght
+    [`${styles["font-normal"]}`]: fontWeight === "normal",
+    [`${styles["font-medium"]}`]: fontWeight === "medium",
+    [`${styles["font-semibold"]}`]: fontWeight === "semibold",
+
+    // Flex Gap maintain twik class
+    [`${styles["gap-10px"]}`]: starticon,
+    [`${styles["gap-13px"]}`]: endicon
   });
 }
 
