@@ -5,11 +5,21 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
-      <Button color="blue">Become An Expert</Button>
+      <Button color="default" variant="bordered">
+        Become An Expert
+      </Button>
       <div>&nbsp;</div>
-      <Button color="blue">Become An Expert</Button>
+      <Button href="/" color="blue" variant="bordered">
+        Become An Expert
+      </Button>
       <div>&nbsp;</div>
-      <Button color="dark-blue">Become An Expert</Button>
+      <Button color="dark-blue" variant="bordered">
+        Become An Expert
+      </Button>
+      <div>&nbsp;</div>
+      <Button color="darker-blue" variant="bordered">
+        Become An Expert
+      </Button>
       <div>&nbsp;</div>
       <Button color="darkest-gray" variant="bordered">
         Become An Expert

@@ -1,3 +1,38 @@
+@mixin rippelEffect($class-name, $bg-color, $color, $active-shadow) {
+  position: relative;
+  overflow: hidden;
+
+  transition: all 0.2s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%) scale(0.1);
+
+    background-color: $bg-color;
+    opacity: 0;
+    transition: all 0.2s ease 0.1s;
+  }
+
+  &:hover::before {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 1;
+    z-index: -1;
+  }
+  &:hover {
+    color: $color;
+  }
+  &:active {
+    box-shadow: $active-shadow;
+  }
+}
+
 .btn {
   font-family: inherit;
   font-size: var(--font-size-1_4rem);
@@ -28,6 +63,13 @@
     background-color: transparent;
     color: var(--white);
     border: 1px solid var(--white);
+
+    @include rippelEffect(
+      &,
+      var(--white),
+      var(--darkest-gray),
+      var(--box-shadow-1)
+    );
   }
 
   &-blue {
@@ -39,6 +81,13 @@
     background-color: transparent;
     color: var(--primary-blue);
     border: 1px solid var(--primary-blue);
+
+    @include rippelEffect(
+      &,
+      var(--primary-blue),
+      var(--white),
+      var(--box-shadow-1)
+    );
   }
 
   &-dark-blue {
@@ -50,6 +99,13 @@
     background-color: transparent;
     color: var(--dark-blue);
     border: 1px solid var(--dark-blue);
+
+    @include rippelEffect(
+      &,
+      var(--dark-blue),
+      var(--white),
+      var(--box-shadow-1)
+    );
   }
 
   &-darker-blue {
@@ -61,6 +117,12 @@
     background-color: transparent;
     color: var(--darker-blue);
     border: 1px solid var(--darker-blue);
+    @include rippelEffect(
+      &,
+      var(--darker-blue),
+      var(--white),
+      var(--box-shadow-1)
+    );
   }
 
   &-darkest-gray {
@@ -72,5 +134,12 @@
     background-color: transparent;
     color: var(--darkest-gray);
     border: 1px solid var(--darkest-gray);
+
+    @include rippelEffect(
+      &,
+      var(--darkest-gray),
+      var(--white),
+      var(--box-shadow-1)
+    );
   }
 }

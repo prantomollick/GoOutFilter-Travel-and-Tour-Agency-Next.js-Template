@@ -25,7 +25,36 @@ function isLinkProps(props: ButtonProps | LinkProps): props is LinkProps {
 
 function Button(props: ButtonProps | LinkProps) {
   const { color = "default", variant } = props;
-  const btnClass = classNames({
+
+  const btnClass = renderColorVarientCssClass(color, variant);
+
+  if (isLinkProps(props)) {
+    const { children, href, ...others } = props;
+    return (
+      <Link
+        href={href}
+        {...others}
+        className={`${styles["btn-link"]} ${btnClass}`}
+      >
+        {children}
+      </Link>
+    );
+  }
+
+  const { children, ...others } = props;
+
+  return (
+    <button {...others} className={`${styles.btn} ${btnClass}`}>
+      {children}
+    </button>
+  );
+}
+
+function renderColorVarientCssClass(
+  color: string,
+  variant: string | undefined
+) {
+  return classNames({
     [styles[
       `${
         color === "default" && variant === "bordered"
@@ -52,33 +81,20 @@ function Button(props: ButtonProps | LinkProps) {
 
     [styles[
       `${
+        color === "darker-blue" && variant === "bordered"
+          ? "btn-darker-blue-outline"
+          : "btn-darker-blue"
+      }`
+    ]]: color === "darker-blue",
+
+    [styles[
+      `${
         color === "darkest-gray" && variant === "bordered"
           ? "btn-darkest-gray-outline"
           : "btn-darkest-gray"
       }`
     ]]: color === "darkest-gray"
   });
-
-  if (isLinkProps(props)) {
-    const { children, href, ...others } = props;
-    return (
-      <Link
-        href={href}
-        {...others}
-        className={`${styles["btn-link"]} ${btnClass}`}
-      >
-        {children}
-      </Link>
-    );
-  }
-
-  const { children, ...others } = props;
-
-  return (
-    <button {...others} className={`${styles.btn} ${btnClass}`}>
-      {children}
-    </button>
-  );
 }
 
 export default Button;
