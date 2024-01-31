@@ -1,0 +1,59 @@
+// Apply SCSS variables to CSS variables in :root
+
+:root {
+  /* Primary Colors */
+  --primary-blue: #3554d1;
+  --dark-blue: #163c8c;
+  --darker-blue: #13357b;
+
+  /* Accent Colors */
+  --highlight-yellow: #f8d448;
+
+  /* Neutral Colors */
+  --white: #ffffff;
+  --white-gray: #3554d10d;
+  --dark-gray: #0d2857;
+  --darkest-gray: #051036;
+
+  /* Text Colors */
+  --text-dark: #051036;
+  --text-light: #697488;
+
+  /* Border Color */
+  --border-color: #dddddd;
+
+  /* Background Colors */
+  --light-gray-bg: #f5f5f5;
+  --blue-bg: #e5f0fd;
+  --green-bg: #ebfcea;
+
+  //fonts...
+  --font-primary: "Jost", sans-serif;
+
+  // Font Weight
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  //Font size
+  --font-size-6rem: 6rem;
+  --font-size-4rem: 4rem;
+  --font-size-3rem: 3rem;
+  --font-size-2_6rem: 2.6rem; // Modified variable name
+  --font-size-2_2rem: 2.2rem;
+  --font-size-2rem: 2rem;
+  --font-size-1_8rem: 1.8rem;
+  --font-size-1_6rem: 1.6rem;
+  --font-size-1_5rem: 1.5rem;
+  --font-size-1_4rem: 1.4rem;
+
+  //border radius
+  --border-radius-small: 4px;
+  --border-radius-medium: 12px;
+  --border-radius-large: 60px;
+  --border-radius-full: 9999px;
+
+  //Shadow
+  --box-shadow-1: 0 10px 35px 0 rgba(5, 16, 54, 0.1);
+  --box-shadow-2: 0 10px 60px 0 rgba(5, 16, 54, 0.05);
+}

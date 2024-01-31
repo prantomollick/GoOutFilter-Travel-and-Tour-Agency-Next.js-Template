@@ -21,6 +21,7 @@ interface GenericButtonProps {
   fontWeight?: "normal" | "medium" | "semibold";
   starticon?: ReactNode;
   endicon?: ReactNode;
+  className?: string;
 }
 
 type ButtonProps = GenericButtonProps &
@@ -47,7 +48,8 @@ function Button(props: ButtonProps | LinkProps) {
     radius = "none",
     fontWeight = "normal",
     starticon,
-    endicon
+    endicon,
+    className
   } = props;
 
   const btnClass = renderColorVarientCssClass<GenericButtonProps>(
@@ -57,7 +59,8 @@ function Button(props: ButtonProps | LinkProps) {
     radius,
     fontWeight,
     starticon,
-    endicon
+    endicon,
+    className
   );
 
   if (isLinkProps(props)) {
@@ -93,78 +96,82 @@ function renderColorVarientCssClass<T extends GenericButtonProps>(
   radius: T["radius"],
   fontWeight: T["fontWeight"],
   starticon: T["starticon"],
-  endicon: T["endicon"]
+  endicon: T["endicon"],
+  className: T["className"]
 ): string {
-  return classNames({
-    //button color, outline
-    [styles[
-      `${
-        color === "default" && variant === "bordered"
-          ? "btn-default-outline"
-          : "btn-default"
-      }`
-    ]]: color === "default",
+  return classNames(
+    {
+      //button color, outline
+      [styles[
+        `${
+          color === "default" && variant === "bordered"
+            ? "btn-default-outline"
+            : "btn-default"
+        }`
+      ]]: color === "default",
 
-    [styles[
-      `${
-        color === "white" && variant === "bordered"
-          ? "btn-white-outline"
-          : "btn-white"
-      }`
-    ]]: color === "white",
+      [styles[
+        `${
+          color === "white" && variant === "bordered"
+            ? "btn-white-outline"
+            : "btn-white"
+        }`
+      ]]: color === "white",
 
-    [styles[
-      `${
-        color === "blue" && variant === "bordered"
-          ? "btn-blue-outline"
-          : "btn-blue"
-      }`
-    ]]: color === "blue",
+      [styles[
+        `${
+          color === "blue" && variant === "bordered"
+            ? "btn-blue-outline"
+            : "btn-blue"
+        }`
+      ]]: color === "blue",
 
-    [styles[
-      `${
-        color === "dark-blue" && variant === "bordered"
-          ? "btn-dark-blue-outline"
-          : "btn-dark-blue"
-      }`
-    ]]: color === "dark-blue",
+      [styles[
+        `${
+          color === "dark-blue" && variant === "bordered"
+            ? "btn-dark-blue-outline"
+            : "btn-dark-blue"
+        }`
+      ]]: color === "dark-blue",
 
-    [styles[
-      `${
-        color === "darker-blue" && variant === "bordered"
-          ? "btn-darker-blue-outline"
-          : "btn-darker-blue"
-      }`
-    ]]: color === "darker-blue",
+      [styles[
+        `${
+          color === "darker-blue" && variant === "bordered"
+            ? "btn-darker-blue-outline"
+            : "btn-darker-blue"
+        }`
+      ]]: color === "darker-blue",
 
-    [styles[
-      `${
-        color === "darkest-gray" && variant === "bordered"
-          ? "btn-darkest-gray-outline"
-          : "btn-darkest-gray"
-      }`
-    ]]: color === "darkest-gray",
+      [styles[
+        `${
+          color === "darkest-gray" && variant === "bordered"
+            ? "btn-darkest-gray-outline"
+            : "btn-darkest-gray"
+        }`
+      ]]: color === "darkest-gray",
 
-    //radius
-    [`${styles["rounded-sm"]}`]: radius === "sm",
-    [`${styles["rounded-md"]}`]: radius === "md",
-    [`${styles["rounded-lg"]}`]: radius === "lg",
-    [`${styles["rounded-full"]}`]: radius === "full",
+      //radius
+      [`${styles["rounded-sm"]}`]: radius === "sm",
+      [`${styles["rounded-md"]}`]: radius === "md",
+      [`${styles["rounded-lg"]}`]: radius === "lg",
+      [`${styles["rounded-full"]}`]: radius === "full",
 
-    //size
-    [`${styles["btn-size-sm"]}`]: size === "sm",
-    [`${styles["btn-size-md"]}`]: size === "md",
-    [`${styles["btn-size-lg"]}`]: size === "lg",
+      //size
+      [`${styles["btn-size-sm"]}`]: size === "sm",
+      [`${styles["btn-size-md"]}`]: size === "md",
+      [`${styles["btn-size-lg"]}`]: size === "lg",
 
-    //font Wieght
-    [`${styles["font-normal"]}`]: fontWeight === "normal",
-    [`${styles["font-medium"]}`]: fontWeight === "medium",
-    [`${styles["font-semibold"]}`]: fontWeight === "semibold",
+      //font Wieght
+      [`${styles["font-normal"]}`]: fontWeight === "normal",
+      [`${styles["font-medium"]}`]: fontWeight === "medium",
+      [`${styles["font-semibold"]}`]: fontWeight === "semibold",
 
-    // Flex Gap maintain twik class
-    [`${styles["gap-10px"]}`]: starticon,
-    [`${styles["gap-13px"]}`]: endicon
-  });
+      // Flex Gap maintain twik class
+      [`${styles["gap-10px"]}`]: starticon,
+      [`${styles["gap-13px"]}`]: endicon
+    },
+    className
+  );
 }
 
 export default Button;

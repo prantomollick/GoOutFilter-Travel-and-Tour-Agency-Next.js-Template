@@ -1,0 +1,58 @@
+@import "@/app/utilities";
+
+@mixin hoverEffect {
+  &:hover {
+    background-color: var(--darkest-gray);
+    color: var(--white);
+  }
+  &:active {
+    box-shadow: none;
+  }
+}
+
+.arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  font-family: inherit;
+
+  transition: all 0.2s ease;
+  cursor: pointer;
+  @include hoverEffect;
+
+  &:link,
+  &:visited {
+    @include hoverEffect;
+  }
+
+  &-default {
+    background-color: var(--white);
+    box-shadow: var(--box-shadow-1);
+  }
+
+  &-outline {
+    background-color: var(--white);
+    border: var(--border-color);
+  }
+
+  &-size-sm {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+  &-size-md {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  &-size-lg {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  &-size-xl {
+    width: 6rem;
+    height: 6rem;
+  }
+}

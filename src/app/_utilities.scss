@@ -1,0 +1,26 @@
+.rounded-sm {
+  border-radius: var(--border-radius-small);
+}
+.rounded-md {
+  border-radius: var(--border-radius-medium);
+}
+.rounded-lg {
+  border-radius: var(--border-radius-large);
+}
+
+.rounded-full {
+  border-radius: var(--border-radius-full);
+}
+
+//font
+.font-normal {
+  font-weight: var(--font-weight-regular);
+}
+
+.font-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.font-semibold {
+  font-weight: var(--font-weight-semibold);
+}
