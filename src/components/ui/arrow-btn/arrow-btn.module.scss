@@ -4,9 +4,27 @@
   &:hover {
     background-color: var(--darkest-gray);
     color: var(--white);
+    svg {
+      color: var(--white);
+    }
   }
   &:active {
     box-shadow: none;
+  }
+}
+
+@mixin hoverEffectOutlineArrowBtn {
+  &:hover {
+    background-color: var(--darkest-gray);
+    border: var(--darkest-gray);
+
+    svg {
+      color: var(--white);
+    }
+  }
+
+  &:active {
+    box-shadow: var(--box-shadow-1);
   }
 }
 
@@ -17,24 +35,29 @@
   border: none;
   outline: none;
   font-family: inherit;
-
   transition: all 0.2s ease;
   cursor: pointer;
-  @include hoverEffect;
 
   &:link,
   &:visited {
     @include hoverEffect;
   }
 
+  svg {
+    color: var(--darkest-gray);
+  }
+
   &-default {
     background-color: var(--white);
     box-shadow: var(--box-shadow-1);
+    @include hoverEffect;
   }
 
   &-outline {
     background-color: var(--white);
-    border: var(--border-color);
+    border: 1px solid var(--border-color);
+    box-shadow: none;
+    @include hoverEffectOutlineArrowBtn;
   }
 
   &-size-sm {

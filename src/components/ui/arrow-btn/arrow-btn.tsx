@@ -9,11 +9,7 @@ import {
   GoSmiley
 } from "react-icons/go";
 
-import React, {
-  ComponentPropsWithoutRef,
-  PropsWithChildren,
-  ReactNode
-} from "react";
+import React, { ComponentPropsWithoutRef, ReactNode } from "react";
 
 interface GenericArrowProps {
   variant?: "bordered";
@@ -62,13 +58,14 @@ function ArrowBtn(props: ArrowBtnProps | ArrowLinkProps) {
       [styles["arrow-btn-size-md"]]: size === "md",
       [styles["arrow-btn-size-lg"]]: size === "lg",
       [styles["arrow-btn-size-xl"]]: size === "xl",
-      [styles["arrow-btn-default"]]: color === "default"
+      [styles[
+        variant === "bordered" ? "arrow-btn-outline" : "arrow-btn-default"
+      ]]: color === "default"
     },
     className,
     styles["arrow-btn"],
     styles["rounded-full"]
   );
-  console.log(arrowBtnCss);
 
   let pointedIcon: ReactNode;
   switch (direction) {

@@ -10,7 +10,7 @@ export default function Home() {
         <ArrowBtn direction="left" />
         <ArrowBtn href="/" direction="up" />
         <ArrowBtn href="/" direction="down" />
-        <ArrowBtn direction="right" />
+        <ArrowBtn direction="right" variant="bordered" />
       </div>
     </>
   );
