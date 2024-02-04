@@ -83,3 +83,5 @@ export default function Home() {
   );
 }
 ```
+
+![Pagination component](./screenshot/pagination-component.png)
