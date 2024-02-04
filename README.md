@@ -59,6 +59,7 @@ Acception, if you write `href` props inside the `<ArrowBtn href="/" />` componen
 
 ### Pagination Component with usePagination custom hook:
 
+[Details about the pagination hook](https://github.com/prantomollick/GoOutFilter-Travel-and-Tour-Agency-Next.js-Template/blob/main/src/components/pagination/redme.md#overview)
 It is client component, when you use this component must use `use client` on top of the file. Here is code below how can you use Pagination component into your app;
 
 ```javascript
