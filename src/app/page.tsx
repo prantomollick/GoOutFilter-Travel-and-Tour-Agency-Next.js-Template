@@ -1,17 +1,20 @@
-// import styles from "./page.module.css";
-import ArrowBtn from "@/components/ui/arrow-btn/arrow-btn";
-import Button from "@/components/ui/button/button";
-import { GoChevronRight } from "react-icons/go";
+"use client";
+import Pagination from "@/components/pagination/pagination";
+import { useState } from "react";
 
 export default function Home() {
+  const [currentPage, setCurrentPage] = useState(1);
+
   return (
     <>
-      <div style={{ display: "flex", gap: "5px" }}>
-        <ArrowBtn direction="left" />
-        <ArrowBtn href="/" direction="up" />
-        <ArrowBtn href="/" direction="down" />
-        <ArrowBtn direction="right" variant="bordered" />
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        totalCount={200}
+        pageSize={10}
+        onPageChange={(page) => {
+          setCurrentPage(page);
+        }}
+      />
     </>
   );
 }

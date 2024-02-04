@@ -1,0 +1,70 @@
+$namespace: "pagination";
+
+@mixin hoverEffect {
+  &:hover {
+    background-color: var(--dark-gray);
+    color: var(--white);
+  }
+}
+
+.#{$namespace}-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+
+  .#{$namespace}__list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &-item {
+      width: 4rem;
+      height: 4rem;
+      font-size: inherit;
+      font-family: inherit;
+      padding: 10px 16px;
+      border-radius: var(--border-radius-full);
+      font-weight: var(--font-weight-medium);
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &.selected {
+        background-color: var(--light-gray-bg);
+        color: var(--darkest-gray);
+      }
+      @include hoverEffect;
+    }
+
+    &-arrow-left {
+      margin-right: 2.8rem;
+
+      &.disabled {
+        cursor: not-allowed;
+      }
+    }
+    &-arrow-right {
+      margin-left: 2.8rem;
+    }
+    &-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+      svg {
+        border-radius: var(--border-radius-full);
+        color: var(--darkest-gray);
+      }
+    }
+  }
+
+  .#{$namespace}__content {
+    font-size: var(--font-size-1_4rem);
+    color: var(--text-light);
+  }
+}

@@ -1,7 +1,7 @@
 @import "@/app/utilities";
 
 @mixin hoverEffect {
-  &:hover {
+  &:not(:disabled):hover {
     background-color: var(--darkest-gray);
     color: var(--white);
     svg {
@@ -14,7 +14,7 @@
 }
 
 @mixin hoverEffectOutlineArrowBtn {
-  &:hover {
+  &:not(:disabled):hover {
     background-color: var(--darkest-gray);
     border: var(--darkest-gray);
 
@@ -23,7 +23,7 @@
     }
   }
 
-  &:active {
+  &:not(:disabled):active {
     box-shadow: var(--box-shadow-1);
   }
 }
@@ -77,5 +77,9 @@
   &-size-xl {
     width: 6rem;
     height: 6rem;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 }

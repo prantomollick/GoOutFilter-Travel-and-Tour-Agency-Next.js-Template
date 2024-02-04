@@ -56,3 +56,30 @@ Acception, if you write `href` props inside the `<ArrowBtn href="/" />` componen
 | `size`            | `sm`\| `md` \| `lg` \| `xl`        | The button size.                                                           | `md`                 |
 
 ![Arrow with Button different variations image](./screenshot/arrow-btn-screenshot.png)
+
+### Pagination Component with usePagination custom hook:
+
+It is client component, when you use this component must use `use client` on top of the file. Here is code below how can you use Pagination component into your app;
+
+```javascript
+"use client";
+import Pagination from "@/components/pagination/pagination";
+import { useState } from "react";
+
+export default function Home() {
+  const [currentPage, setCurrentPage] = useState(1);
+
+  return (
+    <>
+      <Pagination
+        currentPage={currentPage}
+        totalCount={200}
+        pageSize={10}
+        onPageChange={(page) => {
+          setCurrentPage(page);
+        }}
+      />
+    </>
+  );
+}
+```
