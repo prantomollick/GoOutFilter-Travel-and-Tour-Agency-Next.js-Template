@@ -1,4 +1,5 @@
 "use client";
+import CardDestination from "@/components/card-destination/card-destination";
 import Pagination from "@/components/pagination/pagination";
 import { useState } from "react";
 
@@ -7,13 +8,10 @@ export default function Home() {
 
   return (
     <>
-      <Pagination
-        currentPage={currentPage}
-        totalCount={200}
-        pageSize={10}
-        onPageChange={(page) => {
-          setCurrentPage(page);
-        }}
+      <CardDestination
+        size="xl"
+        imgLink="/destination/london.jpg"
+        title="London"
       />
     </>
   );

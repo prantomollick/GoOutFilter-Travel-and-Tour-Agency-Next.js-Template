@@ -1,0 +1,79 @@
+@mixin hoverEffect {
+  &:hover {
+    .card__button {
+      visibility: visible;
+      transform: translate(-50%, -20px);
+    }
+    .card__title {
+      bottom: 100px;
+    }
+
+    .card__img-shadow {
+      background: var(--darkest-gray);
+      opacity: 40%;
+    }
+    .card__text {
+      top: 30px;
+      visibility: visible;
+    }
+  }
+}
+
+.card {
+  width: 300px;
+  height: 400px;
+  position: relative;
+  border-radius: var(--border-radius-small);
+  overflow: hidden;
+  @include hoverEffect;
+
+  &__img-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(5, 16, 54, 0) 70%,
+      rgba(5, 16, 54, 0.5) 100%
+    );
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: var(--font-size-2_6rem);
+    font-weight: var(--font-weight-semibold);
+    color: var(--white);
+    transition: all 0.2s ease;
+  }
+
+  &__text {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    color: var(--white);
+    z-index: 1;
+    visibility: hidden;
+    transition: all 0.2s ease;
+  }
+  &__button {
+    visibility: hidden;
+    position: absolute;
+    width: 86%;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 102%);
+    transition: all 0.2s ease;
+  }
+}
