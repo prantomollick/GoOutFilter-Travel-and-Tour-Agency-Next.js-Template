@@ -9,9 +9,22 @@ export default function Home() {
   return (
     <>
       <CardDestination
-        size="xl"
+        size="md"
         imgLink="/destination/london.jpg"
         title="London"
+        extraSmallText="147,681 travellers"
+      />
+      <CardDestination
+        size="sm"
+        imgLink="/destination/london.jpg"
+        title="London UK"
+        extraSmallText="147,681 travellers"
+      />
+      <CardDestination
+        size="xs"
+        imgLink="/destination/london.jpg"
+        title="London UK"
+        extraSmallText="147,681 travellers"
       />
     </>
   );

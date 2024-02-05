@@ -3,17 +3,40 @@ import styles from "./card-destination.module.scss";
 import Image from "next/image";
 import React, { ReactNode } from "react";
 import Button from "../ui/button/button";
+import classNames from "classnames";
 
 interface CardDestinationProps {
   imgLink: string;
   title: string;
-  size: "sm" | "md" | "lg" | "xl";
+  size: "xs" | "sm" | "md" | "lg";
+  extraSmallText?: string;
 }
 
-function CardDestination({ imgLink, title, size }: CardDestinationProps) {
-  console.log(styles);
+function CardDestination({
+  imgLink,
+  title,
+  size,
+  extraSmallText
+}: CardDestinationProps) {
+  let cssClass: "card2-md" | "card2-sm" | "card2-xs" = "card2-md";
+  let imgSize: { width: number; height: number } = { width: 300, height: 400 };
 
-  if (size === "xl") {
+  switch (size) {
+    case "md":
+      cssClass = "card2-md";
+      imgSize = { width: 224, height: 300 };
+      break;
+    case "sm":
+      cssClass = "card2-sm";
+      imgSize = { width: 190, height: 200 };
+      break;
+
+    case "xs":
+      cssClass = "card2-xs";
+      imgSize = { width: 160, height: 160 };
+  }
+
+  if (size === "lg") {
     return (
       <article className={styles.card}>
         <p className={styles.card__text}>
@@ -23,8 +46,8 @@ function CardDestination({ imgLink, title, size }: CardDestinationProps) {
         <Image
           src={imgLink}
           alt={title}
-          width={300}
-          height={400}
+          width={imgSize.width}
+          height={imgSize.height}
           priority={true}
           className={styles.card__img}
         />
@@ -42,7 +65,23 @@ function CardDestination({ imgLink, title, size }: CardDestinationProps) {
     );
   }
 
-  return null;
+  return (
+    <article className={classNames(styles.card2, styles[cssClass])}>
+      <Image
+        src={imgLink}
+        alt={title}
+        width={imgSize.width}
+        height={imgSize.height}
+        className="card2__img"
+      />
+      <div className={styles["card2__content"]}>
+        <h3 className={styles["card2__content--title"]}>{title}</h3>
+        <p className={styles["card2__content--extra-small-text"]}>
+          {extraSmallText}
+        </p>
+      </div>
+    </article>
+  );
 }
 
 export default CardDestination;

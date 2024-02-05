@@ -20,8 +20,8 @@
 }
 
 .card {
-  width: 300px;
-  height: 400px;
+  width: 30rem;
+  height: 40rem;
   position: relative;
   border-radius: var(--border-radius-small);
   overflow: hidden;
@@ -41,6 +41,7 @@
   }
 
   &__img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -75,5 +76,52 @@
     left: 50%;
     transform: translate(-50%, 102%);
     transition: all 0.2s ease;
+  }
+}
+
+.card2 {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 10px;
+
+  img {
+    display: block;
+    border-radius: var(--border-radius-small);
+    object-fit: cover;
+  }
+
+  &-md {
+    img {
+      width: 22.4rem;
+      height: 30rem;
+    }
+  }
+  &-sm {
+    img {
+      width: 19rem;
+      height: 20rem;
+    }
+  }
+  &-xs {
+    align-items: center;
+    text-align: center;
+    img {
+      width: 16rem;
+      height: 16rem;
+      border-radius: var(--border-radius-full);
+    }
+  }
+
+  &__content--title {
+    color: var(--darkest-gray);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-1_8rem);
+    line-height: 1.5;
+  }
+
+  &__content--extra-small-text {
+    font-size: inherit;
+    font-weight: inherit;
+    color: var(--text-light);
   }
 }
