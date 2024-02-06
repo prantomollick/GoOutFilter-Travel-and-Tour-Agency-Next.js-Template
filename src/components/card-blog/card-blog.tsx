@@ -1,5 +1,6 @@
 import styles from "./card-blog.module.scss";
 import { formatDate } from "@/util/formatDate";
+import Image from "next/image";
 import React from "react";
 
 type PhotoRatio = {
@@ -40,7 +41,27 @@ function CardBlog({
   const { width, height } = imgSize[size];
 
   return (
-    <article className={styles[`card-${size}`]}>{formatDate(date)}</article>
+    <article className={styles[`card-${size}`]}>
+      <div className={styles["card__img-wrapper"]}>
+        <Image
+          src={imgLink}
+          alt={title}
+          //   layout="responsive"
+          priority={true}
+          width={width}
+          height={height}
+        />
+      </div>
+      <div className={styles["card__content"]}>
+        {size === "lg" && (
+          <p className={styles["card__content--date"]}>{formatDate(date)}</p>
+        )}
+        <h3 className={styles["card__content--heading"]}>{title}</h3>
+        {extraSmallText && (
+          <p className={styles["card__content--desc"]}>{extraSmallText}</p>
+        )}
+      </div>
+    </article>
   );
 }
 
