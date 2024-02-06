@@ -1,4 +1,5 @@
 "use client";
+import CardBlog from "@/components/card-blog/card-blog";
 import CardDestination from "@/components/card-destination/card-destination";
 import Pagination from "@/components/pagination/pagination";
 import { useState } from "react";
@@ -8,23 +9,14 @@ export default function Home() {
 
   return (
     <>
-      <CardDestination
-        size="md"
-        imgLink="/destination/london.jpg"
-        title="London"
-        extraSmallText="147,681 travellers"
-      />
-      <CardDestination
-        size="sm"
-        imgLink="/destination/london.jpg"
-        title="London UK"
-        extraSmallText="147,681 travellers"
-      />
-      <CardDestination
-        size="xs"
-        imgLink="/destination/london.jpg"
-        title="London UK"
-        extraSmallText="147,681 travellers"
+      <CardBlog
+        imgLink="/blog/Swiss canton of Bern.png"
+        size="lg"
+        title="10 European ski destinations you 
+        should visit this winter"
+        extraSmallText="Ut enim ad minim veniam, quis nostrud exerc
+        ullamco laboris nisi ut aliquip."
+        date={new Date()}
       />
     </>
   );
