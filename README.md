@@ -86,3 +86,12 @@ export default function Home() {
 ```
 
 ![Pagination component](./screenshot/pagination-component.png)
+
+### CardDestination Component
+
+| Attribute `props` | Type                      | Description                                    | Default    |
+| ----------------- | ------------------------- | ---------------------------------------------- | ---------- |
+| `imgLink`         | `string`                  | Image link is required for this component      | -          |
+| `title`           | `string`                  | Card Title is required for this component      | -          |
+| `size`            | `xs`\|`sm`\| `md` \| `lg` | Different variant card size                    | `lg`       |
+| `extraSmallText`  | `string`                  | Extra card content below this card little text | `optional` |

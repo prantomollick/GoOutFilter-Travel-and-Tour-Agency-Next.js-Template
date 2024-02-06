@@ -73,6 +73,7 @@ function CardDestination({
         width={imgSize.width}
         height={imgSize.height}
         className="card2__img"
+        priority={true}
       />
       <div className={styles["card2__content"]}>
         <h3 className={styles["card2__content--title"]}>{title}</h3>
