@@ -89,9 +89,13 @@ export default function Home() {
 
 ### CardDestination Component
 
+Card destination is for destination photo viewing card. Which key element is image. Take your great tour photo and put it into this component.
+
 | Attribute `props` | Type                      | Description                                    | Default    |
 | ----------------- | ------------------------- | ---------------------------------------------- | ---------- |
 | `imgLink`         | `string`                  | Image link is required for this component      | -          |
 | `title`           | `string`                  | Card Title is required for this component      | -          |
 | `size`            | `xs`\|`sm`\| `md` \| `lg` | Different variant card size                    | `lg`       |
 | `extraSmallText`  | `string`                  | Extra card content below this card little text | `optional` |
+
+![CardDestination Component component](./screenshot/card-destination.png)
