@@ -1,5 +1,6 @@
 import styles from "./card-blog.module.scss";
 import { formatDate } from "@/util/formatDate";
+import classNames from "classnames";
 import Image from "next/image";
 import React from "react";
 
@@ -12,7 +13,7 @@ interface CardBlogProps {
   imgLink: string;
   title: string;
   size?: "sm" | "md" | "lg";
-  variant?: "shadow";
+  shadow?: "none" | "shadow-subtle" | "shadow-soft";
   date: Date;
   extraSmallText?: string;
 }
@@ -27,7 +28,7 @@ function CardBlog({
   imgLink,
   title,
   size = "lg",
-  variant,
+  shadow = "none",
   date,
   extraSmallText
 }: CardBlogProps) {
@@ -41,7 +42,7 @@ function CardBlog({
   const { width, height } = imgSize[size];
 
   return (
-    <article className={styles[`card-${size}`]}>
+    <article className={classNames(styles[`card-${size}`], shadow)}>
       <div className={styles["card__img-wrapper"]}>
         <Image
           src={imgLink}
@@ -52,13 +53,21 @@ function CardBlog({
           height={height}
         />
       </div>
-      <div className={styles["card__content"]}>
+      <div
+        className={classNames(
+          styles["card__content"],
+          shadow !== "none" && "py-2 pb-2"
+        )}
+      >
         {size === "lg" && (
           <p className={styles["card__content--date"]}>{formatDate(date)}</p>
         )}
         <h3 className={styles["card__content--heading"]}>{title}</h3>
         {extraSmallText && (
           <p className={styles["card__content--desc"]}>{extraSmallText}</p>
+        )}
+        {size !== "lg" && (
+          <p className={styles["card__content--date"]}>{formatDate(date)}</p>
         )}
       </div>
     </article>

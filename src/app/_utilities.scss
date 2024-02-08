@@ -1,3 +1,4 @@
+//Border Radius
 .rounded-sm {
   border-radius: var(--border-radius-small);
 }
@@ -23,4 +24,28 @@
 
 .font-semibold {
   font-weight: var(--font-weight-semibold);
+}
+
+//Shadow
+// Subtle shadow
+.shadow-subtle {
+  box-shadow: var(--box-shadow-1);
+}
+
+// Soft shadow
+.shadow-soft {
+  box-shadow: var(--box-shadow-2);
+}
+
+// Padding
+.p-2 {
+  padding: 2rem;
+}
+
+.py-2 {
+  padding: 0 2rem;
+}
+
+.pb-2 {
+  padding-bottom: 2rem;
 }

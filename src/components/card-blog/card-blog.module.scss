@@ -1,3 +1,38 @@
+@mixin image {
+  img {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    object-fit: cover;
+  }
+}
+
+@mixin extraSmallText {
+  &--desc {
+    font-family: inherit;
+    font-size: var(--font-size-1_5rem);
+    letter-spacing: calc(1.5rem * 0.02);
+    color: var(--text-light);
+    line-height: calc(2.6rem / 1.5rem);
+  }
+}
+
+@mixin dateText {
+  &--date {
+    font-family: inherit;
+    font-size: var(--font-size-1_5rem);
+    color: var(--text-light);
+    letter-spacing: calc(1.5rem * 0.02);
+    line-height: calc(2.6rem / 1.5rem);
+  }
+}
+
+@mixin genericFlexCard($gap) {
+  display: inline-flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
 .card-lg {
   display: inline-flex;
   flex-wrap: wrap;
@@ -10,12 +45,7 @@
       height: 25rem;
       border-radius: var(--border-radius-small);
       overflow: hidden;
-      img {
-        width: 100%;
-        display: inline-block;
-        object-fit: cover;
-        height: 100%;
-      }
+      @include image();
     }
 
     &__content {
@@ -26,13 +56,8 @@
       width: 33.5rem;
       margin-right: 1rem;
 
-      &--date {
-        font-family: inherit;
-        font-size: var(--font-size-1_5rem);
-        color: var(--text-light);
-        letter-spacing: calc(1.5rem * 0.02);
-        line-height: calc(2.6rem / 1.5rem);
-      }
+      @include dateText();
+
       &--heading {
         font-family: inherit;
         font-size: var(--font-size-2_2rem);
@@ -40,19 +65,63 @@
         line-height: calc(4rem / 2.2rem);
       }
 
-      &--desc {
-        font-family: inherit;
-        font-size: var(--font-size-1_5rem);
-        letter-spacing: calc(1.5rem * 0.02);
-        color: var(--text-light);
-        line-height: calc(2.6rem / 1.5rem);
-      }
+      @include extraSmallText();
     }
   }
 }
 
 .card-md {
+  width: 41rem;
+  @include genericFlexCard(2rem);
+
+  .card {
+    &__img-wrapper {
+      width: 100%;
+      height: 32rem;
+      border-radius: var(--border-radius-small);
+      overflow: hidden;
+
+      @include image();
+    }
+
+    &__content {
+      @include genericFlexCard(0.5rem);
+
+      &--heading {
+        font-family: inherit;
+        font-size: var(--font-size-1_8rem);
+        font-weight: var(--font-weight-medium);
+        line-height: calc(3rem / 1.8rem);
+      }
+
+      @include dateText();
+
+      @include extraSmallText();
+    }
+  }
 }
 
 .card-sm {
+  width: 30rem;
+  @include genericFlexCard(2rem);
+
+  .card {
+    &__img-wrapper {
+      width: 100%;
+      height: 28rem;
+    }
+
+    &__content {
+      @include genericFlexCard(0.5rem);
+
+      &--heading {
+        font-family: inherit;
+        font-size: var(--font-size-1_6rem);
+        line-height: calc(3rem / 1.6rem);
+        font-weight: var(--font-weight-medium);
+      }
+
+      @include dateText();
+    }
+  }
 }
