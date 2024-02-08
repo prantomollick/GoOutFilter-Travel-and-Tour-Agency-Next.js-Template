@@ -89,6 +89,7 @@ export default function Home() {
 
 ### CardDestination Component
 
+`card-destination` module directory into the components file. Develope the `CardDestination` component for showing blog posts in a card format.
 Card destination is for destination photo viewing card. Which key element is image. Take your great tour photo and put it into this component.
 
 | Attribute `props` | Type                      | Description                                    | Default    |
@@ -102,7 +103,7 @@ Card destination is for destination photo viewing card. Which key element is ima
 
 ### CardBlog Component
 
-`card-blog` module into the components file. Develope the `CardBlog` component for showing blog posts in a card format. This component receives as props an object of type BlogPost interface
+`card-blog` module directroy into the components file. Develope the `CardBlog` component for showing blog posts in a card format. This component receives as props an object of type BlogPost interface
 TypeScript.
 
 | Attribute `props` | Type                                      | Description                                    | Default    |
