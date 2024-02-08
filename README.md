@@ -99,3 +99,19 @@ Card destination is for destination photo viewing card. Which key element is ima
 | `extraSmallText`  | `string`                  | Extra card content below this card little text | `optional` |
 
 ![CardDestination Component component](./screenshot/card-destination.png)
+
+### CardBlog Component
+
+`card-blog` module into the components file. Develope the `CardBlog` component for showing blog posts in a card format. This component receives as props an object of type BlogPost interface
+TypeScript.
+
+| Attribute `props` | Type                                      | Description                                    | Default    |
+| ----------------- | ----------------------------------------- | ---------------------------------------------- | ---------- |
+| `imgLink`         | `string`                                  | Image link is required for this component      | -          |
+| `title`           | `string`                                  | Card Title is required for this component      | -          |
+| `size`            | `sm`\| `md` \| `lg`                       | Different variant card size                    | `lg`       |
+| `shadow`          | `none`\| `shadow-subtle` \| `shadow-soft` | Different variant card shadow                  | `none`     |
+| `date`            | `Date`                                    | Take javascript returns date object            | `required` |
+| `extraSmallText`  | `string`                                  | Extra card content below this card little text | `optional` |
+
+![CardBlog Component component](./screenshot/card-blog.png)
