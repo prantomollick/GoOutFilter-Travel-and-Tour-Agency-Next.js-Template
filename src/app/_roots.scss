@@ -5,6 +5,7 @@
   --primary-blue: #3554d1;
   --dark-blue: #163c8c;
   --darker-blue: #13357b;
+  --transparent: transparent;
 
   /* Accent Colors */
   --highlight-yellow: #f8d448;
@@ -23,9 +24,11 @@
   --border-color: #dddddd;
 
   /* Background Colors */
+  --dark-gray-bg: #0d2857;
   --light-gray-bg: #f5f5f5;
-  --blue-bg: #e5f0fd;
-  --green-bg: #ebfcea;
+  --dark-blue-bg: #163c8c;
+  --light-blue-bg: #e5f0fd;
+  --light-green-bg: #ebfcea;
 
   //fonts...
   --font-primary: "Jost", sans-serif;
