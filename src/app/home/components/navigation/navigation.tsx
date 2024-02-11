@@ -1,13 +1,21 @@
+"use client";
 import styles from "./navigation.module.scss";
-import Button from "@/components/ui/button/button";
+
+import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+
 import { GoTriangleDown } from "react-icons/go";
+import Button from "@/components/ui/button/button";
 import Brand from "./brand";
-import classNames from "classnames";
+import CurrencyBtn from "../currency-btn/currency-btn";
+import LanguageBtn from "../language-btn/language-btn";
+import { useParams, usePathname } from "next/navigation";
 
 function Navigation() {
+  const path = usePathname();
+
   const navData = [
     {
       label: "Home",
@@ -77,14 +85,14 @@ function Navigation() {
   ];
 
   return (
-    <header className="nav-container bg-darkest-blue text-white">
+    <header className="nav-container bg-darkest-blue text-white font-medium">
       <nav
         className={classNames(styles.nav, "py-2")}
         role="navigation"
         aria-label="breadcrumb"
       >
         <div className="flex item-center gap-3">
-          <Link href="/" className={styles.nav__brand}>
+          <Link href="/">
             <Brand variant="white" />
           </Link>
           <ul role="menu" className={styles.nav__menu}>
@@ -94,7 +102,11 @@ function Navigation() {
                   <Link
                     href={nav.link}
                     role="menuitem"
-                    className={styles["nav__menu-item"]}
+                    className={classNames(
+                      styles["nav__menu-item"],
+                      nav.link === path && "active-primary",
+                      nav.link === "/" && "active-primary"
+                    )}
                   >
                     {nav.label} {nav.subnav && <GoTriangleDown />}
                   </Link>
@@ -103,16 +115,11 @@ function Navigation() {
             })}
           </ul>
         </div>
-        <div className="flex item-center">
-          <div className="nav__curr-lang">
-            <button type="button" className="nav__curr-btn">
-              USD <GoTriangleDown />
-            </button>
-            <button type="button" className="nav__lang-btn">
-              <Image width={20} height={20} src="/flag.png" alt="flag" />
-              <span>Country Name</span>
-              <GoTriangleDown />
-            </button>
+        <div className="flex item-center gap-2">
+          <div className="flex gap-2">
+            <CurrencyBtn />
+            <span className="divider-line bg-white"></span>
+            <LanguageBtn />
           </div>
           <div className={styles.nav__actions}>
             <Button color="white">Become An Expert</Button>

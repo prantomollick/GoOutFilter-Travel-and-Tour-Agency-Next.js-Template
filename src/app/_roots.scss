@@ -26,16 +26,19 @@
   --border-color: #dddddd;
 
   /* Background Colors */
-  --light-gray-bg: #f5f5f5;
-  --dark-gray-bg: #0d2857;
+  --bg-transparent: transparent;
+  --bg-white: #ffff;
 
-  --light-blue-bg: #e5f0fd;
-  --primary-blue-bg: #3554d1;
-  --dark-blue-bg: #163c8c;
-  --darker-blue-bg: #13357b;
-  --darkest-blue-bg: #051036;
+  --bg-light-gray: #f5f5f5;
+  --bg-dark-gray: #0d2857;
 
-  --light-green-bg: #ebfcea;
+  --bg-light-blue: #e5f0fd;
+  --bg-primary-blue: #3554d1;
+  --bg-dark-blue: #163c8c;
+  --bg-darker-blue: #13357b;
+  --bg-darkest-blue: #051036;
+
+  --bg-light-green: #ebfcea;
 
   //fonts...
   --font-primary: "Jost", sans-serif;

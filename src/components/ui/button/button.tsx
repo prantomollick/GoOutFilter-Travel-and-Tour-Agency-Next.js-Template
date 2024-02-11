@@ -52,7 +52,7 @@ function Button(props: ButtonProps | LinkProps) {
     className
   } = props;
 
-  const btnClass = renderColorVarientCssClass<GenericButtonProps>(
+  const buttonClass = renderColorVarientCssClass<GenericButtonProps>(
     color,
     variant,
     size,
@@ -69,7 +69,7 @@ function Button(props: ButtonProps | LinkProps) {
       <Link
         href={href}
         {...others}
-        className={`${styles["btn-link"]} ${btnClass}`}
+        className={`${styles["button-link"]} ${buttonClass}`}
       >
         {starticon}
         {children}
@@ -81,7 +81,7 @@ function Button(props: ButtonProps | LinkProps) {
   const { children, ...others } = props;
 
   return (
-    <button {...others} className={`${styles.btn} ${btnClass}`}>
+    <button {...others} className={`${styles["button"]} ${buttonClass}`}>
       {starticon}
       {children}
       {endicon}
@@ -105,48 +105,48 @@ function renderColorVarientCssClass<T extends GenericButtonProps>(
       [styles[
         `${
           color === "default" && variant === "bordered"
-            ? "btn-default-outline"
-            : "btn-default"
+            ? "button-default-outline"
+            : "button-default"
         }`
       ]]: color === "default",
 
       [styles[
         `${
           color === "white" && variant === "bordered"
-            ? "btn-white-outline"
-            : "btn-white"
+            ? "button-white-outline"
+            : "button-white"
         }`
       ]]: color === "white",
 
       [styles[
         `${
           color === "blue" && variant === "bordered"
-            ? "btn-blue-outline"
-            : "btn-blue"
+            ? "button-blue-outline"
+            : "button-blue"
         }`
       ]]: color === "blue",
 
       [styles[
         `${
           color === "dark-blue" && variant === "bordered"
-            ? "btn-dark-blue-outline"
-            : "btn-dark-blue"
+            ? "button-dark-blue-outline"
+            : "button-dark-blue"
         }`
       ]]: color === "dark-blue",
 
       [styles[
         `${
           color === "darker-blue" && variant === "bordered"
-            ? "btn-darker-blue-outline"
-            : "btn-darker-blue"
+            ? "button-darker-blue-outline"
+            : "button-darker-blue"
         }`
       ]]: color === "darker-blue",
 
       [styles[
         `${
           color === "darkest-gray" && variant === "bordered"
-            ? "btn-darkest-gray-outline"
-            : "btn-darkest-gray"
+            ? "button-darkest-gray-outline"
+            : "button-darkest-gray"
         }`
       ]]: color === "darkest-gray",
 
@@ -157,9 +157,9 @@ function renderColorVarientCssClass<T extends GenericButtonProps>(
       [`${styles["rounded-full"]}`]: radius === "full",
 
       //size
-      [`${styles["btn-size-sm"]}`]: size === "sm",
-      [`${styles["btn-size-md"]}`]: size === "md",
-      [`${styles["btn-size-lg"]}`]: size === "lg",
+      [`${styles["button-size-sm"]}`]: size === "sm",
+      [`${styles["button-size-md"]}`]: size === "md",
+      [`${styles["button-size-lg"]}`]: size === "lg",
 
       //font Wieght
       [`${styles["font-normal"]}`]: fontWeight === "normal",

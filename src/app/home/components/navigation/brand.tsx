@@ -20,6 +20,7 @@ function Brand({ variant, height = 50, width = 192, title }: BrandProps) {
       height={height}
       width={width}
       alt={title || "Logo"}
+      priority={true}
     />
   );
 }

@@ -2,10 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-size: var(--font-size-1_5rem);
+  font-weight: inherit;
   color: inherit;
-
-  &__brand {
-  }
 
   &__menu {
     list-style: none;
@@ -17,10 +16,12 @@
       align-items: center;
       gap: 1rem;
       color: inherit;
+      font-size: inherit;
     }
   }
 
   &__actions {
     display: flex;
+    gap: 2rem;
   }
 }

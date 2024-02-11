@@ -1,6 +1,6 @@
 @import "@/app/utilities";
 
-@mixin rippelEffect($class-name, $bg-color, $color, $active-shadow) {
+@mixin rippelEffect($bg-color, $color, $active-shadow) {
   position: relative;
   overflow: hidden;
   transition: all 0.2s ease;
@@ -23,12 +23,14 @@
 
   &:hover::before {
     transform: translate(-50%, -50%) scale(4);
-    opacity: 1;
     z-index: -1;
+    opacity: 1;
   }
+
   &:hover {
     color: $color;
   }
+
   &:active {
     box-shadow: $active-shadow;
   }
@@ -41,7 +43,7 @@
   }
 }
 
-.btn {
+.button {
   font-family: inherit;
   font-size: var(--font-size-1_4rem);
   outline: none;
@@ -50,6 +52,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 
   &-link:link,
   &-link:visited {
@@ -72,7 +75,6 @@
     border: 1px solid var(--primary-blue);
 
     @include rippelEffect(
-      &,
       var(--white-gray),
       var(--primary-blue),
       var(--box-shadow-1)
@@ -90,7 +92,6 @@
     border: 1px solid var(--white);
 
     @include rippelEffect(
-      &,
       var(--white),
       var(--darkest-blue),
       var(--box-shadow-1)
@@ -109,7 +110,6 @@
     border: 1px solid var(--primary-blue);
 
     @include rippelEffect(
-      &,
       var(--primary-blue),
       var(--white),
       var(--box-shadow-1)
@@ -126,12 +126,7 @@
     color: var(--dark-blue);
     border: 1px solid var(--dark-blue);
 
-    @include rippelEffect(
-      &,
-      var(--dark-blue),
-      var(--white),
-      var(--box-shadow-1)
-    );
+    @include rippelEffect(var(--dark-blue), var(--white), var(--box-shadow-1));
   }
 
   &-darker-blue {
@@ -145,7 +140,6 @@
     border: 1px solid var(--darker-blue);
 
     @include rippelEffect(
-      &,
       var(--darker-blue),
       var(--white),
       var(--box-shadow-1)
@@ -163,7 +157,6 @@
     border: 1px solid var(--darkest-blue);
 
     @include rippelEffect(
-      &,
       var(--darkest-blue),
       var(--white),
       var(--box-shadow-1)
@@ -171,15 +164,15 @@
   }
 }
 
-.btn-size-sm {
+.button-size-sm {
   padding: 14px 29px;
 }
 
-.btn-size-md {
+.button-size-md {
   padding: 15px 30px;
 }
 
-.btn-size-lg {
+.button-size-lg {
   padding: 19px 35px;
 }
 
