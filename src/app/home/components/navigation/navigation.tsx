@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { GoTriangleDown } from "react-icons/go";
+import Brand from "./brand";
+import classNames from "classnames";
 
 function Navigation() {
   const navData = [
@@ -75,41 +77,49 @@ function Navigation() {
   ];
 
   return (
-    <header className="nav-container dark-blue-bg">
-      <nav className={styles.nav} role="navigation" aria-label="breadcrumb">
-        <Link href="/" className={styles.nav__brand}>
-          <Image src="/main-logo.svg" height={50} width={192} alt="logo" />
-        </Link>
-        <ul role="menu" className={styles.nav__menu}>
-          {navData.map((nav) => {
-            return (
-              <li key={nav.label}>
-                <Link
-                  href={nav.link}
-                  role="menuitem"
-                  className={styles["nav__menu-item"]}
-                >
-                  {nav.label} {nav.subnav && <GoTriangleDown />}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-        <div className="nav__curr-lang">
-          <button type="button" className="nav__curr-btn">
-            USD <GoTriangleDown />
-          </button>
-          <button type="button" className="nav__lang-btn">
-            <Image width={20} height={20} src="/flag.png" alt="flag" />
-            <span>Country Name</span>
-            <GoTriangleDown />
-          </button>
+    <header className="nav-container bg-darkest-blue text-white">
+      <nav
+        className={classNames(styles.nav, "py-2")}
+        role="navigation"
+        aria-label="breadcrumb"
+      >
+        <div className="flex item-center gap-3">
+          <Link href="/" className={styles.nav__brand}>
+            <Brand variant="white" />
+          </Link>
+          <ul role="menu" className={styles.nav__menu}>
+            {navData.map((nav) => {
+              return (
+                <li key={nav.label}>
+                  <Link
+                    href={nav.link}
+                    role="menuitem"
+                    className={styles["nav__menu-item"]}
+                  >
+                    {nav.label} {nav.subnav && <GoTriangleDown />}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
-        <div className="nav__actions">
-          <Button color="white">Become An Expert</Button>
-          <Button color="white" variant="bordered">
-            Sign In / Register
-          </Button>
+        <div className="flex item-center">
+          <div className="nav__curr-lang">
+            <button type="button" className="nav__curr-btn">
+              USD <GoTriangleDown />
+            </button>
+            <button type="button" className="nav__lang-btn">
+              <Image width={20} height={20} src="/flag.png" alt="flag" />
+              <span>Country Name</span>
+              <GoTriangleDown />
+            </button>
+          </div>
+          <div className={styles.nav__actions}>
+            <Button color="white">Become An Expert</Button>
+            <Button color="white" variant="bordered">
+              Sign In / Register
+            </Button>
+          </div>
         </div>
       </nav>
     </header>

@@ -1,19 +1,25 @@
 .nav {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  color: inherit;
+
   &__brand {
   }
+
   &__menu {
     list-style: none;
     display: flex;
-    gap: 0.8rem;
+    gap: 3.8rem;
 
     &-item {
       display: flex;
       align-items: center;
-      gap: 0.2rem;
+      gap: 1rem;
+      color: inherit;
     }
   }
+
   &__actions {
     display: flex;
   }

@@ -80,7 +80,7 @@
   }
 
   &-white {
-    color: var(--darkest-gray);
+    color: var(--darkest-blue);
     background-color: var(--white);
   }
 
@@ -92,7 +92,7 @@
     @include rippelEffect(
       &,
       var(--white),
-      var(--darkest-gray),
+      var(--darkest-blue),
       var(--box-shadow-1)
     );
   }
@@ -100,7 +100,7 @@
   &-blue {
     color: var(--white);
     background-color: var(--primary-blue);
-    @include hoverEffect(var(--darkest-gray));
+    @include hoverEffect(var(--darkest-blue));
   }
 
   &-blue-outline {
@@ -154,17 +154,17 @@
 
   &-darkest-gray {
     color: var(--white);
-    background-color: var(--darkest-gray);
+    background-color: var(--darkest-blue);
   }
 
   &-darkest-gray-outline {
     background-color: transparent;
-    color: var(--darkest-gray);
-    border: 1px solid var(--darkest-gray);
+    color: var(--darkest-blue);
+    border: 1px solid var(--darkest-blue);
 
     @include rippelEffect(
       &,
-      var(--darkest-gray),
+      var(--darkest-blue),
       var(--white),
       var(--box-shadow-1)
     );

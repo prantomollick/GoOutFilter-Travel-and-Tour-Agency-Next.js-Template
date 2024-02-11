@@ -5,6 +5,7 @@
   --primary-blue: #3554d1;
   --dark-blue: #163c8c;
   --darker-blue: #13357b;
+  --darkest-blue: #051036;
   --transparent: transparent;
 
   /* Accent Colors */
@@ -14,20 +15,26 @@
   --white: #ffffff;
   --white-gray: #3554d10d;
   --dark-gray: #0d2857;
-  --darkest-gray: #051036;
 
   /* Text Colors */
+  --text-white: #fff;
   --text-dark: #051036;
   --text-light: #697488;
+  --text-primary-blue: #3554d1;
 
   /* Border Color */
   --border-color: #dddddd;
 
   /* Background Colors */
-  --dark-gray-bg: #0d2857;
   --light-gray-bg: #f5f5f5;
-  --dark-blue-bg: #163c8c;
+  --dark-gray-bg: #0d2857;
+
   --light-blue-bg: #e5f0fd;
+  --primary-blue-bg: #3554d1;
+  --dark-blue-bg: #163c8c;
+  --darker-blue-bg: #13357b;
+  --darkest-blue-bg: #051036;
+
   --light-green-bg: #ebfcea;
 
   //fonts...
