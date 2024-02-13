@@ -12,9 +12,11 @@ import Brand from "./brand";
 import CurrencyBtn from "../currency-btn/currency-btn";
 import LanguageBtn from "../language-btn/language-btn";
 import { useParams, usePathname } from "next/navigation";
+import { useModal } from "@/context/modal-context";
 
 function Navigation() {
   const path = usePathname();
+  const { actions } = useModal();
 
   const navData = [
     {
@@ -117,7 +119,9 @@ function Navigation() {
         </div>
         <div className="flex item-center gap-2">
           <div className="flex gap-2">
-            <CurrencyBtn />
+            <CurrencyBtn onClick={actions.onOpen}>
+              USD <GoTriangleDown />
+            </CurrencyBtn>
             <span className="divider-line bg-white"></span>
             <LanguageBtn />
           </div>

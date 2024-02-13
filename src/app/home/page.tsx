@@ -4,7 +4,9 @@ import React from "react";
 function Home() {
   return (
     <section>
-      <Modal />
+      <Modal title="Select your currency">
+        <div>Test</div>
+      </Modal>
     </section>
   );
 }

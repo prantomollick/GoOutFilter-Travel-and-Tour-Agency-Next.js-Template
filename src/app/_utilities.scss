@@ -6,6 +6,34 @@
   margin: 0 auto;
 }
 
+//divider
+.divider-line {
+  width: 1px;
+  height: auto;
+  opacity: 0.2;
+}
+
+//button
+.btn {
+  font-family: inherit;
+  font-weight: inherit;
+  color: inherit;
+  background-color: var(--transparent);
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: inherit;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+//generic classes
+.active-primary {
+  color: var(--text-primary-blue) !important;
+}
+
 //Color
 /* Primary Colors */
 .primary-blue {
@@ -318,30 +346,36 @@
   gap: 3rem;
 }
 
-//divider
-.divider-line {
-  width: 1px;
-  height: auto;
-  opacity: 0.2;
+//width
+.w-1 {
+  width: 1rem;
 }
 
-//button
-.btn {
-  font-family: inherit;
-  font-weight: inherit;
-  color: inherit;
-  background-color: var(--transparent);
-  outline: none;
-  border: none;
-  cursor: pointer;
-
-  &:disabled {
-    cursor: not-allowed;
-  }
+.w-2 {
+  width: 2rem;
 }
 
-//generic classes
+.w-3 {
+  width: 3rem;
+}
 
-.active-primary {
-  color: var(--text-primary-blue) !important;
+.w-4 {
+  width: 4rem;
+}
+
+//height
+.h-1 {
+  height: 1rem;
+}
+
+.h-2 {
+  height: 2rem;
+}
+
+.h-3 {
+  height: 3rem;
+}
+
+.h-4 {
+  height: 4rem;
 }

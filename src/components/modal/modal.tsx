@@ -6,6 +6,7 @@ import classNames from "classnames";
 import { ReactNode, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { GoX } from "react-icons/go";
+import Button from "../ui/button/button";
 
 interface ModalProps {
   children: ReactNode;
@@ -23,14 +24,19 @@ function Modal({ children, title, width = 1070, height }: ModalProps) {
 
   const renderModal = (
     <div className={styles.modal__overlay} onClick={actions.onClose}>
-      <div className={styles.modal__container} style={{ width, height }}>
+      <div
+        className={styles.modal__container}
+        style={{ width, height }}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className={styles.modal__header}>
           <h2>{title}</h2>
+
           <button
             onClick={actions.onClose}
             className={classNames(styles["modal__close--btn"], "btn")}
           >
-            <GoX width={15} height={15} />
+            <GoX size={20} />
           </button>
         </div>
         <div className={styles.modal__body}>{children}</div>

@@ -1,23 +1,18 @@
-import classNames from "classnames";
 import styles from "./currency-btn.module.scss";
-import React from "react";
-import { GoTriangleDown } from "react-icons/go";
-import { useModal } from "@/context/modal-context";
 
-function CurrencyBtn() {
-  const { actions } = useModal();
+import classNames from "classnames";
+import { ComponentPropsWithoutRef, PropsWithChildren } from "react";
 
-  console.log(actions);
+type CurrencyBtnProps = PropsWithChildren & ComponentPropsWithoutRef<"button">;
 
+function CurrencyBtn({ children, ...props }: CurrencyBtnProps) {
   return (
     <button
       type="button"
       className={classNames(styles["currency-btn"], "btn")}
-      onClick={() => {
-        actions.onOpen();
-      }}
+      {...props}
     >
-      USD <GoTriangleDown />
+      {children}
     </button>
   );
 }
