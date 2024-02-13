@@ -83,7 +83,7 @@ export const ModalProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   const onClose = () => {
-    dispatch({ type: ModalActionType.OPEN_MODAL });
+    dispatch({ type: ModalActionType.CLOSE_MODAL });
   };
 
   const setModalContent = function <T>(newContent: T) {
