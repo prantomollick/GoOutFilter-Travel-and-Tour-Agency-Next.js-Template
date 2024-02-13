@@ -5,13 +5,17 @@ import { GoTriangleDown } from "react-icons/go";
 import { useModal } from "@/context/modal-context";
 
 function CurrencyBtn() {
-  const { state } = useModal();
+  const { actions } = useModal();
+
+  console.log(actions);
 
   return (
     <button
       type="button"
       className={classNames(styles["currency-btn"], "btn")}
-      onClick={state.onOpen}
+      onClick={() => {
+        actions.onOpen();
+      }}
     >
       USD <GoTriangleDown />
     </button>

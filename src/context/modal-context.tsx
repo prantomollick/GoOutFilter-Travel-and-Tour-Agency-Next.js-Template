@@ -1,42 +1,56 @@
 import {
-  type Dispatch,
-  type ReactNode,
   createContext,
   useContext,
-  useReducer
+  useMemo,
+  useReducer,
+  type Dispatch,
+  type ReactNode
 } from "react";
 
 enum ModalActionType {
   OPEN_MODAL = "OPEN_MODAL",
-  CLOSE_MODAL = "CLOSE_MODAL"
+  CLOSE_MODAL = "CLOSE_MODAL",
+  SET_MODAL_CONTENT = "SET_MODAL_CONTENT"
 }
 
-interface ModalContextProps {
+interface ModalContextProps<T> {
   isOpen: boolean;
-  onOpen: () => void;
-  onClose: () => void;
+  content?: T;
 }
 
-type ModalAction =
+type ModalAction<T> =
   | { type: ModalActionType.OPEN_MODAL }
-  | { type: ModalActionType.CLOSE_MODAL };
+  | { type: ModalActionType.CLOSE_MODAL }
+  | { type: ModalActionType.SET_MODAL_CONTENT; payload: T };
 
-type ModalContextValue = {
-  state: ModalContextProps;
-  dispatch: Dispatch<ModalAction>;
+type ModalContextValue<T> = {
+  state: ModalContextProps<T>;
+  actions: {
+    onOpen: () => void;
+    onClose: () => void;
+    setModalContent: (content: T) => void;
+  };
+  dispatch: Dispatch<ModalAction<T>>;
 };
 
-const ModalContext = createContext<ModalContextValue | undefined>(undefined);
+const ModalContext = createContext<ModalContextValue<null> | undefined>(
+  undefined
+);
 
-interface ModalState {
+interface ModalState<T = null> {
   isOpen: boolean;
+  content?: T;
 }
 
 const initialState: ModalState = {
-  isOpen: false
+  isOpen: false,
+  content: null
 };
 
-const modalReducer = (state: ModalState, action: ModalAction): ModalState => {
+const modalReducer = (
+  state: ModalState,
+  action: ModalAction<unknown>
+): ModalState => {
   switch (action.type) {
     case ModalActionType.OPEN_MODAL:
       return { ...state, isOpen: true };
@@ -45,6 +59,13 @@ const modalReducer = (state: ModalState, action: ModalAction): ModalState => {
       return {
         ...state,
         isOpen: false
+      };
+
+    case ModalActionType.SET_MODAL_CONTENT:
+      return {
+        ...state,
+        content: action.payload as typeof state.content,
+        isOpen: true
       };
 
     default:
@@ -65,9 +86,14 @@ export const ModalProvider: React.FC<{ children: ReactNode }> = ({
     dispatch({ type: ModalActionType.OPEN_MODAL });
   };
 
-  const modalContextValue: ModalContextValue = {
-    state: { isOpen: state.isOpen, onOpen, onClose },
-    dispatch
+  const setModalContent = function <T>(newContent: T) {
+    dispatch({ type: ModalActionType.SET_MODAL_CONTENT, payload: newContent });
+  };
+
+  const modalContextValue = {
+    state: { isOpen: state.isOpen, content: state.content },
+    dispatch,
+    actions: { onOpen, onClose, setModalContent }
   };
 
   return (
