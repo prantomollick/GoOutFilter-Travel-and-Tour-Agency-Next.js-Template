@@ -6,20 +6,6 @@
   font-weight: inherit;
   color: inherit;
 
-  &__menu {
-    list-style: none;
-    display: flex;
-    gap: 3.8rem;
-
-    &-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      color: inherit;
-      font-size: inherit;
-    }
-  }
-
   &__actions {
     display: flex;
     gap: 2rem;
