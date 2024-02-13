@@ -4,7 +4,7 @@ import styles from "./navigation.module.scss";
 import classNames from "classnames";
 import Link from "next/link";
 
-import { navigationContent } from "@/app/data/navigation-content";
+import { navigationContent } from "@/app/home/components/navigation/navigation-content";
 import Button from "@/components/ui/button/button";
 import { useModal } from "@/context/modal-context";
 import { usePathname } from "next/navigation";
