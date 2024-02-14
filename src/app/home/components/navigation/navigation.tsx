@@ -7,7 +7,6 @@ import Link from "next/link";
 import { navigationContent } from "@/app/home/components/navigation/navigation-content";
 import Button from "@/components/ui/button/button";
 import { useModal } from "@/context/modal-context";
-import { usePathname } from "next/navigation";
 import { GoTriangleDown } from "react-icons/go";
 import CurrencyBtn from "../currency-btn/currency-btn";
 import LanguageBtn from "../language-btn/language-btn";
@@ -15,8 +14,7 @@ import Brand from "./brand";
 import NavigationItem from "./navigation-item";
 
 function Navigation() {
-  const path = usePathname();
-  const { actions } = useModal();
+  const { actions, state } = useModal();
 
   return (
     <nav
@@ -34,7 +32,7 @@ function Navigation() {
       <div className="flex item-center gap-2">
         <div className="flex gap-2">
           <CurrencyBtn onClick={actions.onOpen}>
-            USD <GoTriangleDown />
+            {state.content?.currency?.code} <GoTriangleDown />
           </CurrencyBtn>
           <span className="divider-line bg-white"></span>
           <LanguageBtn />

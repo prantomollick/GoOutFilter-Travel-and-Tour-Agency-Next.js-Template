@@ -18,18 +18,32 @@
     height: auto;
     background-color: var(--bg-white);
     border-radius: var(--border-radius-small);
+    box-shadow: var(--box-shadow-2);
   }
 
   &__header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 2rem 3rem;
     border-bottom: 1px solid var(--border-color);
   }
 
+  &__body {
+    padding-top: 3rem;
+    padding-left: 3rem;
+    padding-right: 4rem;
+    padding-bottom: 4.7rem;
+  }
+
+  &__title {
+    font-family: inherit;
+    font-size: var(--font-size-2rem);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-dark);
+  }
+
   &__close--btn {
-    width: 4rem;
-    height: 4rem;
     display: flex;
     align-items: center;
     justify-content: center;

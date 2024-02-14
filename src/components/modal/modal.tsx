@@ -30,7 +30,7 @@ function Modal({ children, title, width = 1070, height }: ModalProps) {
         onClick={(e) => e.stopPropagation()}
       >
         <div className={styles.modal__header}>
-          <h2>{title}</h2>
+          <h2 className={styles.modal__title}>{title}</h2>
 
           <button
             onClick={actions.onClose}

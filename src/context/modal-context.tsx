@@ -13,9 +13,24 @@ enum ModalActionType {
   SET_MODAL_CONTENT = "SET_MODAL_CONTENT"
 }
 
-interface ModalContextProps<T> {
+export interface CurrencyInfo {
+  name: string;
+  code: string;
+  sign?: string;
+  locale?: string;
+  symbolPosition?: "before" | "after";
+  country?: string;
+  exchangeRate?: number;
+  flag?: string;
+  timezone?: string;
+  currencyColor?: string;
+}
+
+interface ModalContextState {
   isOpen: boolean;
-  content?: T;
+  content?: {
+    currency?: CurrencyInfo;
+  } | null;
 }
 
 type ModalAction<T> =
@@ -24,11 +39,11 @@ type ModalAction<T> =
   | { type: ModalActionType.SET_MODAL_CONTENT; payload: T };
 
 type ModalContextValue<T> = {
-  state: ModalContextProps<T>;
+  state: ModalContextState;
   actions: {
     onOpen: () => void;
     onClose: () => void;
-    setModalContent: (content: T) => void;
+    setModalContent: <T>(content: T) => void;
   };
   dispatch: Dispatch<ModalAction<T>>;
 };
@@ -37,20 +52,22 @@ const ModalContext = createContext<ModalContextValue<null> | undefined>(
   undefined
 );
 
-interface ModalState<T = null> {
-  isOpen: boolean;
-  content?: T;
-}
-
-const initialState: ModalState = {
+const initialState: ModalContextState = {
   isOpen: false,
-  content: null
+  content: {
+    currency: {
+      name: "United States Dollar",
+      code: "USD",
+      sign: "$",
+      locale: "en-US"
+    }
+  }
 };
 
 const modalReducer = (
-  state: ModalState,
+  state: ModalContextState,
   action: ModalAction<unknown>
-): ModalState => {
+): ModalContextState => {
   switch (action.type) {
     case ModalActionType.OPEN_MODAL:
       return { ...state, isOpen: true };

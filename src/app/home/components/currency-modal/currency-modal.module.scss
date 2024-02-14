@@ -1,0 +1,42 @@
+.modal {
+  &__list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(18rem, 1fr));
+    row-gap: 3rem;
+
+    &--item {
+    }
+  }
+
+  &__currency-btn {
+    width: 18rem;
+    height: 7rem;
+    border-radius: var(--border-radius-small);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+
+    padding-left: 1.5rem;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    transition: background-color 0.2s ease;
+
+    font-size: var(--font-size-1_5rem);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-dark);
+
+    &:hover {
+      background-color: var(--bg-light-gray);
+    }
+
+    span {
+      font-family: inherit;
+      font-size: var(--font-size-1_4rem);
+      font-weight: var(--font-weight-regular);
+      color: var(--text-light);
+    }
+  }
+}
