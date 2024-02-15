@@ -18,7 +18,7 @@ export const languageModalData: LanguageCountryData[] = [
   {
     name: "Canada",
     code: "CA",
-    language: "English, French",
+    language: "English",
     currency: "CAD",
     flag: "🇨🇦"
   },
@@ -81,7 +81,7 @@ export const languageModalData: LanguageCountryData[] = [
   {
     name: "India",
     code: "IN",
-    language: "Hindi, English",
+    language: "Hindi",
     currency: "INR",
     flag: "🇮🇳"
   },
@@ -95,7 +95,7 @@ export const languageModalData: LanguageCountryData[] = [
   {
     name: "South Africa",
     code: "ZA",
-    language: "Zulu, English",
+    language: "Zulu",
     currency: "ZAR",
     flag: "🇿🇦"
   },
@@ -137,15 +137,8 @@ export const languageModalData: LanguageCountryData[] = [
   {
     name: "Singapore",
     code: "SG",
-    language: "English, Malay, Mandarin, Tamil",
+    language: "Malay",
     currency: "SGD",
     flag: "🇸🇬"
-  },
-  {
-    name: "New Zealand",
-    code: "NZ",
-    language: "English, Maori",
-    currency: "NZD",
-    flag: "🇳🇿"
   }
 ];
