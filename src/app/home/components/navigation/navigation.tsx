@@ -8,12 +8,13 @@ import { navigationContent } from "@/app/home/components/navigation/navigation-c
 import Button from "@/components/ui/button/button";
 
 import { GoTriangleDown } from "react-icons/go";
-import CurrencyBtn from "../currency-btn/currency-btn";
-import LanguageBtn from "../language-btn/language-btn";
-import Brand from "./brand";
-import NavigationItem from "./navigation-item";
+
 import { useCurrencyModal } from "@/context/currency-modal-context";
 import { useLanguageModal } from "@/context/language-modal-context";
+import Brand from "./brand";
+import CurrencyBtn from "./currency-btn/currency-btn";
+import LanguageBtn from "./language-btn/language-btn";
+import NavigationItem from "./navigation-item";
 
 function Navigation() {
   const { actions: currencyActions, state: currencyState } = useCurrencyModal();
