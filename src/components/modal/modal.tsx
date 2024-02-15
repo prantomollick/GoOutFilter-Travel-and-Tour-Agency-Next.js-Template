@@ -1,29 +1,33 @@
 "use client";
 import styles from "./modal.module.scss";
 
-import { useModal } from "@/context/modal-context";
+import { useCurrencyModal } from "@/context/currency-modal-context";
 import classNames from "classnames";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { GoX } from "react-icons/go";
-import Button from "../ui/button/button";
 
 interface ModalProps {
   children: ReactNode;
   title?: string;
   width?: number;
   height?: number;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
-function Modal({ children, title, width = 1070, height }: ModalProps) {
-  const { state, actions } = useModal();
-
-  console.log(state);
-
-  if (!state.isOpen) return null;
+function Modal({
+  children,
+  title,
+  width = 1070,
+  height,
+  isOpen,
+  onClose
+}: ModalProps) {
+  if (!isOpen) return null;
 
   const renderModal = (
-    <div className={styles.modal__overlay} onClick={actions.onClose}>
+    <div className={styles.modal__overlay} onClick={onClose}>
       <div
         className={styles.modal__container}
         style={{ width, height }}
@@ -33,7 +37,7 @@ function Modal({ children, title, width = 1070, height }: ModalProps) {
           <h2 className={styles.modal__title}>{title}</h2>
 
           <button
-            onClick={actions.onClose}
+            onClick={onClose}
             className={classNames(styles["modal__close--btn"], "btn")}
           >
             <GoX size={20} />

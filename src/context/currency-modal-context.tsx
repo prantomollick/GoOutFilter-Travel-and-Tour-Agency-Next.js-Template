@@ -1,17 +1,10 @@
 import {
   createContext,
   useContext,
-  useMemo,
   useReducer,
   type Dispatch,
   type ReactNode
 } from "react";
-
-enum ModalActionType {
-  OPEN_MODAL = "OPEN_MODAL",
-  CLOSE_MODAL = "CLOSE_MODAL",
-  SET_MODAL_CONTENT = "SET_MODAL_CONTENT"
-}
 
 export interface CurrencyInfo {
   name: string;
@@ -26,7 +19,13 @@ export interface CurrencyInfo {
   currencyColor?: string;
 }
 
-interface ModalContextState {
+enum CurrActionType {
+  OPEN_CURRENCY_MODAL = "OPEN_CURRENCY_MODAL",
+  CLOSE_CURRENCY_MODAL = "CLOSE_CURRENCY_MODAL",
+  SET_CURRENCY_MODAL_CONTENT = "SET_CURRENCY_MODAL_CONTENT"
+}
+
+interface CurrencyCtxState {
   isOpen: boolean;
   content?: {
     currency?: CurrencyInfo;
@@ -34,12 +33,12 @@ interface ModalContextState {
 }
 
 type ModalAction<T> =
-  | { type: ModalActionType.OPEN_MODAL }
-  | { type: ModalActionType.CLOSE_MODAL }
-  | { type: ModalActionType.SET_MODAL_CONTENT; payload: T };
+  | { type: CurrActionType.OPEN_CURRENCY_MODAL }
+  | { type: CurrActionType.CLOSE_CURRENCY_MODAL }
+  | { type: CurrActionType.SET_CURRENCY_MODAL_CONTENT; payload: T };
 
-type ModalContextValue<T> = {
-  state: ModalContextState;
+type CurrencyCtxValue<T> = {
+  state: CurrencyCtxState;
   actions: {
     onOpen: () => void;
     onClose: () => void;
@@ -48,11 +47,11 @@ type ModalContextValue<T> = {
   dispatch: Dispatch<ModalAction<T>>;
 };
 
-const ModalContext = createContext<ModalContextValue<null> | undefined>(
+const CurrencyModalCtx = createContext<CurrencyCtxValue<null> | undefined>(
   undefined
 );
 
-const initialState: ModalContextState = {
+const initialState: CurrencyCtxState = {
   isOpen: false,
   content: {
     currency: {
@@ -65,20 +64,20 @@ const initialState: ModalContextState = {
 };
 
 const modalReducer = (
-  state: ModalContextState,
+  state: CurrencyCtxState,
   action: ModalAction<unknown>
-): ModalContextState => {
+): CurrencyCtxState => {
   switch (action.type) {
-    case ModalActionType.OPEN_MODAL:
+    case CurrActionType.OPEN_CURRENCY_MODAL:
       return { ...state, isOpen: true };
 
-    case ModalActionType.CLOSE_MODAL:
+    case CurrActionType.CLOSE_CURRENCY_MODAL:
       return {
         ...state,
         isOpen: false
       };
 
-    case ModalActionType.SET_MODAL_CONTENT:
+    case CurrActionType.SET_CURRENCY_MODAL_CONTENT:
       return {
         ...state,
         content: action.payload as typeof state.content,
@@ -90,41 +89,45 @@ const modalReducer = (
   }
 };
 
-export const ModalProvider: React.FC<{ children: ReactNode }> = ({
+export const CurrencyModalProvider: React.FC<{ children: ReactNode }> = ({
   children
 }) => {
   const [state, dispatch] = useReducer(modalReducer, initialState);
 
   const onOpen = () => {
-    dispatch({ type: ModalActionType.OPEN_MODAL });
+    dispatch({ type: CurrActionType.OPEN_CURRENCY_MODAL });
   };
 
   const onClose = () => {
-    dispatch({ type: ModalActionType.CLOSE_MODAL });
+    dispatch({ type: CurrActionType.CLOSE_CURRENCY_MODAL });
   };
 
   const setModalContent = function <T>(newContent: T) {
-    dispatch({ type: ModalActionType.SET_MODAL_CONTENT, payload: newContent });
+    dispatch({
+      type: CurrActionType.SET_CURRENCY_MODAL_CONTENT,
+      payload: newContent
+    });
   };
 
-  const modalContextValue = {
-    state: { isOpen: state.isOpen, content: state.content },
+  const modalctxValue = {
+    state,
     dispatch,
     actions: { onOpen, onClose, setModalContent }
   };
 
   return (
-    <ModalContext.Provider value={modalContextValue}>
+    <CurrencyModalCtx.Provider value={modalctxValue}>
       {children}
-    </ModalContext.Provider>
+    </CurrencyModalCtx.Provider>
   );
 };
 
-export const useModal = () => {
-  const context = useContext(ModalContext);
+export const useCurrencyModal = () => {
+  const context = useContext(CurrencyModalCtx);
   if (!context) {
-    throw new Error("useModal must be used within a ModalProvider");
+    throw new Error(
+      "useCurrencyModal must be used within a CurrencyModalProvider"
+    );
   }
-
   return context;
 };

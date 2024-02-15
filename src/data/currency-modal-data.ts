@@ -1,6 +1,6 @@
-import { CurrencyInfo } from "@/context/modal-context";
+import { CurrencyInfo } from "@/context/currency-modal-context";
 
-export const currencyData: CurrencyInfo[] = [
+export const currencyModalData: CurrencyInfo[] = [
   {
     name: "United States Dollar",
     code: "USD",

@@ -4,9 +4,6 @@
     display: grid;
     grid-template-columns: repeat(5, minmax(18rem, 1fr));
     row-gap: 3rem;
-
-    &--item {
-    }
   }
 
   &__currency-btn {

@@ -6,15 +6,18 @@ import Link from "next/link";
 
 import { navigationContent } from "@/app/home/components/navigation/navigation-content";
 import Button from "@/components/ui/button/button";
-import { useModal } from "@/context/modal-context";
+
 import { GoTriangleDown } from "react-icons/go";
 import CurrencyBtn from "../currency-btn/currency-btn";
 import LanguageBtn from "../language-btn/language-btn";
 import Brand from "./brand";
 import NavigationItem from "./navigation-item";
+import { useCurrencyModal } from "@/context/currency-modal-context";
+import { useLanguageModal } from "@/context/language-modal-context";
 
 function Navigation() {
-  const { actions, state } = useModal();
+  const { actions: currencyActions, state: currencyState } = useCurrencyModal();
+  const { actions: languageActions, state: languageState } = useLanguageModal();
 
   return (
     <nav
@@ -31,11 +34,17 @@ function Navigation() {
 
       <div className="flex item-center gap-2">
         <div className="flex gap-2">
-          <CurrencyBtn onClick={actions.onOpen}>
-            {state.content?.currency?.code} <GoTriangleDown />
+          <CurrencyBtn onClick={currencyActions.onOpen}>
+            {currencyState.content?.currency?.code} <GoTriangleDown />
           </CurrencyBtn>
           <span className="divider-line bg-white"></span>
-          <LanguageBtn />
+          <LanguageBtn
+            countryCode={languageState.content?.language.code}
+            onClick={languageActions.onOpen}
+          >
+            <span>{languageState.content?.language.name}</span>
+            <GoTriangleDown />
+          </LanguageBtn>
         </div>
         <div className={styles.nav__actions}>
           <Button color="white">Become An Expert</Button>

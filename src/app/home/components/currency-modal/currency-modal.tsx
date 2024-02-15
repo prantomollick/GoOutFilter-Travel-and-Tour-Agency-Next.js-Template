@@ -1,16 +1,19 @@
 "use client";
-import { currencyData } from "./currency-data";
+import { currencyModalData } from "@/data/currency-modal-data";
 import styles from "./currency-modal.module.scss";
 
 import Modal from "@/components/modal/modal";
-import { useModal, type CurrencyInfo } from "@/context/modal-context";
+import {
+  useCurrencyModal,
+  type CurrencyInfo
+} from "@/context/currency-modal-context";
 import classNames from "classnames";
 import { useState } from "react";
 
 function CurrencyModal() {
-  const { actions, state } = useModal();
-  const [selectedCurrency, setSelectedCurrency] = useState<object | string>(
-    state.content?.currency || "USD"
+  const { actions, state } = useCurrencyModal();
+  const [selectedCurrency, setSelectedCurrency] = useState<CurrencyInfo>(
+    state?.content?.currency!
   );
 
   const handleCurrencyChange = (currency: CurrencyInfo) => {
@@ -20,15 +23,20 @@ function CurrencyModal() {
   };
 
   return (
-    <Modal title="Select your currency">
+    <Modal
+      title="Select your currency"
+      onClose={actions.onClose}
+      isOpen={state.isOpen}
+    >
       <ul className={styles["modal__list"]}>
-        {currencyData.map((currency, index) => (
-          <li key={currency.code} className={styles["modal__list-item"]}>
+        {currencyModalData.map((currency) => (
+          <li key={currency.code}>
             <button
               className={classNames(
                 styles["modal__currency-btn"],
                 "btn",
-                selectedCurrency === currency.code && "selected-primary-light"
+                selectedCurrency.code === currency.code &&
+                  "selected-primary-light"
               )}
               onClick={() => handleCurrencyChange(currency)}
             >
