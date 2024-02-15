@@ -46,6 +46,7 @@
 .button {
   font-family: inherit;
   font-size: var(--font-size-1_4rem);
+  line-height: calc(20px / 14px);
   outline: none;
   border: none;
   cursor: pointer;
@@ -58,6 +59,7 @@
   &-link:visited {
     text-decoration: none;
     font-size: var(--font-size-1_4rem);
+    line-height: calc(20px / 14px);
     cursor: pointer;
     display: inline-flex;
     align-items: center;

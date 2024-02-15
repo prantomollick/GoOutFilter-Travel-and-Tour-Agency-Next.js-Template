@@ -6,6 +6,16 @@
   font-weight: inherit;
   color: inherit;
 
+  &__brand-link {
+    &:link,
+    &:visited {
+      text-decoration: none;
+      padding: 0;
+      margin: 0;
+      height: 5rem;
+    }
+  }
+
   &__actions {
     display: flex;
     gap: 2rem;

@@ -4,7 +4,7 @@ export interface NavigationItem {
   subnav?: SubNavigationItem[];
 }
 
-interface SubNavigationItem {
+export interface SubNavigationItem {
   label: string;
   link: string;
   tabDetails?: TabDetail[];
@@ -60,6 +60,19 @@ export const navigationContent: NavigationItem[] = [
           heading: "Things to do on your Tour",
           btnText: "See all Tour"
         }
+      },
+      {
+        label: "Activity",
+        link: "/tour",
+        tabDetails: [
+          { label: "Tour List", link: "#" },
+          { label: "Tour List V1", link: "#" }
+        ],
+        tabCard: {
+          imgSrc: "./src/img/tour.jpg",
+          heading: "Things to do on your Tour",
+          btnText: "See all Tour"
+        }
       }
     ]
   },
@@ -77,7 +90,7 @@ export const navigationContent: NavigationItem[] = [
   },
   {
     label: "Pages",
-    link: "/pages",
+    link: "#",
     subnav: [
       { label: "404", link: "#" },
       { label: "About", link: "#" },

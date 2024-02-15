@@ -27,7 +27,7 @@ function Navigation() {
       aria-label="breadcrumb"
     >
       <div className="flex item-center gap-3">
-        <Link href="/">
+        <Link href="/" className={styles["nav__brand-link"]}>
           <Brand variant="white" />
         </Link>
         <NavigationItem navigationContent={navigationContent} />
@@ -48,10 +48,10 @@ function Navigation() {
           </LanguageBtn>
         </div>
         <div className={styles.nav__actions}>
-          <Button color="white" radius="sm">
+          <Button color="white" radius="sm" size="sm">
             Become An Expert
           </Button>
-          <Button color="white" variant="bordered" radius="sm">
+          <Button color="white" variant="bordered" radius="sm" size="sm">
             Sign In / Register
           </Button>
         </div>
