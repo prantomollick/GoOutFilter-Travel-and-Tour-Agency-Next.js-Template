@@ -42,12 +42,12 @@ type CurrencyCtxValue<T> = {
   actions: {
     onOpen: () => void;
     onClose: () => void;
-    setModalContent: <T>(content: T) => void;
+    setModalContent: (content: CurrencyInfo) => void;
   };
   dispatch: Dispatch<ModalAction<T>>;
 };
 
-const CurrencyModalCtx = createContext<CurrencyCtxValue<null> | undefined>(
+const CurrencyModalCtx = createContext<CurrencyCtxValue<unknown> | undefined>(
   undefined
 );
 
@@ -80,7 +80,9 @@ const modalReducer = (
     case CurrActionType.SET_CURRENCY_MODAL_CONTENT:
       return {
         ...state,
-        content: action.payload as typeof state.content,
+        content: {
+          currency: action.payload as CurrencyInfo
+        },
         isOpen: true
       };
 

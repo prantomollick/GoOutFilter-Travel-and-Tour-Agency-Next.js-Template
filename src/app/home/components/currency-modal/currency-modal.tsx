@@ -17,7 +17,7 @@ function CurrencyModal() {
   );
 
   const handleCurrencyChange = (currency: CurrencyInfo) => {
-    actions.setModalContent<{ currency: CurrencyInfo }>({ currency });
+    actions.setModalContent(currency);
     setSelectedCurrency(currency);
     actions.onClose();
   };

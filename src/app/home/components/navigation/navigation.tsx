@@ -39,16 +39,18 @@ function Navigation() {
           </CurrencyBtn>
           <span className="divider-line bg-white"></span>
           <LanguageBtn
-            countryCode={languageState.content?.language.code}
+            countryCode={languageState.content?.language?.code}
             onClick={languageActions.onOpen}
           >
-            <span>{languageState.content?.language.name}</span>
+            <span>{languageState.content?.language?.name}</span>
             <GoTriangleDown />
           </LanguageBtn>
         </div>
         <div className={styles.nav__actions}>
-          <Button color="white">Become An Expert</Button>
-          <Button color="white" variant="bordered">
+          <Button color="white" radius="sm">
+            Become An Expert
+          </Button>
+          <Button color="white" variant="bordered" radius="sm">
             Sign In / Register
           </Button>
         </div>

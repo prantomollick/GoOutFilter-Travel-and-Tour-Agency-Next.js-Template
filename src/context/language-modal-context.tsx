@@ -23,7 +23,7 @@ export interface LanguageCountryData {
 interface LanguageModalCtxState {
   isOpen: boolean;
   content?: {
-    language: LanguageCountryData;
+    language?: LanguageCountryData;
   } | null;
 }
 
@@ -42,9 +42,9 @@ type LanguageModalCtxValue<T> = {
   dispatch: Dispatch<LangModalActions<T>>;
 };
 
-const LanguageModalCtx = createContext<LanguageModalCtxValue<null> | undefined>(
-  undefined
-);
+const LanguageModalCtx = createContext<
+  LanguageModalCtxValue<unknown> | undefined
+>(undefined);
 
 const initialState: LanguageModalCtxState = {
   isOpen: false,
@@ -74,7 +74,9 @@ function LangModalReducer<T>(
       return {
         ...state,
         isOpen: false,
-        content: action.payload as typeof state.content
+        content: {
+          language: action.payload as LanguageCountryData
+        }
       };
 
     default:
