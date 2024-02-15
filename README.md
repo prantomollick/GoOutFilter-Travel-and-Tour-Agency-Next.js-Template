@@ -116,3 +116,78 @@ TypeScript.
 | `extraSmallText`  | `string`                                  | Extra card content below this card little text | `optional` |
 
 ![CardBlog Component component](./screenshot/card-blog.png)
+
+### Modal component:
+
+`src/components/modal/modal.tsx`
+
+```javascript
+"use client";
+import styles from "./modal.module.scss";
+
+import classNames from "classnames";
+import { ReactNode } from "react";
+import { createPortal } from "react-dom";
+import { GoX } from "react-icons/go";
+
+interface ModalProps {
+  children: ReactNode;
+  title?: string;
+  width?: number;
+  height?: number;
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+function Modal({
+  children,
+  title,
+  width = 1070,
+  height,
+  isOpen,
+  onClose
+}: ModalProps) {
+  if (!isOpen) return null;
+
+  const renderModal = (
+    <div className={styles.modal__overlay} onClick={onClose}>
+      <div
+        className={styles.modal__container}
+        style={{ width, height }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className={styles.modal__header}>
+          <h2 className={styles.modal__title}>{title}</h2>
+
+          <button
+            onClick={onClose}
+            className={classNames(styles["modal__close--btn"], "btn")}
+          >
+            <GoX size={20} />
+          </button>
+        </div>
+        <div className={styles.modal__body}>{children}</div>
+      </div>
+    </div>
+  );
+
+  return createPortal(renderModal, document.body);
+}
+
+export default Modal;
+```
+
+## Modal Props
+
+| Prop       | Type                    | Default Value | Description                                          |
+| ---------- | ----------------------- | ------------- | ---------------------------------------------------- |
+| `children` | `ReactNode`             | -             | Content to be displayed inside the modal. Modal Body |
+| `title`    | `string`                | -             | Title of the modal.                                  |
+| `width`    | `number`                | 1070          | Width of the modal.                                  |
+| `height`   | `number`                | -             | Height of the modal.                                 |
+| `isOpen`   | `boolean` (required)    | -             | Determines if the modal should be displayed.         |
+| `onClose`  | `() => void` (required) | -             | Callback function to handle the modal close event.   |
+
+# Styling Guide for Modal Component
+
+The `Modal` component comes with default styling using SCSS. However, you can customize the appearance of the modal to better suit your application's design. The styling is organized in the `modal.module.scss` file.

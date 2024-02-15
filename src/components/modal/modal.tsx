@@ -1,7 +1,6 @@
 "use client";
 import styles from "./modal.module.scss";
 
-import { useCurrencyModal } from "@/context/currency-modal-context";
 import classNames from "classnames";
 import { ReactNode } from "react";
 import { createPortal } from "react-dom";
