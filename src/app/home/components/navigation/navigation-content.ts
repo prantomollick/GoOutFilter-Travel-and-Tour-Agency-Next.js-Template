@@ -6,17 +6,18 @@ export interface NavigationItem {
 
 export interface SubNavigationItem {
   label: string;
-  link: string;
+  link?: string;
+  isActive?: boolean;
   tabDetails?: TabDetail[];
   tabCard?: TabCard;
 }
 
-interface TabDetail {
+export interface TabDetail {
   title: string;
   list: { label: string; link: string }[];
 }
 
-interface TabCard {
+export interface TabCard {
   imgSrc: string;
   heading: string;
   btnText: string;
@@ -37,7 +38,7 @@ export const navigationContent: NavigationItem[] = [
     subnav: [
       {
         label: "Hotel",
-        link: "/hotel",
+        isActive: false,
         tabDetails: [
           {
             title: "Hotel List",
@@ -63,14 +64,14 @@ export const navigationContent: NavigationItem[] = [
           }
         ],
         tabCard: {
-          imgSrc: "./src/img/subnav-travel-through-world.png",
+          imgSrc: "/navigation-card/hotel.jpg",
           heading: "Things to do on your trip",
           btnText: "Experiences"
         }
       },
       {
         label: "Tour",
-        link: "/tour",
+        isActive: false,
         tabDetails: [
           {
             title: "Tour List",
@@ -89,14 +90,14 @@ export const navigationContent: NavigationItem[] = [
           }
         ],
         tabCard: {
-          imgSrc: "./src/img/tour.jpg",
+          imgSrc: "/navigation-card/tour.jpg",
           heading: "Things to do on your Tour",
-          btnText: "See all Tour"
+          btnText: "See tour"
         }
       },
       {
         label: "Activity",
-        link: "#",
+        isActive: false,
         tabDetails: [
           {
             title: "Activity List",
@@ -118,15 +119,15 @@ export const navigationContent: NavigationItem[] = [
           }
         ],
         tabCard: {
-          imgSrc: "./src/img/tour.jpg",
-          heading: "Things to do on your Tour",
-          btnText: "See all Tour"
+          imgSrc: "/navigation-card/activity.jpg",
+          heading: "Things to do on your activity",
+          btnText: "See Activity"
         }
       },
 
       {
         label: "Holiday Rental",
-        link: "#",
+        isActive: false,
         tabDetails: [
           {
             title: "Rental List",
@@ -144,15 +145,15 @@ export const navigationContent: NavigationItem[] = [
           }
         ],
         tabCard: {
-          imgSrc: "./src/img/tour.jpg",
-          heading: "Things to do on your Tour",
-          btnText: "See all Tour"
+          imgSrc: "/navigation-card/holiday-rental.jpg",
+          heading: "Things to do on your rental",
+          btnText: "See Rental"
         }
       },
 
       {
         label: "Car",
-        link: "#",
+        isActive: false,
         tabDetails: [
           {
             title: "Car List",
@@ -170,15 +171,15 @@ export const navigationContent: NavigationItem[] = [
           }
         ],
         tabCard: {
-          imgSrc: "./src/img/tour.jpg",
-          heading: "Things to do on your Tour",
-          btnText: "See all Tour"
+          imgSrc: "/navigation-card/car-rent.jpg",
+          heading: "Things to do on your car",
+          btnText: "See car"
         }
       },
 
       {
         label: "Cruise",
-        link: "#",
+        isActive: false,
         tabDetails: [
           {
             title: "Cruise List",
@@ -196,14 +197,14 @@ export const navigationContent: NavigationItem[] = [
           }
         ],
         tabCard: {
-          imgSrc: "./src/img/tour.jpg",
-          heading: "Things to do on your Tour",
-          btnText: "See all Tour"
+          imgSrc: "/navigation-card/cruise.jpg",
+          heading: "Things to do on your cruise",
+          btnText: "See cruise"
         }
       },
       {
         label: "Flights",
-        link: "#",
+        isActive: false,
         tabDetails: [
           {
             title: "Flights List",
@@ -214,9 +215,9 @@ export const navigationContent: NavigationItem[] = [
           }
         ],
         tabCard: {
-          imgSrc: "./src/img/tour.jpg",
-          heading: "Things to do on your Tour",
-          btnText: "See all Tour"
+          imgSrc: "/navigation-card/flights.jpg",
+          heading: "Things to do on your flights",
+          btnText: "See flights"
         }
       }
     ]

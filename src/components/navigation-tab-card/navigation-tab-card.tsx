@@ -35,7 +35,7 @@ function NavigationTabCard({
       <div className={styles["navigation__card--content"]}>
         <h3 className={styles["navigation__card--title"]}>{title}</h3>
         <Link href="/hotel" className={styles["navigation__card--btnLink"]}>
-          {btnText}
+          {btnText.toUpperCase()}
         </Link>
       </div>
     </article>
