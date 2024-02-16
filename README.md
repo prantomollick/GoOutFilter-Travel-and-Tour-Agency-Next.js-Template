@@ -177,7 +177,7 @@ function Modal({
 export default Modal;
 ```
 
-## Modal Props
+#### Modal Props
 
 | Prop       | Type                    | Default Value | Description                                          |
 | ---------- | ----------------------- | ------------- | ---------------------------------------------------- |
@@ -188,6 +188,32 @@ export default Modal;
 | `isOpen`   | `boolean` (required)    | -             | Determines if the modal should be displayed.         |
 | `onClose`  | `() => void` (required) | -             | Callback function to handle the modal close event.   |
 
-# Styling Guide for Modal Component
+#### Styling Guide for Modal Component
 
 The `Modal` component comes with default styling using SCSS. However, you can customize the appearance of the modal to better suit your application's design. The styling is organized in the `modal.module.scss` file.
+
+### NavigationTabCard Component
+
+The `NavigationTabCard` component is a reusable React component designed for creating navigation cards with an image, title, and a button. It is implemented using TypeScript and SCSS and leverages the Next.js framework.
+
+#### Installation
+
+To use the `NavigationTabCard` component in your project, follow these steps:
+
+1. Make sure you have Next.js installed in your project.
+2. Copy the `navigation-tab-card.module.scss` file into your project's styles directory.
+3. Import the `NavigationTabCard` component in your desired file.
+
+```javascript
+import NavigationTabCard from "path-to-navigation-tab-card";
+```
+
+#### Props and Usage
+
+The `NavigationTabCard` component takes the following props:
+| Prop | Type | Required | Description |
+|------------|--------------------------------|----------|------------------------------------------------------------------------------------------------------|
+| `imgLink` | string | Yes | The URL or path to the image that will be displayed on the card. |
+| `imgSize` | { width: number, height: number } | No | An object with `width` and `height` properties specifying the dimensions of the image. If not provided, default values (width: 280, height: 300) will be used. |
+| `title` | string | Yes | The title of the navigation card. |
+| `btnText` | string | Yes | The text to be displayed on the button. |
