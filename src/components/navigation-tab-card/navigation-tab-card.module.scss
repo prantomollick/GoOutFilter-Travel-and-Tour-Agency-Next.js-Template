@@ -1,0 +1,72 @@
+.navigation__card {
+  width: 28rem;
+  height: 30rem;
+  border-radius: var(--border-radius-small);
+  overflow: hidden;
+  position: relative;
+
+  &--img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &--overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background: linear-gradient(
+      180deg,
+      rgba(53, 84, 209, 1) 0%,
+      rgba(53, 84, 209, 0) 100%
+    );
+    width: 100%;
+    height: 100%;
+  }
+
+  &--content {
+    position: absolute;
+
+    top: 2.3rem;
+    left: 3rem;
+
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  &--title {
+    width: 20rem;
+    font-family: inherit;
+    font-size: var(--font-size-2_2rem);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-white);
+    line-height: calc(3rem / 2.2rem);
+    text-align: left;
+  }
+
+  &--btnLink {
+    transition-property: background-color, color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+
+    &:link,
+    &:visited {
+      text-decoration: none;
+      display: inline-block;
+      padding: 1.4rem 2.5rem;
+      font-family: inherit;
+      font-weight: var(--font-weight-medium);
+      font-size: var(--font-size-1_5rem);
+      color: var(--text-dark);
+      background-color: var(--bg-white);
+      border-radius: var(--border-radius-small);
+    }
+
+    &:hover {
+      background-color: var(--bg-darkest-blue);
+      color: var(--white);
+    }
+  }
+}

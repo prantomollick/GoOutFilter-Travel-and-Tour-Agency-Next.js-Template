@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import { GoTriangleDown } from "react-icons/go";
 import SubNev from "./sub-nav";
+import TabCard from "./tab-card";
 
 interface NavigationItemProps {
   navigationContent: NavigationItem[];
@@ -32,7 +33,13 @@ function NavigationItem({ navigationContent }: NavigationItemProps) {
               {nav.label} {nav.subnav && <GoTriangleDown />}
             </Link>
 
-            {nav.subnav ? <SubNev subNav={nav.subnav} /> : null}
+            {nav.subnav && nav.label.toLowerCase() !== "categories" ? (
+              <SubNev subNav={nav.subnav} />
+            ) : null}
+
+            {nav.subnav && nav.label.toLowerCase() === "categories" && (
+              <TabCard subNav={nav.subnav} />
+            )}
           </li>
         );
       })}
