@@ -1,16 +1,16 @@
 import styles from "./category-navigation.module.scss";
 
 import React, { Fragment, useState } from "react";
-import { SubNavigationItem, TabCard, TabDetail } from "./navigation-content";
+import { SubNavigationItem, TabCard, TabDetail } from "../navigation-content";
 import Link from "next/link";
 import NavigationTabCard from "@/components/navigation-tab-card/navigation-tab-card";
 import classNames from "classnames";
 
 interface TabCardProps {
-  subNavs: SubNavigationItem[];
+  catNavDetails: SubNavigationItem[];
 }
 
-function CategoryNavigation({ subNavs }: TabCardProps) {
+function CategoryNavigation({ catNavDetails: subNavs }: TabCardProps) {
   const [selectedTabDetails, setSelectedTabDetails] =
     useState<SubNavigationItem>(subNavs[0]);
 
@@ -19,28 +19,33 @@ function CategoryNavigation({ subNavs }: TabCardProps) {
   };
 
   return (
-    <ul className={styles["cat__nav"]}>
-      {subNavs.map((subNav) => (
-        <li
-          key={subNav.label}
-          className={classNames(
-            styles["cat__nav--item"],
-            selectedTabDetails.label.trim() === subNav.label.trim() &&
-              "selected-primary-light"
-          )}
-          onClick={() => handleTabSelected(subNav)}
-        >
-          {subNav.label}
-        </li>
-      ))}
-
+    <div className={styles["cat__nav"]}>
+      <ul className={styles["cat__nav--list"]}>
+        {subNavs.map((subNav) => (
+          <li
+            key={subNav.label}
+            className={classNames(
+              styles["cat__nav--item"],
+              styles[
+                `${
+                  selectedTabDetails.label === subNav.label &&
+                  "cat__nav-selected"
+                }`
+              ]
+            )}
+            onClick={() => handleTabSelected(subNav)}
+          >
+            {subNav.label}
+          </li>
+        ))}
+      </ul>
       {
         <CatNavigationTabDetails
           tabDetails={selectedTabDetails.tabDetails || []}
           tabCard={selectedTabDetails.tabCard!}
         />
       }
-    </ul>
+    </div>
   );
 }
 
@@ -56,20 +61,25 @@ function CatNavigationTabDetails({
   tabCard
 }: CatNavigationTabDetailsProps) {
   return (
-    <div className={styles["cat__navTab--details"]}>
-      <ul className={styles["cat__navTab--list"]}>
+    <div className={styles["navTabDetails"]}>
+      <ul className={styles["navTabDetails__list"]}>
         {tabDetails.map((tab) => (
           <Fragment key={tab.title}>
-            <li key={tab.title} className={styles["cat__navTab--list-heading"]}>
+            <li key={tab.title}>
               {tab.title}
+              <ul className={styles["navTabDetails__inner-list"]}>
+                {tab.list.map((list) => (
+                  <li key={list.label}>
+                    <Link
+                      href={list.link}
+                      className={styles["navTabDetails__inner-link"]}
+                    >
+                      {list.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </li>
-            <ul className={styles["cat__navTab--list-content"]}>
-              {tab.list.map((list) => (
-                <li key={list.label}>
-                  <Link href={list.link}>{list.label}</Link>
-                </li>
-              ))}
-            </ul>
           </Fragment>
         ))}
       </ul>

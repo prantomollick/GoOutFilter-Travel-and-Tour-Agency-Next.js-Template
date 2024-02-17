@@ -1,0 +1,104 @@
+.cat__nav {
+  transition: all 0.2s ease;
+  visibility: collapse;
+
+  &::before {
+    position: absolute;
+    content: "";
+    bottom: 100%;
+    left: 3rem;
+    border: 8px solid transparent;
+    border-bottom-color: var(--bg-white);
+  }
+
+  width: 80rem;
+  position: absolute;
+  top: 145%;
+  left: 0;
+  padding: 3rem;
+  background-color: var(--bg-white);
+  box-shadow: var(--box-shadow-2);
+  border-radius: var(--border-radius-small);
+  list-style: none;
+
+  &--list {
+    display: flex;
+    gap: 4.4rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 3px;
+  }
+
+  &--item {
+    position: relative;
+    display: inline-block;
+    font-family: inherit;
+    font-size: var(--font-size-1_6rem);
+    font-weight: var(--font-weight-medium);
+    line-height: calc(3rem / 1.6rem);
+    text-wrap: nowrap;
+    color: var(--text-light);
+    transition: color 0.2s ease;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 110%;
+      left: 0;
+      width: 0%;
+      transition: width 0.2s ease;
+    }
+
+    &:hover::before {
+      width: 100%;
+      border-bottom: 1px solid var(--border-primary);
+    }
+  }
+
+  &-selected {
+    color: var(--primary-blue);
+    &::before {
+      border-bottom: 1px solid var(--border-primary);
+      width: 100%;
+    }
+  }
+}
+
+.navTabDetails {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-top: 3rem;
+
+  &__list {
+    list-style: none;
+    display: flex;
+    gap: 6rem;
+
+    li {
+      text-wrap: nowrap;
+      font-family: inherit;
+      color: var(--text-dark);
+      font-size: var(--font-size-1_5rem);
+      font-weight: var(--font-weight-medium);
+      line-height: calc(4rem / 1.5rem);
+    }
+  }
+
+  &__inner-list {
+    list-style: none;
+    text-wrap: nowrap;
+  }
+
+  &__inner-link {
+    font-family: inherit;
+    color: var(--text-dark);
+    font-size: var(--font-size-1_5rem);
+    font-weight: var(--font-weight-regular);
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--text-primary-blue);
+    }
+  }
+}

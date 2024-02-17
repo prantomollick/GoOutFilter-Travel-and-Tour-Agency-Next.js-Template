@@ -10,6 +10,13 @@
       & > ul {
         visibility: visible;
       }
+
+      & > :last-child {
+        visibility: visible;
+      }
+      & > div {
+        visibility: visible;
+      }
     }
   }
 

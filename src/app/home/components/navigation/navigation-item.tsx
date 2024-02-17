@@ -5,8 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { GoTriangleDown } from "react-icons/go";
 import styles from "./navigation-item.module.scss";
-import SubNev from "./sub-nav";
-import CategoryNavigation from "./category-navigation";
+import SubNev from "./sub-menu/sub-nav";
+import CategoryNavigation from "./category-navigation/category-navigation";
+import SubMenu from "./sub-menu/sub-nav";
 
 interface NavigationItemProps {
   navigationContent: NavigationItem[];
@@ -33,11 +34,11 @@ function NavigationItem({ navigationContent }: NavigationItemProps) {
             </Link>
 
             {nav.subnav && nav.label.toLowerCase() !== "categories" ? (
-              <SubNev subNav={nav.subnav} />
+              <SubMenu subMenuDetails={nav.subnav} />
             ) : null}
 
             {nav.subnav && nav.label.toLowerCase() === "categories" && (
-              <CategoryNavigation subNavs={nav.subnav} />
+              <CategoryNavigation catNavDetails={nav.subnav} />
             )}
           </li>
         );
