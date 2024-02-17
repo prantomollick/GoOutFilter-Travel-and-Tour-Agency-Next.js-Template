@@ -2,9 +2,12 @@ import React from "react";
 import Navigation from "./navigation/navigation";
 
 function Header() {
+  // sticky bg-darkest-blue
   return (
-    <header className="nav-container bg-darkest-blue text-white font-medium">
-      <Navigation />
+    <header className="text-white font-medium w-100 ">
+      <div className="container-fluid">
+        <Navigation />
+      </div>
     </header>
   );
 }

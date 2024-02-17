@@ -20,7 +20,7 @@
     left: 0;
     background-color: var(--bg-white);
     padding: 2rem;
-    border: var(--border-radius-small);
+    border-radius: var(--border-radius-small);
     box-shadow: var(--box-shadow-2);
 
     &-link {

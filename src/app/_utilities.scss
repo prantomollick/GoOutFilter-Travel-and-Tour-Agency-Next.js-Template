@@ -1,9 +1,16 @@
 //Container
-//NavContainer
-.nav-container {
+.container-fluid {
+  max-width: 192rem;
   width: 100%;
   padding: 0 3rem;
   margin: 0 auto;
+}
+
+//sticky Navigation
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 //divider
@@ -77,6 +84,10 @@
 /* Border Color */
 .border-color {
   border-color: var(--border-color);
+}
+
+.border-white {
+  border-color: var(--border-white);
 }
 
 /* Background Colors */
@@ -382,4 +393,9 @@
 
 .h-4 {
   height: 4rem;
+}
+
+//wdith
+.w-100 {
+  width: 100%;
 }
