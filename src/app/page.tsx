@@ -5,16 +5,13 @@ import CurrencyModal from "@/components/modal/modal";
 import NavigationTabCard from "@/components/navigation-tab-card/navigation-tab-card";
 
 import Pagination from "@/components/pagination/pagination";
+import SearchForm from "@/components/search-form/search-form";
 import { useState } from "react";
 
 export default function Home() {
   return (
-    <>
-      <NavigationTabCard
-        btnText="Experinces"
-        title="Things to do on your trip"
-        imgLink="/navigation-card/hotel.jpg"
-      />
-    </>
+    <div style={{ padding: "100px" }}>
+      <SearchForm />
+    </div>
   );
 }

@@ -53,6 +53,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   z-index: 1;
 
   &-link:link,
@@ -176,6 +177,9 @@
 
 .button-size-lg {
   padding: 19px 35px;
+  font-size: var(--font-size-1_5rem);
+  font-weight: var(--font-weight-medium);
+  line-height: calc(2.2rem / 1.5rem);
 }
 
 .gap-10px {
