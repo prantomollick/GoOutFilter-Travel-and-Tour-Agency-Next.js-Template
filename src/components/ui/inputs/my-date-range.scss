@@ -36,11 +36,14 @@
   font-weight: var(--font-weight-regular);
   color: #02044a !important;
 
-  //   width: 46.12px;
-  //   height: 27.38px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 
-  width: 47.78px;
-  height: 47.78px;
+  width: 46.12px;
+  height: 27.38px;
+
+  // width: 47.78px;
+  // height: 47.78px;
 
   display: flex;
   align-items: center;
@@ -71,19 +74,7 @@
   border-radius: var(--border-radius-full);
   border: 2px solid var(--border-primary);
   outline: none;
-  //   background-color: var(--bg-darker-blue);
-
-  //   outline: 2px solid var(--border-white);
-  //   outline-offset: -2px;
 }
-
-// .rdrDay.rdrDayHovered {
-//   width: 47.78px;
-//   height: 47.78px;
-//   border-radius: var(--border-radius-full);
-//   border: 2px solid var(--border-primary);
-
-// }
 
 .rdrDayStartPreview,
 .rdrDayInPreview,
@@ -98,7 +89,7 @@
   width: 47.78px;
   height: 47.78px;
   // background-color: var(--bg-darker-blue);
-  //   background-color: var(--bg-light-gray);
+  background-color: var(--bg-light-gray);
   border-radius: var(--border-radius-full);
   border: none;
   outline: 2px solid var(--border-primary);
@@ -109,16 +100,6 @@
     z-index: 1;
   }
 }
-
-// .rdrDayEndPreview::after {
-//   content: "";
-//   position: absolute;
-//   width: 50%;
-//   height: 100%;
-//   background-color: var(--bg-light-gray);
-//   z-index: -1;
-//     background-color: blue;
-// }
 
 .rdrDayInPreview {
   position: absolute;
@@ -131,12 +112,10 @@
 .rdrDayInPreview::after {
   content: "";
   position: absolute;
-  width: 120%;
+  width: 100%;
   height: 100%;
   z-index: -1;
   background-color: inherit;
-
-  //   background-color: var(--bg-light-gray);
 }
 
 .rdrDayInPreview + .rdrDayNumber {
@@ -187,10 +166,11 @@
   border: none;
   outline: 2px solid var(--border-white);
   outline-offset: -2px;
+  z-index: 1;
 
   & ~ .rdrDayNumber {
     color: var(--text-white);
-    z-index: 1;
+    z-index: 2;
   }
 }
 

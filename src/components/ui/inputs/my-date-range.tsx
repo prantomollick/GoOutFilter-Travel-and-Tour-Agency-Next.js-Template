@@ -35,12 +35,13 @@ function MyDateRange() {
         ranges={[selectedRange]}
         onChange={handleDateSelect}
         minDate={new Date()}
-        // editableDateInputs={false}
-        // showMonthAndYearPickers={true}
         direction="horizontal"
-        showDateDisplay={true}
         disabledDates={disableDates}
+        editableDateInputs={false}
+        showMonthAndYearPickers={false}
+        showDateDisplay={false}
         months={2}
+        // showMonthArrow={true}
         // color="#02044A"
         // rangeColors={["#13357B", "#F5F5F5"]}
       />
