@@ -1,9 +1,44 @@
 @import url("https://fonts.cdnfonts.com/css/sofia-pro");
 .rdrDateRangeWrapper {
+  position: relative;
   width: 90rem;
-  height: 42.4rem;
+  // height: 42.4rem;
   padding: 2.5rem;
   box-shadow: var(--box-shadow-2);
+}
+
+.rdrMonthAndYearWrapper {
+  width: 94.5%;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rdrMonthAndYearPickers {
+  display: none;
+}
+
+.rdrNextPrevButton {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.rdrPprevButton {
+  background-image: url("/date-range-icon/arrow-left.svg");
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.rdrNextButton {
+  background-image: url("/date-range-icon/arrow-right.svg");
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .rdrMonthsHorizontal {
@@ -15,10 +50,29 @@
   width: 39rem;
 }
 
+.rdrMonthName {
+  font-family: inherit;
+  color: var(--text-dark);
+  font-size: var(--font-size-1_8rem);
+  font-weight: var(--font-weight-medium);
+  line-height: calc(3rem / 1.8rem);
+  margin-bottom: 1.456rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .rdrWeekDays {
   font-family: "Sofia Pro", sans-serif;
   font-size: var(--font-size-1_4rem);
   font-weight: 600;
+  display: grid;
+
+  grid-template-columns: repeat(7, 1fr);
+  grid-column-gap: 11.53px;
+  justify-items: center;
+  margin-bottom: 1.4rem;
 }
 
 .rdrDays {
