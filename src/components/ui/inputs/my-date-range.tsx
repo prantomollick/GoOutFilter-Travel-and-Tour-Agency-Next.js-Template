@@ -42,13 +42,13 @@ function MyDateRange({ onDateValue, ...props }: MyDateRangeProps) {
     <DateRange
       ranges={[selectedRange]}
       onChange={handleDateSelect}
-      minDate={new Date()}
+      minDate={props.minDate || new Date()}
       direction={props.direction || "horizontal"}
       disabledDates={props.disabledDates}
       editableDateInputs={props.editableDateInputs || false}
-      showMonthAndYearPickers={props.showMonthAndYearPickers}
-      showDateDisplay={props.showDateDisplay}
-      months={2}
+      showMonthAndYearPickers={props.showMonthAndYearPickers || false}
+      showDateDisplay={props.showDateDisplay || false}
+      months={props.months || 1}
       {...props}
     />
   );

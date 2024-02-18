@@ -14,9 +14,15 @@
 }
 
 .rdrMonthAndYearWrapper {
-  width: 94.5%;
+  width: 100%;
+  left: 0;
   position: absolute;
+
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -29,8 +35,8 @@
   height: 24px;
   background-color: transparent;
   border: none;
-  cursor: pointer;
   outline: none;
+  cursor: pointer;
 }
 
 .rdrPprevButton {
