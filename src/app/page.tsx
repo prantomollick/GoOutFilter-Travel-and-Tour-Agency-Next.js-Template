@@ -6,12 +6,17 @@ import NavigationTabCard from "@/components/navigation-tab-card/navigation-tab-c
 
 import Pagination from "@/components/pagination/pagination";
 import SearchForm from "@/components/search-form/search-form";
+import MyDateRange from "@/components/ui/inputs/my-date-range";
+
 import { useState } from "react";
 
 export default function Home() {
   return (
     <div style={{ padding: "100px" }}>
       <SearchForm />
+      <div>
+        <MyDateRange />
+      </div>
     </div>
   );
 }
