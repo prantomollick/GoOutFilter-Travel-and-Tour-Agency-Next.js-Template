@@ -3,6 +3,7 @@
   width: 90rem;
   height: 42.4rem;
   padding: 2.5rem;
+  box-shadow: var(--box-shadow-2);
 }
 
 .rdrMonthsHorizontal {
@@ -35,8 +36,11 @@
   font-weight: var(--font-weight-regular);
   color: #02044a !important;
 
-  width: 46.12px;
-  height: 27.38px;
+  //   width: 46.12px;
+  //   height: 27.38px;
+
+  width: 47.78px;
+  height: 47.78px;
 
   display: flex;
   align-items: center;
@@ -52,7 +56,9 @@
   font-weight: var(--font-weight-regular);
   font-size: var(--font-size-1_5rem);
   color: #6a6b93 !important;
-  text-decoration: line-through;
+  .rdrDayNumber {
+    text-decoration: line-through;
+  }
 }
 
 // rdrDay rdrDayToday rdrDayWeekend rdrDayStartOfWeek
@@ -71,48 +77,96 @@
   //   outline-offset: -2px;
 }
 
+// .rdrDay.rdrDayHovered {
+//   width: 47.78px;
+//   height: 47.78px;
+//   border-radius: var(--border-radius-full);
+//   border: 2px solid var(--border-primary);
+
+// }
+
 .rdrDayStartPreview,
 .rdrDayInPreview,
 .rdrDayEndPreview {
   position: absolute;
   width: 100%;
   height: 40px;
-  background-color: var(--bg-light-gray);
 }
 
-// .rdrDayInPreview,
-// .rdrDayStartPreview.rdrDayEndPreview {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 47.78px;
-//   height: 47.78px;
-// }
-
-.rdrDayStartPreview {
+.rdrDayStartPreview,
+.rdrDayEndPreview {
   width: 47.78px;
   height: 47.78px;
+  // background-color: var(--bg-darker-blue);
+  //   background-color: var(--bg-light-gray);
   border-radius: var(--border-radius-full);
+  border: none;
+  outline: 2px solid var(--border-primary);
+  outline-offset: -2px;
+
+  & ~ .rdrDayNumber {
+    color: inherit;
+    z-index: 1;
+  }
 }
 
+// .rdrDayEndPreview::after {
+//   content: "";
+//   position: absolute;
+//   width: 50%;
+//   height: 100%;
+//   background-color: var(--bg-light-gray);
+//   z-index: -1;
+//     background-color: blue;
+// }
+
 .rdrDayInPreview {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  background-color: var(--bg-light-gray);
 }
 
 .rdrDayInPreview::before,
 .rdrDayInPreview::after {
   content: "";
   position: absolute;
-  width: 100%;
+  width: 120%;
   height: 100%;
-  //   z-index: -1;
-  background-color: var(--bg-light-gray);
+  z-index: -1;
+  background-color: inherit;
+
+  //   background-color: var(--bg-light-gray);
+}
+
+.rdrDayInPreview + .rdrDayNumber {
+  z-index: 1;
+  color: #02044a;
+}
+
+.rdrDayInPreview::before {
+  right: 100%;
 }
 
 .rdrDayInPreview::after {
   left: 100%;
 }
-.rdrDayInPreview::before {
-  right: 100%;
+
+.rdrDay.rdrDayStartOfWeek {
+  .rdrDayInPreview::before {
+    right: 0%;
+  }
+}
+
+.rdrDay.rdrDayEndOfWeek {
+  .rdrDayInPreview::after {
+    left: 0%;
+  }
+}
+
+////////////////////////////////////////////////////////////////
+.rdrDayNumber {
+  position: absolute;
 }
 
 .rdrStartEdge,
@@ -123,6 +177,7 @@
   height: 40px;
   background-color: var(--bg-light-gray);
 }
+
 .rdrStartEdge,
 .rdrEndEdge {
   width: 47.78px;
@@ -133,7 +188,7 @@
   outline: 2px solid var(--border-white);
   outline-offset: -2px;
 
-  & + .rdrDayNumber {
+  & ~ .rdrDayNumber {
     color: var(--text-white);
     z-index: 1;
   }
