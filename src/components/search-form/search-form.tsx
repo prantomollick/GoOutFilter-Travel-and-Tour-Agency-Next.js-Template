@@ -6,7 +6,7 @@ import Button from "../ui/button/button";
 import { GoSearch } from "react-icons/go";
 
 import React, { useState } from "react";
-import { type DateRangePickerProps, DateRange } from "react-date-range";
+import { type DateRangeProps, DateRange } from "react-date-range";
 
 function SearchForm() {
   return (

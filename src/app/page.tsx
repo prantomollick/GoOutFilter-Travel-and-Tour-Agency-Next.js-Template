@@ -12,11 +12,14 @@ import { useState } from "react";
 
 export default function Home() {
   return (
-    <div style={{ padding: "100px" }}>
-      <SearchForm />
-      <div>
-        <MyDateRange />
+    <>
+      <div style={{ padding: "100px" }}>
+        <SearchForm />
+
+        <div>
+          <MyDateRange />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
