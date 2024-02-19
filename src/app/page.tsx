@@ -15,10 +15,6 @@ export default function Home() {
     <>
       <div style={{ padding: "100px" }}>
         <SearchForm />
-
-        <div>
-          <MyDateRange />
-        </div>
       </div>
     </>
   );

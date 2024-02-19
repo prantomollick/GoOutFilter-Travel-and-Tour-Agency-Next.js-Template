@@ -4,18 +4,20 @@ import "./my-date-range.scss";
 
 import { useState } from "react";
 
-import { DateRangeProps, DateRange, RangeKeyDict } from "react-date-range";
+import { DateRange, DateRangeProps, RangeKeyDict } from "react-date-range";
+
+export type SelectedRangeDate = {
+  startDate: Date;
+  endDate: Date;
+  key: string;
+};
 
 type MyDateRangeProps = DateRangeProps & {
   onDateValue?: (dateRangeByKey: RangeKeyDict) => void;
 };
 
 function MyDateRange({ onDateValue, ...props }: MyDateRangeProps) {
-  const [selectedRange, setSelecteRange] = useState<{
-    startDate: Date;
-    endDate: Date;
-    key: string;
-  }>({
+  const [selectedRange, setSelecteRange] = useState<SelectedRangeDate>({
     startDate: new Date(),
     endDate: new Date(),
     key: "selection"

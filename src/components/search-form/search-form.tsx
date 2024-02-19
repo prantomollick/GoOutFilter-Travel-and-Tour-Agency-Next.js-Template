@@ -1,14 +1,37 @@
 import styles from "./search-form.module.scss";
-// import "react-date-range/dist/styles.css";
-// import "react-date-range/dist/theme/default.css";
 
 import Button from "../ui/button/button";
 import { GoSearch } from "react-icons/go";
 
 import React, { useState } from "react";
-import { type DateRangeProps, DateRange } from "react-date-range";
+import { type DateRangeProps, DateRange, RangeKeyDict } from "react-date-range";
+import MyDateRange, { SelectedRangeDate } from "../ui/inputs/my-date-range";
+import format from "date-fns/format";
 
 function SearchForm() {
+  const [dateRange, setDateRange] = useState<SelectedRangeDate>({
+    startDate: new Date(),
+    endDate: new Date(),
+    key: ""
+  });
+
+  const [dateSelect, setDateSelect] = useState(false);
+
+  const formattedStartDate = format(dateRange.startDate, "EEE d MMM");
+  const formattedEndDate = format(dateRange.endDate, "EEE d MMM");
+
+  const handleChange = () => {
+    setDateSelect((prevValue) => !prevValue);
+  };
+
+  const handleCheckInOutDates = (dateRange: RangeKeyDict) => {
+    setDateRange({
+      startDate: dateRange.selection!.startDate!,
+      endDate: dateRange.selection!.endDate!,
+      key: dateRange.selection!.key!
+    });
+  };
+
   return (
     <>
       <form className={styles["search-form"]}>
@@ -30,28 +53,25 @@ function SearchForm() {
             <label htmlFor="checkin" className={styles["form-label"]}>
               Check in - Check out
             </label>
-
-            {/* <input
-            type="text"
-            id="checkin"
-            name="checkin"
-            placeholder="Wed 2 Mar - Fri 11 Apr"
-            className={styles["form-input"]}
-        /> */}
+            <span onClick={handleChange} className={styles["form-value"]}>
+              {formattedStartDate} - {formattedEndDate}
+            </span>
+            {dateSelect && (
+              <MyDateRange
+                onDateValue={handleCheckInOutDates}
+                className={styles["form-date"]}
+                months={2}
+              />
+            )}
           </div>
 
           <div className={`${styles["form-group"]}`}>
             <label htmlFor="guest" className={styles["form-label"]}>
               Guest
             </label>
-            <input
-              type="text"
-              id="guest"
-              name="guests"
-              placeholder="2 adults - 1 children - 1 room"
-              className={styles["form-input"]}
-              disabled={true}
-            />
+            <span className={styles["form-value"]}>
+              2 adults - 1 childeren - 1 room
+            </span>
           </div>
         </div>
         <Button
