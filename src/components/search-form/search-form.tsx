@@ -1,3 +1,4 @@
+"use client";
 import styles from "./search-form.module.scss";
 
 import Button from "../ui/button/button";
@@ -8,11 +9,6 @@ import { type DateRangeProps, DateRange, RangeKeyDict } from "react-date-range";
 import MyDateRange, { SelectedRangeDate } from "../ui/inputs/my-date-range";
 import format from "date-fns/format";
 import classNames from "classnames";
-
-function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
-  return { width, height };
-}
 
 function SearchForm() {
   const [dateRange, setDateRange] = useState<SelectedRangeDate>({
@@ -26,9 +22,7 @@ function SearchForm() {
   const dateRangeRef = useRef<HTMLDivElement>(null);
   const [dateRangeFlip, setDateRangeFlip] = useState(false);
 
-  const [dateSelect, setDateSelect] = useState(false);
-
-  console.log(dateRangeFlip);
+  const [visibleDateRange, setVisibleDateRange] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,9 +34,6 @@ function SearchForm() {
       if (formEl) {
         const rect = formEl.getBoundingClientRect();
         const distanceFromTop = rect.top - window.scrollY;
-
-        console.log("Distance top: ", distanceFromTop);
-        console.log("dateRangeHeight: ", dateRangeHeight);
 
         if (distanceFromTop > dateRangeHeight / 2) {
           setDateRangeFlip(true);
@@ -59,6 +50,22 @@ function SearchForm() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleDateRangeOutside = (e: MouseEvent) => {
+      if (!dateRangeRef.current?.contains(e.target as Node)) {
+        setVisibleDateRange(false);
+      }
+    };
+
+    if (visibleDateRange) {
+      document.addEventListener("click", handleDateRangeOutside, false);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleDateRangeOutside, false);
+    };
+  }, [visibleDateRange]);
+
   const formattedStartDate = format(dateRange.startDate, "EEE d MMM");
   const formattedEndDate = format(dateRange.endDate, "EEE d MMM");
 
@@ -69,7 +76,7 @@ function SearchForm() {
   ];
 
   const handleChange = () => {
-    setDateSelect((prevValue) => !prevValue);
+    setVisibleDateRange((prevValue) => !prevValue);
   };
 
   const handleCheckInOutDates = (dateRange: RangeKeyDict) => {
@@ -104,7 +111,7 @@ function SearchForm() {
             <span onClick={handleChange} className={styles["form-value"]}>
               {formattedStartDate} - {formattedEndDate}
             </span>
-            {dateSelect && (
+            {visibleDateRange && (
               <div
                 ref={dateRangeRef}
                 className={classNames(
@@ -115,7 +122,11 @@ function SearchForm() {
                 )}
                 style={{ [dateRangeFlip ? "bottom" : "top"]: "150%" }}
               >
-                <MyDateRange onDateValue={handleCheckInOutDates} months={2} />
+                <MyDateRange
+                  onDateValue={handleCheckInOutDates}
+                  onVisibleChange={setVisibleDateRange}
+                  months={2}
+                />
               </div>
             )}
           </div>

@@ -4,7 +4,12 @@ import "./my-date-range.scss";
 
 import { LegacyRef, Ref, forwardRef, useState } from "react";
 
-import { DateRange, DateRangeProps, RangeKeyDict } from "react-date-range";
+import {
+  DateRange,
+  DateRangeProps,
+  RangeFocus,
+  RangeKeyDict
+} from "react-date-range";
 
 export type SelectedRangeDate = {
   startDate: Date;
@@ -14,14 +19,27 @@ export type SelectedRangeDate = {
 
 type MyDateRangeProps = DateRangeProps & {
   onDateValue?: (dateRangeByKey: RangeKeyDict) => void;
+  onVisibleChange?: (visible: boolean) => void;
 };
 
-function MyDateRange({ onDateValue, ...props }: MyDateRangeProps) {
+function MyDateRange({
+  onDateValue,
+  onVisibleChange,
+  ...props
+}: MyDateRangeProps) {
   const [selectedRange, setSelecteRange] = useState<SelectedRangeDate>({
     startDate: new Date(),
     endDate: new Date(),
     key: "selection"
   });
+
+  const handleFocusChange = (focusedRange: RangeFocus) => {
+    console.log(focusedRange);
+    if (!onVisibleChange) return;
+    if (focusedRange[0] === 0 && focusedRange[1] === 0) {
+      onVisibleChange(false);
+    }
+  };
 
   const handleDateSelect = (rangesByKey: RangeKeyDict) => {
     setSelecteRange({
@@ -45,6 +63,7 @@ function MyDateRange({ onDateValue, ...props }: MyDateRangeProps) {
       showMonthAndYearPickers={props.showMonthAndYearPickers || false}
       showDateDisplay={props.showDateDisplay || false}
       months={props.months || 1}
+      onRangeFocusChange={handleFocusChange}
       {...props}
     />
   );
