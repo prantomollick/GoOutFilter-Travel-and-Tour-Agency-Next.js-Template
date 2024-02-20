@@ -12,6 +12,8 @@ import MyDateRange, {
 import format from "date-fns/format";
 import classNames from "classnames";
 import { useDateRange } from "../ui/inputs/my-date-range/useDateRange";
+import LocationSearchInput from "../ui/inputs/location-search-input/location-search-input";
+import { useLocationSearchInput } from "../ui/inputs/location-search-input/use-location-search-input";
 
 function SearchForm() {
   const {
@@ -25,6 +27,8 @@ function SearchForm() {
     formattedDateRangeVal: { startDate, endDate }
   } = useDateRange();
 
+  const { onInputChange, query, suggestions } = useLocationSearchInput();
+
   return (
     <>
       <form className={styles["search-form"]} ref={formRef}>
@@ -33,13 +37,24 @@ function SearchForm() {
             <label htmlFor="location" className={styles["form-label"]}>
               Location
             </label>
-            <input
+
+            <LocationSearchInput
+              onQueryChange={onInputChange}
+              queryValue={query}
+              suggestions={suggestions}
+              placeholder="Where are you going?"
+              id="location"
+              name="location"
+              className={styles["form-input"]}
+            />
+
+            {/* <input
               type="text"
               id="location"
               name="location"
               placeholder="Where are you going?"
               className={styles["form-input"]}
-            />
+            /> */}
           </div>
 
           <div className={`${styles["form-group"]}`}>
