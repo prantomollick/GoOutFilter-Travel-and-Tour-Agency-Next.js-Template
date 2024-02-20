@@ -8,7 +8,7 @@
 
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.03px;
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
@@ -30,6 +30,17 @@
   &:nth-child(3) {
     border-left: 1px solid var(--border-soft-blue);
     padding-left: 3rem;
+  }
+
+  &:nth-child(1) {
+    width: 20rem;
+  }
+
+  &:nth-child(2) {
+    width: 20rem;
+  }
+  &:nth-child(3) {
+    width: 23.7rem;
   }
 }
 
@@ -53,6 +64,7 @@
   color: var(--text-light);
   letter-spacing: 0.3px;
   margin-left: -3px;
+  background-color: transparent;
 
   border: none;
   outline: none;
@@ -65,9 +77,28 @@
 
 .form-date {
   position: absolute;
-  top: 150%;
-  left: -50%;
-  // visibility: collapse;
+  // top: 150%;
+  transform: translateX(-30%);
+}
+
+.form-date-tri-t::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  border: 8px solid transparent;
+  border-bottom-color: var(--border-white);
+  bottom: 100%;
+  left: 35%;
+}
+
+.form-date-tri-b::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  border: 8px solid transparent;
+  border-top-color: var(--border-white);
+  top: 100%;
+  left: 35%;
 }
 
 .form-value {

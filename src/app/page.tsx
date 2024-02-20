@@ -13,7 +13,7 @@ import { useState } from "react";
 export default function Home() {
   return (
     <>
-      <div style={{ padding: "100px" }}>
+      <div style={{ padding: "100px", marginTop: "400px", height: "800rem" }}>
         <SearchForm />
       </div>
     </>

@@ -2,7 +2,7 @@
 // import "react-date-range/dist/theme/default.css";
 import "./my-date-range.scss";
 
-import { useState } from "react";
+import { LegacyRef, Ref, forwardRef, useState } from "react";
 
 import { DateRange, DateRangeProps, RangeKeyDict } from "react-date-range";
 
@@ -22,12 +22,6 @@ function MyDateRange({ onDateValue, ...props }: MyDateRangeProps) {
     endDate: new Date(),
     key: "selection"
   });
-
-  const disableDates = [
-    new Date("2024-03-07"),
-    new Date("2024-03-08"),
-    new Date("2024-03-09")
-  ];
 
   const handleDateSelect = (rangesByKey: RangeKeyDict) => {
     setSelecteRange({
@@ -55,4 +49,5 @@ function MyDateRange({ onDateValue, ...props }: MyDateRangeProps) {
     />
   );
 }
+
 export default MyDateRange;
