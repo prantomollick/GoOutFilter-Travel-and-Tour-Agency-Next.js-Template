@@ -6,7 +6,9 @@ import { GoSearch } from "react-icons/go";
 
 import React, { useEffect, useRef, useState } from "react";
 import { type DateRangeProps, DateRange, RangeKeyDict } from "react-date-range";
-import MyDateRange, { SelectedRangeDate } from "../ui/inputs/my-date-range";
+import MyDateRange, {
+  SelectedRangeDate
+} from "../ui/inputs/my-date-range/my-date-range";
 import format from "date-fns/format";
 import classNames from "classnames";
 

@@ -6,7 +6,7 @@ import NavigationTabCard from "@/components/navigation-tab-card/navigation-tab-c
 
 import Pagination from "@/components/pagination/pagination";
 import SearchForm from "@/components/search-form/search-form";
-import MyDateRange from "@/components/ui/inputs/my-date-range";
+import MyDateRange from "@/components/ui/inputs/my-date-range/my-date-range";
 
 import { useState } from "react";
 

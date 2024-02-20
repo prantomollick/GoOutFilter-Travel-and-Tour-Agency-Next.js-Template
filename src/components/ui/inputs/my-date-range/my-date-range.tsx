@@ -2,7 +2,7 @@
 // import "react-date-range/dist/theme/default.css";
 import "./my-date-range.scss";
 
-import { LegacyRef, Ref, forwardRef, useState } from "react";
+import { useState } from "react";
 
 import {
   DateRange,
@@ -36,6 +36,7 @@ function MyDateRange({
   const handleFocusChange = (focusedRange: RangeFocus) => {
     console.log(focusedRange);
     if (!onVisibleChange) return;
+
     if (focusedRange[0] === 0 && focusedRange[1] === 0) {
       onVisibleChange(false);
     }
