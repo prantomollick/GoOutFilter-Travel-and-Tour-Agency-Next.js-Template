@@ -34,9 +34,7 @@ function MyDateRange({
   });
 
   const handleFocusChange = (focusedRange: RangeFocus) => {
-    console.log(focusedRange);
     if (!onVisibleChange) return;
-
     if (focusedRange[0] === 0 && focusedRange[1] === 0) {
       onVisibleChange(false);
     }

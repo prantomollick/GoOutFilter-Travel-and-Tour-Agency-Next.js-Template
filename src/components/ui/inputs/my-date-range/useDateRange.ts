@@ -60,12 +60,6 @@ export const useDateRange = () => {
   const formattedStartDate = format(dateRange.startDate, "EEE d MMM");
   const formattedEndDate = format(dateRange.endDate, "EEE d MMM");
 
-  const disableDates = [
-    new Date("2024-03-07"),
-    new Date("2024-03-08"),
-    new Date("2024-03-09")
-  ];
-
   const handleVisibilityChange = () => {
     setIsVisible((prevValue) => !prevValue);
   };
@@ -82,8 +76,14 @@ export const useDateRange = () => {
     onVisibilityChange: handleVisibilityChange,
     isVisible,
     dateRange,
-    onDateRange: setDateRange,
+    onDateRange: handleCheckInOutDates,
     formRef,
-    dateRangeRef
+    dateRangeRef,
+    dateRangeFlip,
+
+    formattedDateRangeVal: {
+      startDate: formattedStartDate,
+      endDate: formattedEndDate
+    }
   };
 };
