@@ -1,17 +1,57 @@
 .suggestion {
   position: absolute;
-  top: 150;
+  top: 150%;
+  background-color: var(--bg-white);
+  box-shadow: var(--box-shadow-2);
+  padding: 3rem;
+  width: 49.2rem;
 
   &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
     list-style: none;
   }
 
   &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-top: 1.3rem;
+    padding-bottom: 1rem;
+    padding-left: 1.6rem;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: var(--bg-light-blue);
+    }
   }
 
   &__icon {
+    margin-top: 4px;
   }
 
   &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    &-city {
+      color: var(--text-primary-blue);
+      font-family: inherit;
+      font-size: var(--font-size-1_5rem);
+      font-weight: var(--border-radius-medium);
+      line-height: calc(2.2rem / 1.5rem);
+    }
+
+    &-location {
+      font-family: inherit;
+      color: var(--text-light);
+      font-size: var(--font-size-1_4rem);
+      line-height: calc(2rem / 1.4rem);
+      font-weight: var(--font-weight-regular);
+    }
   }
 }

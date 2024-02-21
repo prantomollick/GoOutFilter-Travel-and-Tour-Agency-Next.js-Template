@@ -34,8 +34,12 @@ function LocationSearchInput({
                   <MapPointer />
                 </div>
                 <div className={styles["suggestion__content"]}>
-                  <span>{suggestion.city}</span>
-                  <span>{suggestion.location}</span>
+                  <span className={styles["suggestion__content-city"]}>
+                    {suggestion.city}
+                  </span>
+                  <span className={styles["suggestion__content-location"]}>
+                    {suggestion.location}
+                  </span>
                 </div>
               </li>
             ))}
