@@ -14,24 +14,33 @@ import classNames from "classnames";
 import { useDateRange } from "../ui/inputs/my-date-range/useDateRange";
 import LocationSearchInput from "../ui/inputs/location-search-input/location-search-input";
 import { useLocationSearchInput } from "../ui/inputs/location-search-input/use-location-search-input";
+import { useInView } from "react-intersection-observer";
 
 function SearchForm() {
   const {
     isVisible,
     dateRange,
-    onDateRange,
-    formRef,
     dateRangeRef,
-    dateRangeFlip,
+    popupDateRangeRef,
+    isDateFlipToTop,
+    onDateRange,
     onVisibilityChange,
     formattedDateRangeVal: { startDate, endDate }
   } = useDateRange();
 
-  const { onInputChange, query, suggestions } = useLocationSearchInput();
+  const {
+    onInputChange,
+    onFocus,
+    isShowSuggession,
+    locSuggessionRef,
+    query,
+    suggestions,
+    onSuggestedLocation
+  } = useLocationSearchInput();
 
   return (
     <>
-      <form className={styles["search-form"]} ref={formRef}>
+      <form className={styles["search-form"]}>
         <div className={styles["search-form__inputs"]}>
           <div className={styles["form-group"]}>
             <label htmlFor="location" className={styles["form-label"]}>
@@ -41,23 +50,19 @@ function SearchForm() {
             <LocationSearchInput
               onQueryChange={onInputChange}
               queryValue={query}
+              onFocus={onFocus}
               suggestions={suggestions}
+              isShowSuggession={isShowSuggession}
+              onSuggestedLocation={onSuggestedLocation}
               placeholder="Where are you going?"
               id="location"
               name="location"
+              autoComplete="off"
               className={styles["form-input"]}
             />
-
-            {/* <input
-              type="text"
-              id="location"
-              name="location"
-              placeholder="Where are you going?"
-              className={styles["form-input"]}
-            /> */}
           </div>
 
-          <div className={`${styles["form-group"]}`}>
+          <div className={`${styles["form-group"]}`} ref={dateRangeRef}>
             <label htmlFor="checkin" className={styles["form-label"]}>
               Check in - Check out
             </label>
@@ -66,14 +71,14 @@ function SearchForm() {
             </span>
             {isVisible && (
               <div
-                ref={dateRangeRef}
+                ref={popupDateRangeRef}
                 className={classNames(
                   styles["form-date"],
-                  styles[
-                    `${dateRangeFlip ? "form-date-tri-b" : "form-date-tri-t"}`
-                  ]
+                  isDateFlipToTop
+                    ? styles["form-date-tri-t"]
+                    : styles["form-date-tri-b"]
                 )}
-                style={{ [dateRangeFlip ? "bottom" : "top"]: "150%" }}
+                style={{ [isDateFlipToTop ? "bottom" : "top"]: "150%" }}
               >
                 <MyDateRange
                   onDateValue={onDateRange}

@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from "react";
-import type { SelectedRangeDate } from "./my-date-range";
+import { isScrollFlipPopUp } from "@/util/scroll-to-flip";
 import { format } from "date-fns";
+import { useEffect, useRef, useState } from "react";
 import { RangeKeyDict } from "react-date-range";
+import type { SelectedRangeDate } from "./my-date-range";
 
 export const useDateRange = () => {
   const [dateRange, setDateRange] = useState<SelectedRangeDate>({
@@ -10,36 +11,10 @@ export const useDateRange = () => {
     key: ""
   });
 
-  const formRef = useRef<HTMLFormElement>(null);
+  const popupDateRangeRef = useRef<HTMLDivElement>(null);
   const dateRangeRef = useRef<HTMLDivElement>(null);
-  const [dateRangeFlip, setDateRangeFlip] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const formEl = formRef.current;
-
-      const dateRangeHeight =
-        dateRangeRef.current?.getBoundingClientRect().height || 405.890625;
-
-      if (formEl) {
-        const rect = formEl.getBoundingClientRect();
-        const distanceFromTop = rect.top - window.scrollY;
-
-        if (distanceFromTop > dateRangeHeight / 2) {
-          setDateRangeFlip(true);
-        } else if (distanceFromTop * -1 > dateRangeHeight / 2) {
-          setDateRangeFlip(false);
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const [isDateFlipToTop, setIsDateFlipToTop] = useState(false);
 
   useEffect(() => {
     const handleDateRangeOutside = (e: MouseEvent) => {
@@ -55,6 +30,20 @@ export const useDateRange = () => {
     return () => {
       document.removeEventListener("click", handleDateRangeOutside, false);
     };
+  }, [isVisible]);
+
+  useEffect(() => {
+    // If the user scrolls down and the calendar pop up appears in viewport, we flip it to top
+    const handleScroll = () => {
+      const isFlip = isScrollFlipPopUp(dateRangeRef, popupDateRangeRef);
+      setIsDateFlipToTop(isFlip);
+    };
+
+    if (isVisible) {
+      window.addEventListener("scroll", handleScroll);
+    }
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [isVisible]);
 
   const formattedStartDate = format(dateRange.startDate, "EEE d MMM");
@@ -76,11 +65,10 @@ export const useDateRange = () => {
     onVisibilityChange: handleVisibilityChange,
     isVisible,
     dateRange,
+    isDateFlipToTop,
     onDateRange: handleCheckInOutDates,
-    formRef,
+    popupDateRangeRef,
     dateRangeRef,
-    dateRangeFlip,
-
     formattedDateRangeVal: {
       startDate: formattedStartDate,
       endDate: formattedEndDate

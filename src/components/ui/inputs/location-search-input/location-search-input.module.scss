@@ -6,6 +6,15 @@
   padding: 3rem;
   width: 49.2rem;
 
+  &::before {
+    content: "";
+    position: absolute;
+    border: 8px solid transparent;
+    border-bottom-color: var(--bg-white);
+    bottom: 100%;
+    left: 4rem;
+  }
+
   &__list {
     display: flex;
     flex-direction: column;

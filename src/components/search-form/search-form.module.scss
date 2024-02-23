@@ -86,8 +86,8 @@
   display: inline-block;
   position: absolute;
   border: 8px solid transparent;
-  border-bottom-color: var(--border-white);
-  bottom: 100%;
+  border-top-color: var(--border-white);
+  top: 100%;
   left: 35%;
 }
 
@@ -96,8 +96,8 @@
   display: inline-block;
   position: absolute;
   border: 8px solid transparent;
-  border-top-color: var(--border-white);
-  top: 100%;
+  border-bottom-color: var(--border-white);
+  bottom: 100%;
   left: 35%;
 }
 

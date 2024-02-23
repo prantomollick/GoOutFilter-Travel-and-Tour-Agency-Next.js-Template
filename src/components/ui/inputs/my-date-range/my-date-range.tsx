@@ -10,6 +10,7 @@ import {
   RangeFocus,
   RangeKeyDict
 } from "react-date-range";
+import { useInView } from "react-intersection-observer";
 
 export type SelectedRangeDate = {
   startDate: Date;
@@ -33,8 +34,19 @@ function MyDateRange({
     key: "selection"
   });
 
+  const {
+    ref: dateRangeRef,
+    inView,
+    entry
+  } = useInView({
+    root: null,
+    rootMargin: "-405px",
+    threshold: 0
+  });
+
   const handleFocusChange = (focusedRange: RangeFocus) => {
     if (!onVisibleChange) return;
+
     if (focusedRange[0] === 0 && focusedRange[1] === 0) {
       onVisibleChange(false);
     }
