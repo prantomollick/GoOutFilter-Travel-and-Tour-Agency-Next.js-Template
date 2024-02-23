@@ -1,15 +1,17 @@
 import { isScrollFlipPopUp } from "@/util/scroll-to-flip";
 import { format } from "date-fns";
 import { useEffect, useRef, useState } from "react";
-import { RangeKeyDict } from "react-date-range";
+import { RangeFocus, RangeKeyDict } from "react-date-range";
 import type { SelectedRangeDate } from "./my-date-range";
 
 export const useDateRange = () => {
-  const [dateRange, setDateRange] = useState<SelectedRangeDate>({
-    startDate: new Date(),
-    endDate: new Date(),
-    key: ""
-  });
+  const [selectedDateRange, setSelectedDateRange] = useState<SelectedRangeDate>(
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "selection"
+    }
+  );
 
   const popupDateRangeRef = useRef<HTMLDivElement>(null);
   const dateRangeRef = useRef<HTMLDivElement>(null);
@@ -46,29 +48,37 @@ export const useDateRange = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isVisible]);
 
-  const formattedStartDate = format(dateRange.startDate, "EEE d MMM");
-  const formattedEndDate = format(dateRange.endDate, "EEE d MMM");
+  const formattedStartDate = format(selectedDateRange.startDate, "EEE d MMM");
+  const formattedEndDate = format(selectedDateRange.endDate, "EEE d MMM");
 
   const handleVisibilityChange = () => {
     setIsVisible((prevValue) => !prevValue);
   };
 
-  const handleCheckInOutDates = (dateRange: RangeKeyDict) => {
-    setDateRange({
+  const handleChange = (dateRange: RangeKeyDict) => {
+    setSelectedDateRange({
       startDate: dateRange.selection!.startDate!,
       endDate: dateRange.selection!.endDate!,
       key: dateRange.selection!.key!
     });
+    console.log(dateRange);
+  };
+
+  const handleRangeFocusChange = (focusedRange: RangeFocus) => {
+    if (focusedRange[0] === 0 && focusedRange[1] === 0) {
+      setIsVisible(false);
+    }
   };
 
   return {
-    onVisibilityChange: handleVisibilityChange,
     isVisible,
-    dateRange,
+    onVisibilityChange: handleVisibilityChange,
+    selectedDateRange,
+    handleChange,
     isDateFlipToTop,
-    onDateRange: handleCheckInOutDates,
     popupDateRangeRef,
     dateRangeRef,
+    onRangeFocusChange: handleRangeFocusChange,
     formattedDateRangeVal: {
       startDate: formattedStartDate,
       endDate: formattedEndDate

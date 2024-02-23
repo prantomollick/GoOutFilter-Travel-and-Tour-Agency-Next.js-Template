@@ -18,12 +18,13 @@ import { useInView } from "react-intersection-observer";
 
 function SearchForm() {
   const {
+    handleChange,
+    selectedDateRange,
+    onRangeFocusChange,
     isVisible,
-    dateRange,
     dateRangeRef,
     popupDateRangeRef,
     isDateFlipToTop,
-    onDateRange,
     onVisibilityChange,
     formattedDateRangeVal: { startDate, endDate }
   } = useDateRange();
@@ -81,8 +82,10 @@ function SearchForm() {
                 style={{ [isDateFlipToTop ? "bottom" : "top"]: "150%" }}
               >
                 <MyDateRange
-                  onDateValue={onDateRange}
+                  onChange={handleChange}
+                  ranges={[selectedDateRange]}
                   onVisibleChange={onVisibilityChange}
+                  onRangeFocusChange={onRangeFocusChange}
                   months={2}
                 />
               </div>
