@@ -1,17 +1,20 @@
 "use client";
 import styles from "./location-search-input.module.scss";
 
-import React, { ComponentPropsWithoutRef, Ref, useRef } from "react";
+import React, { ComponentPropsWithoutRef, RefObject } from "react";
 import MapPointer from "./map-pointer";
-import { LocationData } from "./use-location-search-input";
-import { useInView } from "react-intersection-observer";
+
+import classNames from "classnames";
+import { LocationData } from "./useLocationSearchInput";
 
 type LocationSearchInputProps = {
   queryValue: string;
+  locSuggRefPopup: RefObject<HTMLDivElement>;
   onQueryChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onFocus: (event: React.FocusEvent<HTMLInputElement>) => void;
-  onSuggestedLocation: (suggession: LocationData) => void;
-  isShowSuggession: boolean;
+  onClickInput: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
+  onClickSuggestion: (suggession: LocationData) => void;
+  isSuggFilpToTop: boolean;
+  isShowSugg: boolean;
   suggestions: LocationData[];
 } & ComponentPropsWithoutRef<"input">;
 
@@ -19,33 +22,43 @@ function LocationSearchInput({
   queryValue,
   onQueryChange,
   onFocus,
-  onSuggestedLocation,
+  onClickSuggestion,
+  onClickInput,
+  isSuggFilpToTop,
+  isShowSugg,
+  locSuggRefPopup,
   suggestions,
-  isShowSuggession,
   ...inputProps
 }: LocationSearchInputProps) {
-  const locSuggessionRef = useRef<HTMLDivElement | null>(null);
-
-  // console.log(locSuggessionRef.current?.getBoundingClientRect());
-
   return (
     <>
       <input
         type="text"
         value={queryValue}
         onChange={onQueryChange}
-        onFocus={onFocus}
+        onClick={onClickInput}
         {...inputProps}
       />
-      {isShowSuggession && suggestions.length > 0 && (
-        <div className={styles["suggestion"]} ref={locSuggessionRef}>
+      {isShowSugg && suggestions.length > 0 && (
+        <div
+          className={classNames(
+            styles["suggestion"],
+            isSuggFilpToTop
+              ? styles["suggestion-bottom-tri"]
+              : styles["suggestion-top-tri"]
+          )}
+          ref={locSuggRefPopup}
+          style={{
+            [isSuggFilpToTop ? "bottom" : "top"]: "150%"
+          }}
+        >
           <ul className={styles["suggestion__list"]}>
             {suggestions.map((suggestion) => (
               <li
                 key={suggestion.city}
                 className={styles["suggestion__item"]}
                 onClick={() => {
-                  onSuggestedLocation(suggestion);
+                  onClickSuggestion(suggestion);
                 }}
               >
                 <div className={styles["suggestion__icon"]}>

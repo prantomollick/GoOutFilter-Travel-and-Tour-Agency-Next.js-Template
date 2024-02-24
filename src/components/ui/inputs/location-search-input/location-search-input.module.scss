@@ -1,17 +1,27 @@
 .suggestion {
   position: absolute;
-  top: 150%;
+  // top: 150%;
   background-color: var(--bg-white);
+  border-radius: var(--border-radius-small);
   box-shadow: var(--box-shadow-2);
   padding: 3rem;
   width: 49.2rem;
 
-  &::before {
+  &-top-tri::before {
     content: "";
     position: absolute;
     border: 8px solid transparent;
     border-bottom-color: var(--bg-white);
     bottom: 100%;
+    left: 4rem;
+  }
+
+  &-bottom-tri::before {
+    content: "";
+    position: absolute;
+    border: 8px solid transparent;
+    border-top-color: var(--bg-white);
+    top: 100%;
     left: 4rem;
   }
 
