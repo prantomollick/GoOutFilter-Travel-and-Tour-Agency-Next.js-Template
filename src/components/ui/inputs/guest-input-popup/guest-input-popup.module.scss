@@ -1,7 +1,8 @@
 .guest-input-popup {
   // Your styles for the entire component
   position: absolute;
-  top: 150%;
+  //   top: 150%;
+  left: 1rem;
 
   font-family: inherit;
   font-size: var(--font-size-1_5rem);
@@ -101,10 +102,16 @@
 
       .decrement {
         // Styles specific to the decrement button
+        &:disabled {
+          cursor: not-allowed;
+        }
       }
 
       .increment {
         // Styles specific to the increment button
+        &:disabled {
+          cursor: not-allowed;
+        }
       }
 
       .counter-value {

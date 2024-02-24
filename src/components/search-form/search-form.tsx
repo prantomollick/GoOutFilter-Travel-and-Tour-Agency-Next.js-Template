@@ -10,6 +10,9 @@ import { useLocationSearchInput } from "../ui/inputs/location-search-input/useLo
 import MyDateRange from "../ui/inputs/my-date-range/my-date-range";
 import { useDateRange } from "../ui/inputs/my-date-range/useDateRange";
 import GuestInputPopup from "../ui/inputs/guest-input-popup/guest-input-popup";
+import { useGuestInput } from "../ui/inputs/guest-input-popup/use-guest-input";
+
+import { CounterKey } from "../ui/inputs/guest-input-popup/use-guest-input";
 
 function SearchForm() {
   const {
@@ -35,6 +38,16 @@ function SearchForm() {
     suggestions,
     onSugLocClick
   } = useLocationSearchInput();
+
+  const {
+    state: counterState,
+    popupRef: guestPopupRef,
+    rootElRef: guestRootElRef,
+    handleDecrement,
+    handleIncrement,
+    onGuestPopupVisibility,
+    popupFlipToTop: guestPopupFlipToTop
+  } = useGuestInput();
 
   console.log(selectedDateRange, query);
 
@@ -91,15 +104,28 @@ function SearchForm() {
           )}
         </div>
 
-        <div className={`${styles["form-group"]}`}>
+        <div className={`${styles["form-group"]}`} ref={guestRootElRef}>
           <label htmlFor="guest" className={styles["form-label"]}>
             Guest
           </label>
-          <span className={styles["form-value"]}>
-            2 adults - 1 childeren - 1 room
+          <span
+            id="guest"
+            className={styles["form-value"]}
+            onClick={() => onGuestPopupVisibility()}
+          >
+            {counterState.adults} adults - {counterState.children} childeren -{" "}
+            {counterState.rooms} room
           </span>
-
-          <GuestInputPopup />
+          {counterState.isVisible && (
+            <GuestInputPopup
+              CounterState={counterState}
+              onDecrement={handleDecrement}
+              onIncrement={handleIncrement}
+              onVisibilityChange={onGuestPopupVisibility}
+              guestPopupFlipToTop={guestPopupFlipToTop}
+              ref={guestPopupRef}
+            />
+          )}
         </div>
       </div>
       <Button

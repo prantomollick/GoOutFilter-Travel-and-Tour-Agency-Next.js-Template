@@ -1,8 +1,9 @@
-import { useReducer } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 
 enum ActionType {
   INCREMENT = "INCREMENT",
-  DECREMENT = "DECREMENT"
+  DECREMENT = "DECREMENT",
+  VISIBILITY_CHANGED = "VISIBILITY_CHANGED"
 }
 
 export enum CounterKey {
@@ -11,24 +12,30 @@ export enum CounterKey {
   ROOMS = "rooms"
 }
 
-interface State {
+export interface CounterState {
   adults: number;
   children: number;
   rooms: number;
+  isVisible: boolean;
 }
 
-interface Action {
-  type: ActionType;
-  payload: CounterKey;
-}
+type Action =
+  | {
+      type: ActionType;
+      payload: CounterKey;
+    }
+  | {
+      type: ActionType.VISIBILITY_CHANGED;
+    };
 
-const initialState: State = {
+const initialState: CounterState = {
   adults: 2,
   children: 1,
-  rooms: 1
+  rooms: 1,
+  isVisible: false
 };
 
-const guestsReducer = (state: State, action: Action): State => {
+const guestsReducer = (state: CounterState, action: Action): CounterState => {
   switch (action.type) {
     case ActionType.INCREMENT:
       return { ...state, [action.payload]: state[action.payload] + 1 };
@@ -39,6 +46,9 @@ const guestsReducer = (state: State, action: Action): State => {
         [action.payload]: Math.max(0, state[action.payload] - 1)
       };
 
+    case ActionType.VISIBILITY_CHANGED:
+      return { ...state, isVisible: !state.isVisible };
+
     default:
       return state;
   }
@@ -46,6 +56,29 @@ const guestsReducer = (state: State, action: Action): State => {
 
 export function useGuestInput() {
   const [state, dispatch] = useReducer(guestsReducer, initialState);
+
+  const [popupFlipToTop, setPopupFlipToTop] = useState(false);
+  const popupRef = useRef<HTMLDivElement>(null);
+  const rootElRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleOutSideClick = (e: MouseEvent) => {
+      if (!popupRef.current?.contains(e.target as Node)) {
+        handleChangeVisibility();
+      }
+    };
+
+    if (state.isVisible && rootElRef.current) {
+      document.addEventListener("click", handleOutSideClick, false);
+    }
+
+    return () =>
+      document.removeEventListener("click", handleOutSideClick, false);
+  }, [state.isVisible]);
+
+  useEffect(() => {
+    return () => {};
+  }, []);
 
   const handleIncrement = (type: CounterKey) => {
     dispatch({ type: ActionType.INCREMENT, payload: type });
@@ -55,9 +88,18 @@ export function useGuestInput() {
     dispatch({ type: ActionType.DECREMENT, payload: type });
   };
 
+  const handleChangeVisibility = () => {
+    dispatch({ type: ActionType.VISIBILITY_CHANGED });
+  };
+
   return {
     state,
     handleIncrement,
-    handleDecrement
+    handleDecrement,
+    onPopupFilpToTop: setPopupFlipToTop,
+    popupFlipToTop,
+    popupRef,
+    rootElRef,
+    onGuestPopupVisibility: handleChangeVisibility
   };
 }
