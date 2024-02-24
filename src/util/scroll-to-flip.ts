@@ -1,19 +1,19 @@
 export const isScrollFlipPopUp = (
-  selectedElRef: React.RefObject<HTMLElement>,
+  rootElRef: React.RefObject<HTMLElement>,
   popupRef: React.RefObject<HTMLElement>
 ): boolean => {
-  const dateRangeRect = selectedElRef.current!.getBoundingClientRect();
-  const datePopUpHeight = popupRef.current!.getBoundingClientRect().height;
+  const rootRect = rootElRef.current!.getBoundingClientRect();
+  const popupHeight = popupRef.current!.getBoundingClientRect().height;
 
-  const distanceFromTop = dateRangeRect.top - window.scrollY;
+  const distanceFromTop = rootRect.top - window.scrollY;
 
-  if (!dateRangeRect || !datePopUpHeight) return false;
+  if (!rootRect || !popupHeight) return false;
 
-  if (distanceFromTop > datePopUpHeight) {
+  if (distanceFromTop > popupHeight) {
     return true;
   } else if (
-    distanceFromTop * -1 > datePopUpHeight / 1.5 ||
-    distanceFromTop / 2.5 < datePopUpHeight
+    distanceFromTop * -1 > popupHeight / 1.5 ||
+    distanceFromTop / 2.5 < popupHeight
   ) {
     return false;
   }

@@ -1,3 +1,4 @@
+import { isScrollFlipPopUp } from "@/util/scroll-to-flip";
 import { useEffect, useReducer, useRef, useState } from "react";
 
 enum ActionType {
@@ -77,8 +78,17 @@ export function useGuestInput() {
   }, [state.isVisible]);
 
   useEffect(() => {
-    return () => {};
-  }, []);
+    const handleScroll = () => {
+      const isFlip = isScrollFlipPopUp(rootElRef, popupRef);
+      setPopupFlipToTop(isFlip);
+    };
+
+    if (state.isVisible && rootElRef.current && popupRef.current) {
+      window.addEventListener("scroll", handleScroll);
+    }
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [state.isVisible]);
 
   const handleIncrement = (type: CounterKey) => {
     dispatch({ type: ActionType.INCREMENT, payload: type });
