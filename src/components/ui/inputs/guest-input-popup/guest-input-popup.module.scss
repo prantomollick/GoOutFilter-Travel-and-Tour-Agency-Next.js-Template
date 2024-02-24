@@ -1,0 +1,115 @@
+.guest-input-popup {
+  // Your styles for the entire component
+  position: absolute;
+  top: 150%;
+
+  font-family: inherit;
+  font-size: var(--font-size-1_5rem);
+  font-weight: var(--font-weight-medium);
+  line-height: calc(2.2rem / 1.5rem);
+
+  background-color: var(--bg-white);
+  color: var(--text-dark);
+  width: 40.8rem;
+  box-shadow: var(--box-shadow-2);
+  padding: 3rem;
+  border-radius: var(--border-radius-small);
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &-top-tri::before {
+    content: "";
+    position: absolute;
+    border: 8px solid transparent;
+    border-bottom-color: var(--bg-white);
+    bottom: 100%;
+    left: 4rem;
+  }
+
+  &-bottom-tri::before {
+    content: "";
+    position: absolute;
+    border: 8px solid transparent;
+    border-top-color: var(--bg-white);
+    top: 100%;
+    left: 4rem;
+  }
+
+  .guest-input-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:not(:last-child) {
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    // Styles for each section
+
+    .guest-input-label {
+      // Styles for the label
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      > span {
+        &:nth-child(2) {
+          font-family: inherit;
+          color: var(--text-light);
+          font-size: var(--font-size-1_4rem);
+          font-weight: var(--font-weight-regular);
+          line-height: calc(2rem / 1.4rem);
+        }
+      }
+    }
+
+    .guest-input-counter {
+      // Styles for the counter
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+
+      .counter-button {
+        // Styles for both decrement and increment buttons
+        font-family: inherit;
+        width: 3.8rem;
+        height: 3.8rem;
+        cursor: pointer;
+
+        background-color: var(--bg-white);
+
+        border: 1px solid var(--border-primary);
+        border-radius: var(--border-radius-small);
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        transition: all 0.2s ease;
+
+        &:hover {
+          background-color: var(--bg-darkest-blue);
+          border-color: var(--border-darkest-blue);
+          color: var(--text-white);
+          svg {
+            stroke: var(--text-white);
+          }
+        }
+      }
+
+      .decrement {
+        // Styles specific to the decrement button
+      }
+
+      .increment {
+        // Styles specific to the increment button
+      }
+
+      .counter-value {
+        // Styles for the numeric value
+      }
+    }
+  }
+}

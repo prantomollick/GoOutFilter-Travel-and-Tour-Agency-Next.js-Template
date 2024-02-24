@@ -61,7 +61,6 @@ export const useDateRange = () => {
       endDate: dateRange.selection!.endDate!,
       key: dateRange.selection!.key!
     });
-    console.log(dateRange);
   };
 
   const handleRangeFocusChange = (focusedRange: RangeFocus) => {

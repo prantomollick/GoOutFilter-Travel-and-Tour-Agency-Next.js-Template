@@ -1,0 +1,24 @@
+import React from "react";
+
+export const MinusIcon = () => {
+  return (
+    <svg
+      width="11"
+      height="1"
+      viewBox="0 0 11 1"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="plus">
+        <rect
+          id="Rectangle 234"
+          y="1.00049"
+          width="1"
+          height="11"
+          transform="rotate(-90 0 1.00049)"
+          fill="#3554D1"
+        />
+      </g>
+    </svg>
+  );
+};

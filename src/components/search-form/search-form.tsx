@@ -9,6 +9,7 @@ import LocationSearchInput from "../ui/inputs/location-search-input/location-sea
 import { useLocationSearchInput } from "../ui/inputs/location-search-input/useLocationSearchInput";
 import MyDateRange from "../ui/inputs/my-date-range/my-date-range";
 import { useDateRange } from "../ui/inputs/my-date-range/useDateRange";
+import GuestInputPopup from "../ui/inputs/guest-input-popup/guest-input-popup";
 
 function SearchForm() {
   const {
@@ -34,6 +35,8 @@ function SearchForm() {
     suggestions,
     onSugLocClick
   } = useLocationSearchInput();
+
+  console.log(selectedDateRange, query);
 
   return (
     <form className={styles["search-form"]}>
@@ -95,6 +98,8 @@ function SearchForm() {
           <span className={styles["form-value"]}>
             2 adults - 1 childeren - 1 room
           </span>
+
+          <GuestInputPopup />
         </div>
       </div>
       <Button
