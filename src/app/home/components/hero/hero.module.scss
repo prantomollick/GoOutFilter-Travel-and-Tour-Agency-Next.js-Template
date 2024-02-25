@@ -46,9 +46,15 @@
 }
 
 .searchNav {
+  display: flex;
+  flex-direction: column;
+  gap: 2.1rem;
+  align-items: center;
+
   &__list {
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
     gap: 4rem;
   }
 
@@ -58,8 +64,7 @@
     font-size: var(--font-size-1_5rem);
     font-weight: var(--font-weight-medium);
     line-height: calc(2.2rem / 1.5rem);
-
-    padding-bottom: 5px;
-    border-bottom: 1px solid var(--border-white);
+    padding-bottom: 6px;
+    cursor: pointer;
   }
 }

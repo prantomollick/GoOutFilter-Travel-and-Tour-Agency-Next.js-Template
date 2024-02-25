@@ -90,6 +90,11 @@
   border-color: var(--border-white);
 }
 
+//Border
+.border-b-white {
+  border-bottom: 1px solid var(--border-white);
+}
+
 /* Background Colors */
 .bg-white {
   background-color: var(--bg-white);
