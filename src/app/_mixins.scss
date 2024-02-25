@@ -1,0 +1,64 @@
+@mixin calc-line-height-ratio($lineHeight, $fontSize) {
+  line-height: $lineHeight / $fontSize;
+}
+
+//Media query manager
+/*
+0 - 600 px:   Phone
+600 - 900px:  tablet Portrait
+900 - 1200px:  tablet landscape
+[1200-1800] is where our normal style apply
+1800px + : Big desktop
+*/
+
+@mixin respond-phone {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+/*
+$breakpoint argument choices:
+-phone
+-tab-port
+-tab-land
+-big-desktop
+1em 16px
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint ==phone {
+    //600px
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint ==tab-port {
+    //900px
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint ==tab-land {
+    //1200px
+    @media only screen and (max-width: 75em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint ==desktop {
+    //1290px
+    @media screen and (max-width: 80.625em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint ==big-desktop {
+    //1800px
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    }
+  }
+}
