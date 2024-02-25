@@ -69,7 +69,7 @@
     .guest-input-counter {
       // Styles for the counter
       display: flex;
-      gap: 2rem;
+      gap: 1rem;
       align-items: center;
 
       .counter-button {
@@ -115,6 +115,11 @@
       }
 
       .counter-value {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
         // Styles for the numeric value
       }
     }

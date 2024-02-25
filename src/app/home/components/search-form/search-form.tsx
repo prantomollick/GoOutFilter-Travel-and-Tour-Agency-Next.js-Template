@@ -1,18 +1,19 @@
 "use client";
 import styles from "./search-form.module.scss";
 
+import type { FormEvent } from "react";
 import { GoSearch } from "react-icons/go";
-import Button from "../ui/button/button";
-
 import classNames from "classnames";
-import LocationSearchInput from "../ui/inputs/location-search-input/location-search-input";
-import { useLocationSearchInput } from "../ui/inputs/location-search-input/useLocationSearchInput";
-import MyDateRange from "../ui/inputs/my-date-range/my-date-range";
-import { useDateRange } from "../ui/inputs/my-date-range/useDateRange";
-import GuestInputPopup from "../ui/inputs/guest-input-popup/guest-input-popup";
-import { useGuestInput } from "../ui/inputs/guest-input-popup/use-guest-input";
 
-import { CounterKey } from "../ui/inputs/guest-input-popup/use-guest-input";
+import GuestInputPopup from "@/components/ui/inputs/guest-input-popup/guest-input-popup";
+import { useGuestInput } from "@/components/ui/inputs/guest-input-popup/use-guest-input";
+
+import LocationSearchInput from "@/components/ui/inputs/location-search-input/location-search-input";
+import { useLocationSearchInput } from "@/components/ui/inputs/location-search-input/useLocationSearchInput";
+
+import MyDateRange from "@/components/ui/inputs/my-date-range/my-date-range";
+import { useDateRange } from "@/components/ui/inputs/my-date-range/useDateRange";
+import Button from "@/components/ui/button/button";
 
 function SearchForm() {
   const {
@@ -49,10 +50,32 @@ function SearchForm() {
     popupFlipToTop: guestPopupFlipToTop
   } = useGuestInput();
 
-  console.log(selectedDateRange, query);
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (query && selectedDateRange && counterState) {
+      const FormData = {
+        query: query.trim(),
+        checkInOutDate: {
+          startDate: selectedDateRange.startDate,
+          endDate: selectedDateRange.endDate
+        },
+        guests: {
+          adults: counterState.adults,
+          children: counterState.children,
+          room: counterState.rooms
+        }
+      };
+
+      console.log(FormData);
+    }
+  };
 
   return (
-    <form className={styles["search-form"]}>
+    <form
+      className={classNames(styles["search-form"], "bg-white", "rounded-full")}
+      onSubmit={handleSubmit}
+    >
       <div className={styles["search-form__inputs"]}>
         <div className={styles["form-group"]} ref={locSuggInputRef}>
           <label htmlFor="location" className={styles["form-label"]}>
@@ -79,9 +102,14 @@ function SearchForm() {
           <label htmlFor="checkin" className={styles["form-label"]}>
             Check in - Check out
           </label>
-          <span onClick={onVisibilityChange} className={styles["form-value"]}>
-            {startDate} - {endDate}
-          </span>
+          <input
+            onClick={onVisibilityChange}
+            className={styles["form-input"]}
+            value={`${startDate} - ${endDate}`}
+            readOnly
+            required
+          />
+
           {isVisible && (
             <div
               ref={popupDateRangeRef}
@@ -108,14 +136,14 @@ function SearchForm() {
           <label htmlFor="guest" className={styles["form-label"]}>
             Guest
           </label>
-          <span
+          <input
             id="guest"
-            className={styles["form-value"]}
+            className={styles["form-input"]}
             onClick={() => onGuestPopupVisibility()}
-          >
-            {counterState.adults} adults - {counterState.children} childeren -{" "}
-            {counterState.rooms} room
-          </span>
+            value={`${counterState.adults} adults - ${counterState.children} childeren -${counterState.rooms} room`}
+            required
+            readOnly
+          ></input>
           {counterState.isVisible && (
             <GuestInputPopup
               CounterState={counterState}

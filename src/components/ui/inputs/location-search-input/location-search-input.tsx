@@ -37,6 +37,7 @@ function LocationSearchInput({
         value={queryValue}
         onChange={onQueryChange}
         onClick={onClickInput}
+        required
         {...inputProps}
       />
       {isShowSugg && suggestions.length > 0 && (
