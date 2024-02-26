@@ -1,14 +1,23 @@
+@import "mixins";
+
 //Container
 .container-fluid {
-  max-width: 192rem;
-  width: 100%;
-  padding: 0 3rem;
+  @include respond(big-desktop) {
+    max-width: 192rem;
+    width: 100%;
+    padding: 0 3rem;
+    margin: 0 auto;
+  }
+}
+
+.container {
+  max-width: 129rem;
   margin: 0 auto;
 }
 
 //sticky Navigation
 .sticky {
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 100;
 }

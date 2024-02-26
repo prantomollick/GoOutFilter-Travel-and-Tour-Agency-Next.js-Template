@@ -1,22 +1,24 @@
 import styles from "./card-destination.module.scss";
 
 import Image from "next/image";
-import React, { ReactNode } from "react";
+import React, { ComponentPropsWithoutRef, ReactNode } from "react";
 import Button from "../ui/button/button";
 import classNames from "classnames";
 
-interface CardDestinationProps {
+type CardDestinationProps = {
   imgLink: string;
   title: string;
   size: "xs" | "sm" | "md" | "lg";
   extraSmallText?: string;
-}
+} & ComponentPropsWithoutRef<"article">;
 
 function CardDestination({
   imgLink,
   title,
   size,
-  extraSmallText
+  extraSmallText,
+  className,
+  ...rest
 }: CardDestinationProps) {
   let cssClass: "card2-md" | "card2-sm" | "card2-xs" = "card2-md";
   let imgSize: { width: number; height: number } = { width: 300, height: 400 };
@@ -38,10 +40,8 @@ function CardDestination({
 
   if (size === "lg") {
     return (
-      <article className={styles.card}>
-        <p className={styles.card__text}>
-          14 Hotel - 22 Cars - 18 Tours - 95 Activity
-        </p>
+      <article className={classNames(styles.card, className)} {...rest}>
+        <p className={styles.card__text}>{extraSmallText}</p>
         <div className={styles["card__img-shadow"]}></div>
         <Image
           src={imgLink}
@@ -66,7 +66,10 @@ function CardDestination({
   }
 
   return (
-    <article className={classNames(styles.card2, styles[cssClass])}>
+    <article
+      className={classNames(styles.card2, styles[cssClass], className)}
+      {...rest}
+    >
       <Image
         src={imgLink}
         alt={title}

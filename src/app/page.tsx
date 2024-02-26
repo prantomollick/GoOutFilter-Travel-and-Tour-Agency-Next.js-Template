@@ -9,12 +9,13 @@ import SearchForm from "@/app/home/components/search-form/search-form";
 import MyDateRange from "@/components/ui/inputs/my-date-range/my-date-range";
 
 import { useState } from "react";
+import Slider from "@/components/slider/slider";
 
 export default function Home() {
   return (
     <>
-      <div style={{ padding: "100px", marginTop: "400px", height: "800rem" }}>
-        <SearchForm />
+      <div className="container">
+        <Slider />
       </div>
     </>
   );

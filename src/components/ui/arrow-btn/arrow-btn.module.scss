@@ -2,7 +2,7 @@
 
 @mixin hoverEffect {
   &:not(:disabled):hover {
-    background-color: var(--darkest-gray);
+    background-color: var(--darkest-blue);
     color: var(--white);
     svg {
       color: var(--white);
@@ -15,8 +15,8 @@
 
 @mixin hoverEffectOutlineArrowBtn {
   &:not(:disabled):hover {
-    background-color: var(--darkest-gray);
-    border: var(--darkest-gray);
+    background-color: var(--darkest-blue);
+    border: var(--darkest-blue);
 
     svg {
       color: var(--white);
@@ -44,7 +44,7 @@
   }
 
   svg {
-    color: var(--darkest-gray);
+    color: var(--darkest-blue);
   }
 
   &-default {

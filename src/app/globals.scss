@@ -1,3 +1,4 @@
+@import "mixins";
 @import "roots";
 @import "utilities";
 
@@ -21,6 +22,7 @@ body {
   font-weight: var(--font-weight-regular);
   line-height: normal;
   font-size: var(--font-size-1_4rem);
+  overflow-x: hidden;
   // padding: 1rem;
   // background-color: rgb(252, 242, 230);
 }
