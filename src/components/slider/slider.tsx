@@ -1,9 +1,19 @@
+// Import Swiper React components
+import { A11y, Navigation, Scrollbar } from "swiper/modules";
 import styles from "./slide.module.scss";
-import React, { useState } from "react";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import classNames from "classnames";
+import { useRef, useState } from "react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 import CardDestination from "../card-destination/card-destination";
 import ArrowBtn from "../ui/arrow-btn/arrow-btn";
 
-// Define a type for each item in the SliderData array
 type SliderItem = {
   title: string;
   categories: string[];
@@ -68,82 +78,61 @@ const sliderData: SliderItem[] = [
   }
 ];
 
-const totalSlide = sliderData.length;
-const currentPreview = 4;
-const controlCount = totalSlide - currentPreview;
-const slideControlBarCount = controlCount + 1;
-
-function Slider() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const handleNext = () => {
-    // setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
-
-    if (currentSlide * -1 < controlCount) {
-      setCurrentSlide((prevSlide) => prevSlide - 1);
-    }
-  };
-
-  const handlePrev = () => {
-    // setCurrentSlide(
-    //   (prevSlide) => (prevSlide - 1 + images.length) % images.length
-    // );
-
-    console.log(currentSlide);
-
-    if (currentSlide < 0) {
-      setCurrentSlide((prevSlide) => prevSlide + 1);
-    }
-  };
+const Slider = () => {
+  const [_, setInit] = useState<boolean>(); // Add a state for re-render
+  const prevRef = useRef<HTMLButtonElement>(null);
+  const nextRef = useRef<HTMLButtonElement>(null);
 
   return (
     <div className={styles["slide-container"]}>
-      <ArrowBtn
-        direction="left"
-        className={styles["slide-previous-btn"]}
-        onClick={handlePrev}
-      />
-
-      <div
-        className={styles.slides}
-        style={{ marginLeft: `${currentSlide * 30}px` }}
+      <Swiper
+        modules={[Navigation, Scrollbar, A11y]}
+        spaceBetween={30}
+        slidesPerView={4}
+        navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
+        scrollbar={{
+          draggable: true,
+          el: ".swiper-scrollbar",
+          horizontalClass: "swiper-scrollbar-horizontal",
+          dragClass: `${styles["slide-scroll-bar-control"]}`,
+          dragSize: 348
+        }}
+        onInit={() => setInit(true)}
+        style={{ overflow: "visible" }}
       >
         {sliderData.map((slide, i) => {
           return (
-            <CardDestination
-              imgLink={slide.imgLink}
-              size="lg"
-              title={slide.title}
-              extraSmallText={`${slide.categories
-                .map((cat, i) => `${slide.counts[i]} ${cat}`)
-                .join(" - ")}`}
-              key={slide.title}
-              className={styles.slide}
-              style={{
-                transform: `translateX(${100 * currentSlide}%)`
-              }}
-            />
+            <SwiperSlide key={slide.title}>
+              <CardDestination
+                imgLink={slide.imgLink}
+                size="lg"
+                title={slide.title}
+                extraSmallText={`${slide.categories
+                  .map((cat, i) => `${slide.counts[i]} ${cat}`)
+                  .join(" - ")}`}
+                className={styles.slide}
+              />
+            </SwiperSlide>
           );
         })}
-      </div>
-
-      <ArrowBtn
-        direction="right"
-        className={styles["slide-next-btn"]}
-        onClick={handleNext}
-      />
-
-      <div className={styles["slide-control"]}>
+      </Swiper>
+      <div>
         <div
-          className={styles["slide-control-bar"]}
-          style={{
-            width: `${100 / slideControlBarCount}%`,
-            transform: `translateX(${100 * currentSlide * -1}%)`
-          }}
+          className={classNames("swiper-scrollbar", styles["slide-scroll-bar"])}
         ></div>
+        <ArrowBtn
+          direction="left"
+          className={styles["slide-previous-btn"]}
+          ref={prevRef}
+        />
+        <ArrowBtn
+          direction="right"
+          className={styles["slide-next-btn"]}
+          ref={nextRef}
+        />
       </div>
     </div>
   );
-}
+};
 
 export default Slider;

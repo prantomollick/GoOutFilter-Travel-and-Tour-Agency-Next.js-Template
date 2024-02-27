@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Jost } from "next/font/google";
 import "./globals.scss";
 import Provider from "./Provider";
-
 const jost = Jost({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {

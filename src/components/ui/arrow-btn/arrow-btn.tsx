@@ -1,15 +1,15 @@
-import styles from "./arrow-btn.module.scss";
 import classNames from "classnames";
 import Link from "next/link";
 import {
   GoChevronDown,
-  GoChevronUp,
   GoChevronLeft,
   GoChevronRight,
+  GoChevronUp,
   GoSmiley
 } from "react-icons/go";
+import styles from "./arrow-btn.module.scss";
 
-import React, { ComponentPropsWithoutRef, ReactNode } from "react";
+import { ComponentPropsWithoutRef, ReactNode, Ref, forwardRef } from "react";
 
 interface GenericArrowProps {
   variant?: "bordered";
@@ -41,68 +41,83 @@ const btnSize = {
   xl: 60
 };
 
-function ArrowBtn(props: ArrowBtnProps | ArrowLinkProps) {
-  const {
-    variant,
-    color = "default",
-    size = "md",
-    direction,
-    className
-  } = props;
+type Props = ArrowBtnProps | ArrowLinkProps;
 
-  const iconSize = btnSize[size] * 0.5;
+const ArrowBtn = forwardRef(
+  (props: Props, ref: Ref<HTMLButtonElement | HTMLAnchorElement>) => {
+    const {
+      variant,
+      color = "default",
+      size = "md",
+      direction,
+      className
+    } = props;
 
-  const arrowBtnCss = classNames(
-    {
-      [styles["arrow-btn-size-sm"]]: size === "sm",
-      [styles["arrow-btn-size-md"]]: size === "md",
-      [styles["arrow-btn-size-lg"]]: size === "lg",
-      [styles["arrow-btn-size-xl"]]: size === "xl",
-      [styles[
-        variant === "bordered" ? "arrow-btn-outline" : "arrow-btn-default"
-      ]]: color === "default"
-    },
-    className,
-    styles["arrow-btn"],
-    styles["rounded-full"]
-  );
+    const iconSize = btnSize[size] * 0.5;
 
-  let pointedIcon: ReactNode;
-  switch (direction) {
-    case "up":
-      pointedIcon = <GoChevronUp size={iconSize} />;
-      break;
-    case "down":
-      pointedIcon = <GoChevronDown size={iconSize} />;
-      break;
+    const arrowBtnCss = classNames(
+      {
+        [styles["arrow-btn-size-sm"]]: size === "sm",
+        [styles["arrow-btn-size-md"]]: size === "md",
+        [styles["arrow-btn-size-lg"]]: size === "lg",
+        [styles["arrow-btn-size-xl"]]: size === "xl",
+        [styles[
+          variant === "bordered" ? "arrow-btn-outline" : "arrow-btn-default"
+        ]]: color === "default"
+      },
+      className,
+      styles["arrow-btn"],
+      styles["rounded-full"]
+    );
 
-    case "left":
-      pointedIcon = <GoChevronLeft size={iconSize} />;
-      break;
+    let pointedIcon: ReactNode;
+    switch (direction) {
+      case "up":
+        pointedIcon = <GoChevronUp size={iconSize} />;
+        break;
+      case "down":
+        pointedIcon = <GoChevronDown size={iconSize} />;
+        break;
 
-    case "right":
-      pointedIcon = <GoChevronRight size={iconSize} />;
-      break;
+      case "left":
+        pointedIcon = <GoChevronLeft size={iconSize} />;
+        break;
 
-    default:
-      pointedIcon = <GoSmiley />;
-  }
+      case "right":
+        pointedIcon = <GoChevronRight size={iconSize} />;
+        break;
 
-  if (isLinkProps(props)) {
-    const { href, ...rest } = props;
+      default:
+        pointedIcon = <GoSmiley />;
+    }
+
+    if (isLinkProps(props)) {
+      const { href, ...rest } = props;
+      return (
+        <Link
+          href={href}
+          {...rest}
+          className={arrowBtnCss}
+          ref={ref as Ref<HTMLAnchorElement>}
+        >
+          {pointedIcon}
+        </Link>
+      );
+    }
+
+    const { ...rest } = props;
     return (
-      <Link href={href} {...rest} className={arrowBtnCss}>
+      <button
+        {...rest}
+        className={arrowBtnCss}
+        ref={ref as Ref<HTMLButtonElement>}
+      >
         {pointedIcon}
-      </Link>
+      </button>
     );
   }
+);
 
-  const { ...rest } = props;
-  return (
-    <button {...rest} className={arrowBtnCss}>
-      {pointedIcon}
-    </button>
-  );
-}
+ArrowBtn.displayName = "ArrowBtn";
 
 export default ArrowBtn;
