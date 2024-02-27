@@ -70,6 +70,19 @@
   &-default {
     color: var(--primary-blue);
     background-color: var(--white-gray);
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: var(--bg-primary-blue);
+      color: var(--text-white);
+
+      svg {
+        path {
+          stroke: var(--text-white);
+        }
+        stroke: var(--text-white);
+      }
+    }
   }
 
   &-default-outline {
@@ -85,8 +98,14 @@
   }
 
   &-white {
-    color: var(--darkest-blue);
+    color: var(--text-dark);
     background-color: var(--white);
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: var(--bg-primary-blue);
+      color: var(--text-white);
+    }
   }
 
   &-white-outline {

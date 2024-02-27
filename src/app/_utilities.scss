@@ -45,6 +45,23 @@
   }
 }
 
+//Heading
+.s-heading {
+  font-family: inherit;
+  font-size: var(--font-size-3rem);
+  font-weight: var(--font-weight-semibold);
+  line-height: calc(4.3rem / 3rem);
+  color: var(--text-dark);
+}
+
+.s-heading-p {
+  font-family: inherit;
+  font-size: var(--font-size-1_6rem);
+  font-weight: var(--font-weight-regular);
+  line-height: calc(3rem / 1.6rem);
+  color: var(--text-light);
+}
+
 //generic classes
 .active-primary {
   color: var(--text-primary-blue) !important;
@@ -235,6 +252,10 @@
   padding-top: 3rem;
 }
 
+.pt-12 {
+  padding-top: 12rem;
+}
+
 .pr-1 {
   padding-right: 1rem;
 }
@@ -257,6 +278,10 @@
 
 .pb-3 {
   padding-bottom: 3rem;
+}
+
+.pb-12 {
+  padding-bottom: 12rem;
 }
 
 .pl-1 {
@@ -376,6 +401,9 @@
 }
 
 //width
+.w-100 {
+  width: 100%;
+}
 .w-1 {
   width: 1rem;
 }
@@ -412,4 +440,9 @@
 //wdith
 .w-100 {
   width: 100%;
+}
+
+//position
+.absolute {
+  position: absolute;
 }

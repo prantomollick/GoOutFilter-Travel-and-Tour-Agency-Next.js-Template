@@ -35,7 +35,11 @@ function Hero() {
   };
 
   return (
-    <section id="#hero" className={styles["hero-section"]} role="banner">
+    <section
+      id="#hero"
+      className={classNames(styles["hero-section"])}
+      role="banner"
+    >
       <div className={styles["hero-wrapper"]}>
         <div className={styles["hero-text"]}>
           <h1 className={styles["hero-title"]}>Find Next Place To Visit</h1>
