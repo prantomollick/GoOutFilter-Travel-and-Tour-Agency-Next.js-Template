@@ -1,0 +1,38 @@
+import React from "react";
+
+export const ArrowUpIcon = () => {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="vuesax/linear/send">
+        <g id="Send">
+          <g id="Group">
+            <path
+              id="Vector"
+              d="M15.8335 2.9165L4.16683 14.5832"
+              stroke="#3554D1"
+              stroke-width="1.5"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              id="Vector_2"
+              d="M15.8335 11.4748V2.9165H7.27516"
+              stroke="#3554D1"
+              stroke-width="1.5"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </g>
+        </g>
+      </g>
+    </svg>
+  );
+};

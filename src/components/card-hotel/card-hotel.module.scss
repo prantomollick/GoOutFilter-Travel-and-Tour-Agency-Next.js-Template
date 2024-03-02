@@ -1,0 +1,55 @@
+.hcard-md {
+  width: 30rem;
+  box-shadow: var(--box-shadow-1);
+}
+
+.hcard {
+  &-badge {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    background-color: var(--bg-darkest-blue);
+
+    font-family: inherit;
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+    color: var(--text-white);
+    line-height: 1.7rem / 1.2rem;
+    z-index: 3;
+
+    padding: 6px 12px;
+
+    border-top-right-radius: var(--border-radius-small);
+    border-bottom-right-radius: var(--border-radius-small);
+  }
+
+  &-reaction-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 3;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: inherit;
+    font-size: 14px;
+    padding: 9px;
+    border-radius: var(--border-radius-full);
+    border: none;
+    outline: none;
+    color: var(--text-dark);
+    cursor: pointer;
+  }
+
+  &-header {
+    position: relative;
+    width: 100%;
+    min-width: 30rem;
+    height: 30rem;
+    border-radius: var(--border-radius-small);
+    overflow: hidden;
+  }
+}

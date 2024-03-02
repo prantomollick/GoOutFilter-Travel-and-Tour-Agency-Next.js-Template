@@ -1,13 +1,13 @@
 // Import Swiper React components
 "use client";
-import { A11y, Navigation, Scrollbar } from "swiper/modules";
 import styles from "./slide.module.scss";
 
+import { useRef, useState } from "react";
+import { A11y, Navigation, Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import classNames from "classnames";
-import { useRef, useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";

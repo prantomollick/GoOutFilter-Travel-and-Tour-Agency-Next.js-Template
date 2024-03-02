@@ -1,6 +1,7 @@
 import {
   createContext,
   useContext,
+  useEffect,
   useReducer,
   type Dispatch,
   type ReactNode
@@ -95,6 +96,15 @@ export const CurrencyModalProvider: React.FC<{ children: ReactNode }> = ({
   children
 }) => {
   const [state, dispatch] = useReducer(modalReducer, initialState);
+
+  useEffect(() => {
+    if (state.content) {
+      localStorage.setItem(
+        "gof_currency",
+        JSON.stringify(state.content?.currency)
+      );
+    }
+  }, [state.content]);
 
   const onOpen = () => {
     dispatch({ type: CurrActionType.OPEN_CURRENCY_MODAL });
