@@ -11,7 +11,7 @@ import React, { useRef, useState } from "react";
 import { GoHeart, GoHeartFill } from "react-icons/go";
 import { formattedPrice } from "@/util/formatPrice";
 
-import { SwiperImageSlide } from "./swiper-image-slide";
+import { SwiperImageSlide } from "../slider/swiper-image-slide";
 
 interface CardHotelProps {
   name: string;
@@ -47,17 +47,21 @@ function CardMdHotel({
 
       <div className={styles["hcard-content"]}>
         <h3 className={styles["hcard-name"]}>{name}</h3>
-        <p className={styles["hcard-location"]}>{location.address}</p>
-        <div>
-          <button>{rating.score}</button>
-          <span> {rating.type}</span>
-          <span>{totalReviews} reviews</span>
+        <p className={styles["hcard-location"]}>
+          {location.address}, {location.city}
+        </p>
+        <div className={styles["hcard-review"]}>
+          <button className={styles["hcard-rating-btn"]}>{rating.score}</button>
+          <span className={styles["hcard-rating-type"]}>{rating.type}</span>
+          <span className={styles["hcard-rating-review"]}>
+            {totalReviews} reviews
+          </span>
         </div>
-        <p className={"hcard-price"}>
+        <p className={styles["hcard-price"]}>
           Starting from&nbsp;
-          <span className="hcard-amount">
+          <span className={styles["hcard-amount"]}>
             {room.price.currency}
-            {formattedPrice(room.price.amount, room.price.currency)}
+            {formattedPrice(room.price.amount, room.price.currency)}&nbsp;
           </span>
           / night
         </p>

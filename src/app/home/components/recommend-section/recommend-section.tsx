@@ -1,7 +1,11 @@
 import React from "react";
 
 function RecommendSection() {
-  return <section>RecommendSection</section>;
+  return (
+    <section id="#recommend">
+      <div></div>
+    </section>
+  );
 }
 
 export default RecommendSection;

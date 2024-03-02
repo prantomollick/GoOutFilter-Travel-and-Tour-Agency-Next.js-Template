@@ -28,11 +28,20 @@
         visibility: collapse;
       }
     }
+    .slide-img {
+      transform: scale(1.15);
+    }
   }
 
   &-img {
     width: 100%;
     height: 100%;
+
+    transition: transform 0.4s ease;
+  }
+
+  .slide-item {
+    overflow: hidden;
   }
 
   &-control {
@@ -62,7 +71,7 @@
     align-items: center;
     justify-content: center;
 
-    z-index: 5;
+    z-index: 2;
 
     &-dot {
       width: 6px;

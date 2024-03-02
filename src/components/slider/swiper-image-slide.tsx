@@ -39,7 +39,7 @@ export const SwiperImageSlide = ({ images, title }: Props) => {
         onInit={() => setInit(true)}
       >
         {images.map((img, i) => (
-          <SwiperSlide key={i}>
+          <SwiperSlide key={i} className="slide-item">
             <Image
               src={img}
               alt={title}
