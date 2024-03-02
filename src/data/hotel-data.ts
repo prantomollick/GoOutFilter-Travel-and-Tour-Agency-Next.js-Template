@@ -48,7 +48,9 @@ export interface Room {
 export interface Hotel {
   hotelId: string | number;
   name: string;
+  isRecommend?: boolean;
   isFavourite: boolean;
+  badge?: string;
   location: GoogleLocation;
   rating: Rating;
   totalReviews: number; // Moved from Rating
@@ -60,7 +62,9 @@ export interface Hotel {
 export const hotels: Hotel[] = [
   {
     hotelId: 1,
-    name: "Grandview Palace Hotel, London",
+    name: "The Montcalm At Brewery London City",
+    badge: "Breakfast included",
+    isRecommend: true,
     isFavourite: false,
     location: {
       address: "123 Example St",
@@ -109,8 +113,9 @@ export const hotels: Hotel[] = [
     ]
   },
   {
-    hotelId: 3,
-    name: "The Blakewell Hotel, London",
+    hotelId: 2,
+    name: "Staycity Aparthotels Deptford Bridge Station",
+    isRecommend: true,
     isFavourite: false,
     location: {
       address: "456 Sample Ave",
@@ -137,7 +142,7 @@ export const hotels: Hotel[] = [
       availability: true,
       price: {
         amount: 85,
-        currency: "GBP"
+        currency: "USD"
       },
       images: [
         "/hotel/tb-hotel-1.jpg",
@@ -145,11 +150,11 @@ export const hotels: Hotel[] = [
         "/hotel/tb-hotel-3.jpg",
         "/hotel/tb-hotel-4.jpg"
       ],
-      currency: "GBP"
+      currency: "USD"
     },
     taxesAndCharges: {
       amount: 258,
-      currency: "GBP"
+      currency: "USD"
     },
     images: [
       "/hotel/tb-hotel-1.jpg",
@@ -160,7 +165,9 @@ export const hotels: Hotel[] = [
   },
   {
     hotelId: 3,
-    name: "The Clermont London, Charing Cross",
+    name: "The Westin New York at Times Square",
+    isRecommend: true,
+    badge: "Best Seller",
     isFavourite: false,
     location: {
       address: "123 Example St",
@@ -187,7 +194,7 @@ export const hotels: Hotel[] = [
       availability: true,
       price: {
         amount: 180,
-        currency: "EUR"
+        currency: "USD"
       },
       images: [
         "/hotel/tcl-hotel-1.jpg",
@@ -195,11 +202,11 @@ export const hotels: Hotel[] = [
         "/hotel/tcl-hotel-3.jpg",
         "/hotel/tcl-hotel-4.jpg"
       ],
-      currency: "EUR"
+      currency: "USD"
     },
     taxesAndCharges: {
       amount: 523,
-      currency: "EUR"
+      currency: "USD"
     },
     images: [
       "/hotel/tcl-hotel-1.jpg",
@@ -210,7 +217,8 @@ export const hotels: Hotel[] = [
   },
   {
     hotelId: 4,
-    name: "Mayfair Townhouse, London",
+    name: "DoubleTree by Hilton Hotel New York Times Square West",
+    isRecommend: true,
     isFavourite: false,
     location: {
       address: "456 Sample Ave",
@@ -260,7 +268,8 @@ export const hotels: Hotel[] = [
   },
   {
     hotelId: "5",
-    name: "The Ned, London",
+    name: "The Ned villa hotels, at Camden London",
+    isRecommend: true,
     isFavourite: true,
     location: {
       address: "789 Test Blvd",
@@ -310,7 +319,9 @@ export const hotels: Hotel[] = [
   },
   {
     hotelId: "6",
-    name: "The Ned, London",
+    name: "DoubleTree by Hilton Hotel New York Times Square West",
+    isRecommend: true,
+    badge: "Top Rated",
     isFavourite: true,
     location: {
       address: "789 Test Blvd",

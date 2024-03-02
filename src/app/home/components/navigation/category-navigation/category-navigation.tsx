@@ -1,7 +1,11 @@
 import styles from "./category-navigation.module.scss";
 
 import React, { Fragment, useState } from "react";
-import { SubNavigationItem, TabCard, TabDetail } from "../navigation-content";
+import {
+  SubNavigationItem,
+  TabCard,
+  TabDetail
+} from "../../../../navigation-menu";
 import Link from "next/link";
 import NavigationTabCard from "@/components/navigation-tab-card/navigation-tab-card";
 import classNames from "classnames";

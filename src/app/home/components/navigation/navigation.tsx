@@ -4,7 +4,7 @@ import styles from "./navigation.module.scss";
 import classNames from "classnames";
 import Link from "next/link";
 
-import { navigationContent } from "@/app/home/components/navigation/navigation-content";
+import { navigationMenu } from "@/app/navigation-menu";
 import Button from "@/components/ui/button/button";
 
 import { GoTriangleDown } from "react-icons/go";
@@ -30,7 +30,7 @@ function Navigation() {
         <Link href="/" className={styles["nav__brand-link"]}>
           <Brand variant="white" />
         </Link>
-        <NavigationItem navigationContent={navigationContent} />
+        <NavigationItem navigationContent={navigationMenu} />
       </div>
 
       <div className="flex item-center gap-2">

@@ -39,14 +39,16 @@ function CardMdHotel({
     <article className={styles["hcard-md"]}>
       <div className={styles["hcard-header"]}>
         <SwiperImageSlide images={images} title={name} />
-        <span className={styles["hcard-badge"]}>Breakfast included</span>
+        {badge && <span className={styles["hcard-badge"]}>{badge}</span>}
         <button className={styles["hcard-reaction-btn"]}>
           {isFavourite ? <GoHeart /> : <GoHeartFill />}
         </button>
       </div>
 
       <div className={styles["hcard-content"]}>
-        <h3 className={styles["hcard-name"]}>{name}</h3>
+        <h3 className={styles["hcard-name"]}>
+          <span>{name}</span>
+        </h3>
         <p className={styles["hcard-location"]}>
           {location.address}, {location.city}
         </p>

@@ -16,6 +16,7 @@ export default function Home() {
             rating={hotel.rating}
             room={hotel.room}
             totalReviews={hotel.totalReviews}
+            badge={hotel.badge}
             name={hotel.name}
           />
         ))}

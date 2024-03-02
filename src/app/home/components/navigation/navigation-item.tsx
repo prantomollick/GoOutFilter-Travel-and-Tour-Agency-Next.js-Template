@@ -1,5 +1,5 @@
 "use client";
-import type { NavigationItem } from "@/app/home/components/navigation/navigation-content";
+import type { NavigationItem } from "@/app/navigation-menu";
 import classNames from "classnames";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

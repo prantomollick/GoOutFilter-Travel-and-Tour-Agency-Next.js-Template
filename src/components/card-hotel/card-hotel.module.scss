@@ -1,14 +1,15 @@
 .slide:hover {
-  .hcard-name::after {
-    width: 100%;
+  .hcard-name span {
+    background-size: auto;
   }
 }
 
 .hcard-md {
+  display: inline-block;
   width: 30rem;
   &:hover {
-    .hcard-name::after {
-      width: 100%;
+    .hcard-name span {
+      background-size: 100%;
     }
   }
 }
@@ -18,13 +19,14 @@
     position: absolute;
     top: 20px;
     left: 0;
+
+    color: var(--text-white);
     background-color: var(--bg-darkest-blue);
 
     font-family: inherit;
     font-size: 1.2rem;
     font-weight: var(--font-weight-medium);
     text-transform: uppercase;
-    color: var(--text-white);
     line-height: calc(1.7rem / 1.2rem);
     z-index: 3;
 
@@ -52,6 +54,13 @@
     outline: none;
     color: var(--text-dark);
     cursor: pointer;
+
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: var(--bg-darkest-blue);
+      color: var(--text-white);
+    }
   }
 
   &-header {
@@ -77,18 +86,12 @@
 
     margin-bottom: 5px;
 
-    &::after {
-      content: "";
-      display: inline-block;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: 2px;
-      width: 0%;
-      background-color: var(--bg-darkest-blue);
-      border-radius: var(--border-radius-large);
+    span {
+      background-image: linear-gradient(transparent 24px, #000 0);
+      background-repeat: no-repeat;
+      background-size: 0;
 
-      transition: width 0.3s ease;
+      transition: background-size 0.3s ease;
     }
   }
 

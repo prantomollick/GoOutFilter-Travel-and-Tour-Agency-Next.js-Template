@@ -23,7 +23,7 @@ export interface TabCard {
   btnText: string;
 }
 
-export const navigationContent: NavigationItem[] = [
+export const navigationMenu: NavigationItem[] = [
   {
     label: "Home",
     link: "/home",

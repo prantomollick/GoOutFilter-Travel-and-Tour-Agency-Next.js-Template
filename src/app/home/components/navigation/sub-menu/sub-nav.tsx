@@ -1,7 +1,7 @@
 import styles from "./sub-nav.module.scss";
 
 import React from "react";
-import { type SubNavigationItem } from "../navigation-content";
+import { type SubNavigationItem } from "../../../../navigation-menu";
 import Link from "next/link";
 
 interface SubNavProps {
