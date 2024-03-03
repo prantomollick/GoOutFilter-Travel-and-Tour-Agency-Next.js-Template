@@ -31,7 +31,7 @@ function RecommendSection() {
     <section id="#recommend" className="pb-12">
       <div className="container">
         <div className={styles["section__header"]}>
-          <div>
+          <div className={styles["section__header-title"]}>
             <h2 className="s-heading">Recommended</h2>
             <p className="s-heading-subtitle">
               Interdum et malesuada fames ac ante ipsum
@@ -39,7 +39,7 @@ function RecommendSection() {
           </div>
 
           <div>
-            <select>
+            <select className={styles["section__header-select"]}>
               {categories?.map((cat) => (
                 <option key={cat} value={cat.toLowerCase()}>
                   {cat}

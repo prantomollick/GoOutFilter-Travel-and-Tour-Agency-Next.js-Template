@@ -1,6 +1,36 @@
 .section__header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+
+  &-title {
+  }
+
+  &-select {
+    font-family: inherit;
+    font-size: var(--font-size-1_6rem);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-dark);
+    line-height: calc(3rem / 1.6rem);
+    padding: 1rem 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-small);
+    outline: none;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    background-image: none;
+
+    option {
+      padding: 2rem;
+
+      &:hover {
+        background-color: cyan;
+      }
+    }
+  }
 }
 
 .swiper {
@@ -20,20 +50,19 @@
     position: relative !important;
     opacity: 100%;
     bottom: auto !important;
-    width: auto !important;
+    width: fit-content !important;
 
     .swiper-pagination-dot {
-      width: 6px;
-      height: 6px;
       opacity: 100%;
       border-radius: var(--border-radius-full);
       background-color: var(--bg-regular-gray);
-      transition: all 0.3s ease;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
     }
 
     .swiper-pagination-custom-bullet-active {
-      width: 8px;
-      height: 8px;
+      transition: transform 0.3s ease;
+      transform: scale(1.2);
       background-color: var(--bg-primary-blue);
     }
   }
