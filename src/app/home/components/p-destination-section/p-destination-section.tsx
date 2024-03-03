@@ -88,13 +88,13 @@ const bannerData: BannerItem[] = [
 
 function PdestinationSection() {
   return (
-    <section className="pt-12">
+    <section className="pt-12 pb-12">
       <div className="container">
         <div className={styles["d-slider-section"]}>
           <div className={styles["section-head"]}>
             <div className={styles["section-title"]}>
               <h2 className="s-heading">Popular Destinations</h2>
-              <p className="s-heading-p">
+              <p className="s-heading-subtitle">
                 These popular destinations have a lot to offer
               </p>
             </div>

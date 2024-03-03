@@ -24,6 +24,7 @@ export const SwiperImageSlide = ({ images, title }: Props) => {
   return (
     <div className="slide">
       <Swiper
+        className="mySwiper"
         modules={[Navigation, Pagination, A11y]}
         slidesPerView={1}
         initialSlide={Math.floor(images.length / 2)}
@@ -47,7 +48,7 @@ export const SwiperImageSlide = ({ images, title }: Props) => {
             />
           </SwiperSlide>
         ))}
-        <div className="swiper-pagination"></div>
+        <div className="swiper-pagination swiper-pagination__custom"></div>
         <ArrowBtn
           direction="left"
           className="slide-previous-btn"

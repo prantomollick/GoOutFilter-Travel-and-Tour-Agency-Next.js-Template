@@ -372,6 +372,7 @@ export const hotels: Hotel[] = [
   {
     hotelId: "7", // Ensure it is unique
     name: "The Trafalgar St. James, London",
+    isRecommend: true,
     isFavourite: false,
     location: {
       address: "101 Trial Rd",

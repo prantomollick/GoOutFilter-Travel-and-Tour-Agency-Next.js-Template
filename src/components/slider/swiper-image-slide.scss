@@ -1,4 +1,4 @@
-.swiper::before {
+.mySwiper::before {
   content: "";
   position: absolute;
   top: 0;
@@ -14,7 +14,7 @@
   );
 }
 
-.swiper-pagination {
+.swiper-pagination__custom {
   position: absolute;
   margin-bottom: 1.5rem;
 }
