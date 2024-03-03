@@ -1,6 +1,9 @@
+"use client";
+import "swiper/scss";
+import "swiper/scss/navigation";
+import "swiper/scss/pagination";
 import "./swiper-image-slide.scss";
 
-import classNames from "classnames";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { A11y, Navigation, Pagination } from "swiper/modules";
@@ -27,14 +30,8 @@ export const SwiperImageSlide = ({ images, title }: Props) => {
         navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
         pagination={{
           clickable: true,
-          el: ".slide-pagination",
-          renderBullet(_, className) {
-            return `<span class="${classNames(
-              "slide-pagination-dot",
-              className
-            )}"></span>`;
-          },
-          bulletActiveClass: `slide-pagination-dot-active`
+          el: ".swiper-pagination",
+          bulletClass: "swiper-pagination-bullet slide-pagination-dot"
         }}
         onInit={() => setInit(true)}
       >
@@ -50,16 +47,14 @@ export const SwiperImageSlide = ({ images, title }: Props) => {
             />
           </SwiperSlide>
         ))}
-      </Swiper>
-      <div className="slide-pagination"></div>
-      <div className="slide-control">
+        <div className="swiper-pagination"></div>
         <ArrowBtn
           direction="left"
           className="slide-previous-btn"
           ref={prevRef}
         />
         <ArrowBtn direction="right" className="slide-next-btn" ref={nextRef} />
-      </div>
+      </Swiper>
     </div>
   );
 };

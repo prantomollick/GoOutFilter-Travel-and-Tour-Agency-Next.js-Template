@@ -1,16 +1,9 @@
-"use client";
 import styles from "./card-hotel.module.scss";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+
+import { GoHeart, GoHeartFill } from "react-icons/go";
 
 import { GoogleLocation, Rating, Room } from "@/data/hotel-data";
-
-import Image from "next/image";
-import React, { useRef, useState } from "react";
-import { GoHeart, GoHeartFill } from "react-icons/go";
 import { formattedPrice } from "@/util/formatPrice";
-
 import { SwiperImageSlide } from "../slider/swiper-image-slide";
 
 interface CardHotelProps {

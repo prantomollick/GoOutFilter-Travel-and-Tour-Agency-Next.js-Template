@@ -1,9 +1,12 @@
-import { navigationMenu } from "@/app/navigation-menu";
+"use client";
 import styles from "./recommend-section.module.scss";
 
-import React from "react";
+import { navigationMenu } from "@/app/navigation-menu";
+
+import React, { useMemo } from "react";
 import { hotels } from "@/data/hotel-data";
 import CardMdHotel from "@/components/card-hotel/card-md-hotel";
+import Link from "next/link";
 
 function RecommendSection() {
   const categories = navigationMenu
@@ -41,16 +44,18 @@ function RecommendSection() {
           {hotels.map((hotel) => {
             if (hotel.isRecommend) {
               return (
-                <CardMdHotel
-                  key={hotel.hotelId}
-                  name={hotel.name}
-                  images={hotel.images! as string[]}
-                  room={hotel.room}
-                  isFavourite={hotel.isFavourite}
-                  badge={hotel.badge}
-                  location={hotel.location}
-                  rating={hotel.rating}
-                />
+                <Link key={hotel.hotelId} href={"#"}>
+                  <CardMdHotel
+                    images={hotel.images! as string[]}
+                    isFavourite={hotel.isFavourite}
+                    location={hotel.location}
+                    rating={hotel.rating}
+                    room={hotel.room}
+                    totalReviews={hotel.totalReviews}
+                    badge={hotel.badge}
+                    name={hotel.name}
+                  />
+                </Link>
               );
             }
           })}
