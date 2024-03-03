@@ -2,8 +2,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 4rem;
 
   &-title {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
   }
 
   &-select {
@@ -13,22 +17,28 @@
     color: var(--text-dark);
     line-height: calc(3rem / 1.6rem);
     padding: 1rem 2rem;
+    padding-right: 3rem;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-small);
-    outline: none;
+    background-color: white;
 
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
 
-    background-image: none;
+    background-image: url("/icon/triangle-down.svg");
+    background-repeat: no-repeat;
+    background-position: left 90% top 50%;
+    background-size: 10px;
+
+    &:focus {
+      outline: 1px solid var(--bg-darkest-blue);
+    }
 
     option {
-      padding: 2rem;
-
-      &:hover {
-        background-color: cyan;
-      }
+      font-family: inherit;
+      font-size: var(--font-size-1_6rem);
+      font-weight: var(--font-weight-medium);
     }
   }
 }

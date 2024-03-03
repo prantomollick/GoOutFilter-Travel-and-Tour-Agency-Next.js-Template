@@ -25,8 +25,6 @@ function RecommendSection() {
     })[0]
     .subnav?.map((cat) => cat.label);
 
-  console.log(categories);
-
   return (
     <section id="#recommend" className="pb-12">
       <div className="container">
