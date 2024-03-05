@@ -1,0 +1,39 @@
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feature {
+  width: 30rem;
+  text-align: center;
+
+  &__icon {
+    width: 70px;
+    height: 70px;
+
+    margin-bottom: 3rem;
+  }
+
+  &__title {
+    font-family: inherit;
+    font-size: var(--font-size-1_8rem);
+    font-weight: var(--font-weight-medium);
+    line-height: calc(3rem / 1.8rem);
+
+    color: var(--text-dark);
+
+    margin-bottom: 0.5rem;
+  }
+
+  &__des {
+    font-family: inherit;
+    font-size: var(--font-size-1_5rem);
+    font-weight: var(--font-weight-regular);
+    line-height: calc(2.6rem / 1.5rem);
+    letter-spacing: 0.3px;
+
+    color: var(--text-light);
+  }
+}
