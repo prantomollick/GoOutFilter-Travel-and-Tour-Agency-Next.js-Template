@@ -1,14 +1,15 @@
 "use client";
+import styles from "./hero-section.module.scss";
+
 import classNames from "classnames";
+import { useState } from "react";
 import SearchForm from "../search-form/search-form";
-import styles from "./hero.module.scss";
-import React, { useState } from "react";
 type Nav = {
   label: string;
   isActive: boolean;
 };
 
-function Hero() {
+function HeroSection() {
   const [isNavActive, setIsNavActive] = useState({
     label: "Hotel",
     isActive: true
@@ -70,4 +71,4 @@ function Hero() {
   );
 }
 
-export default Hero;
+export default HeroSection;

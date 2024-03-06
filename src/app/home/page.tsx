@@ -1,8 +1,8 @@
-import React from "react";
-import Hero from "./components/hero/hero";
+import CustomerReviewSection from "./components/customer-review-section/customer-review-section";
+import FeatureSection from "./components/feature-section/feature-section";
+import HeroSection from "./components/hero-section/hero";
 import PdestinationSection from "./components/p-destination-section/p-destination-section";
 import RecommendSection from "./components/recommend-section/recommend-section";
-import FeatureSection from "./components/feature-section/feature-section";
 
 export type Features = {
   icon: string;
@@ -31,10 +31,11 @@ const features: Features[] = [
 function Home() {
   return (
     <main>
-      <Hero />
+      <HeroSection />
       <PdestinationSection />
       <RecommendSection />
       <FeatureSection features={features} />
+      <CustomerReviewSection />
     </main>
   );
 }
