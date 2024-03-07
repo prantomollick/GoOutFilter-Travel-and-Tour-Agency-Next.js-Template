@@ -1,6 +1,7 @@
 import CustomerReviewSection from "./components/customer-review-section/customer-review-section";
 import FeatureSection from "./components/feature-section/feature-section";
 import HeroSection from "./components/hero-section/hero";
+import InspirationSection from "./components/inspiration-section/inspiration-section";
 import PdestinationSection from "./components/p-destination-section/p-destination-section";
 import RecommendSection from "./components/recommend-section/recommend-section";
 
@@ -36,6 +37,7 @@ function Home() {
       <RecommendSection />
       <FeatureSection features={features} />
       <CustomerReviewSection />
+      <InspirationSection />
     </main>
   );
 }

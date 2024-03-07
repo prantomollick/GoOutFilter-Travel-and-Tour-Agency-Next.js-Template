@@ -42,15 +42,17 @@ function CardBlog({
   const { width, height } = imgSize[size];
 
   return (
-    <article className={classNames(styles[`card-${size}`], shadow)}>
+    <article
+      className={classNames(styles["card"], styles[`card-${size}`], shadow)}
+    >
       <div className={styles["card__img-wrapper"]}>
         <Image
           src={imgLink}
           alt={title}
-          //   layout="responsive"
           priority={true}
           width={width}
           height={height}
+          className={styles["card__img"]}
         />
       </div>
       <div
