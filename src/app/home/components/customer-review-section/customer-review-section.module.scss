@@ -25,6 +25,7 @@
       font-family: inherit;
       font-weight: var(--font-weight-semibold);
       font-size: var(--font-size-3rem);
+      text-transform: capitalize;
       line-height: calc(4.3rem / 3rem);
 
       color: var(--text-dark);
@@ -81,6 +82,7 @@
         font-weight: var(--font-weight-regular);
         line-height: calc(3rem / 1.6rem);
         color: var(--text-light);
+        margin-bottom: 9px;
       }
 
       &-stars {
@@ -148,9 +150,6 @@
       display: flex;
       align-items: center;
       gap: 2rem;
-
-      &__value {
-      }
 
       &__bar {
         width: 30rem;
