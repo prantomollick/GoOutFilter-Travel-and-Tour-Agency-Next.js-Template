@@ -1,6 +1,8 @@
 .customer {
   padding: 12rem 0px;
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
 
   &-review {
@@ -94,9 +96,13 @@
   }
 
   &-info {
+    width: 63rem;
+
     .customer-user {
       display: flex;
+      align-items: center;
       gap: 3rem;
+      margin-bottom: 2.3rem;
 
       &-img {
         width: 80px;
@@ -113,9 +119,57 @@
         font-family: inherit;
         font-size: var(--font-size-1_6rem);
         font-weight: var(--font-weight-medium);
+        line-height: calc(3rem / 1.6rem);
+
+        color: var(--text-dark);
       }
 
       &__title {
+        font-family: inherit;
+        font-size: var(--font-size-1_6rem);
+        letter-spacing: 0.3px;
+        line-height: calc(2.6rem / 1.5rem);
+
+        color: var(--text-light);
+      }
+    }
+
+    .customer-des {
+      font-size: var(--font-size-1_8rem);
+      font-weight: var(--font-weight-medium);
+      line-height: calc(3rem / 1.8rem);
+
+      color: var(--text-dark);
+
+      margin-bottom: 6rem;
+    }
+
+    .customer-progress {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+
+      &__value {
+      }
+
+      &__bar {
+        width: 30rem;
+        height: 2px;
+        background-color: var(--bg-regular-gray);
+        border-radius: var(--border-radius-full);
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          border-radius: var(--border-radius-full);
+          left: 0;
+          top: 0;
+          width: 24%;
+          height: 100%;
+
+          background-color: var(--bg-dark-blue);
+        }
       }
     }
   }

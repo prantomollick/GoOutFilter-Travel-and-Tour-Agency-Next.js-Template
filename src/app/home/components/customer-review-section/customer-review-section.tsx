@@ -33,15 +33,14 @@ function CustomerReviewSection() {
     <section id="#customer-review" className="bg-light-blue">
       <div className="container">
         <motion.div
-          layout
           className={styles.customer}
           initial={{
             opacity: 0,
-            y: "120px"
+            y: 60
           }}
           whileInView={{
             opacity: 1,
-            y: "0px",
+            y: 0,
             transition: {
               duration: 1
             }
@@ -103,15 +102,15 @@ function CustomerReviewSection() {
                 </p>
               </div>
             </div>
-            <p>
+            <p className={styles["customer-des"]}>
               The place is in a great location in Gumbet. The area is safe and
               beautiful. The apartment was comfortable and the host was kind and
               responsive to our requests.
             </p>
-            <div>
-              <span>01</span>
-              <span></span>
-              <span>05</span>
+            <div className={styles["customer-progress"]}>
+              <span className={styles["customer-progress__value"]}>01</span>
+              <span className={styles["customer-progress__bar"]}></span>
+              <span className={styles["customer-progress__value"]}>05</span>
             </div>
           </div>
         </motion.div>
