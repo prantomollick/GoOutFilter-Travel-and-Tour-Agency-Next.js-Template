@@ -1,0 +1,122 @@
+.customer {
+  padding: 12rem 0px;
+  display: flex;
+  justify-content: space-between;
+
+  &-review {
+    width: 52rem;
+
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 6rem;
+    }
+
+    .review-headline {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .review-title {
+      width: 35.3rem;
+      font-family: inherit;
+      font-weight: var(--font-weight-semibold);
+      font-size: var(--font-size-3rem);
+      line-height: calc(4.3rem / 3rem);
+
+      color: var(--text-dark);
+    }
+
+    .review-des {
+      font-family: inherit;
+      font-weight: var(--font-weight-regular);
+      font-size: var(--font-size-1_6rem);
+      line-height: calc(3rem / 1.6rem);
+
+      color: var(--text-light);
+    }
+
+    .review-details {
+      display: flex;
+      gap: 12.4rem;
+    }
+
+    .review-caption {
+      font-family: inherit;
+
+      display: flex;
+      flex-direction: column;
+
+      &-amount {
+        font-weight: var(--font-weight-semibold);
+        font-size: var(--font-size-3rem);
+        line-height: calc(4.3rem / 3rem);
+        color: var(--text-dark);
+      }
+
+      &-text {
+        font-size: var(--font-size-1_6rem);
+        font-weight: var(--font-weight-regular);
+        line-height: calc(3rem / 1.6rem);
+        color: var(--text-light);
+      }
+    }
+
+    .review-rating {
+      display: flex;
+      flex-direction: column;
+
+      &-avg {
+        font-weight: var(--font-weight-semibold);
+        font-size: var(--font-size-3rem);
+        line-height: calc(4.3rem / 3rem);
+        color: var(--text-dark);
+      }
+
+      &-text {
+        font-size: var(--font-size-1_6rem);
+        font-weight: var(--font-weight-regular);
+        line-height: calc(3rem / 1.6rem);
+        color: var(--text-light);
+      }
+
+      &-stars {
+        display: flex;
+        gap: 7px;
+      }
+      &-star {
+        width: 10px;
+        height: 10px;
+        color: var(--text-primary-blue);
+      }
+    }
+  }
+
+  &-info {
+    .customer-user {
+      display: flex;
+      gap: 3rem;
+
+      &-img {
+        width: 80px;
+        height: 80px;
+        border-radius: var(--border-radius-full);
+      }
+
+      &-job {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &__name {
+        font-family: inherit;
+        font-size: var(--font-size-1_6rem);
+        font-weight: var(--font-weight-medium);
+      }
+
+      &__title {
+      }
+    }
+  }
+}

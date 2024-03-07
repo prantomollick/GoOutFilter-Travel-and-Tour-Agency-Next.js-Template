@@ -14,6 +14,7 @@ html {
   //This defines what 1rem is
   //1rem = 10px; 10px/16px = 62.5%
   font-size: 62.5%;
+  overflow-x: hidden;
 }
 
 body {
@@ -22,9 +23,6 @@ body {
   font-weight: var(--font-weight-regular);
   line-height: normal;
   font-size: var(--font-size-1_4rem);
-  overflow-x: hidden;
-  // padding: 1rem;
-  // background-color: rgb(252, 242, 230);
 }
 
 a:link,

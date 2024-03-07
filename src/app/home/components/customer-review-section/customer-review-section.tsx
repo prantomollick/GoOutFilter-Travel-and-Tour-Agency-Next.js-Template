@@ -8,7 +8,9 @@ import {
   animate,
   useInView
 } from "framer-motion";
+import Image from "next/image";
 import React, { useEffect, useRef } from "react";
+import { GoStarFill } from "react-icons/go";
 
 function CustomerReviewSection() {
   const count = useMotionValue(0);
@@ -28,47 +30,93 @@ function CustomerReviewSection() {
   }, [count, isReviewCountInView]);
 
   return (
-    <motion.section
-      id="#customer-review"
-      initial={{
-        opacity: 0,
-        y: 50
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0, //slide in to its original position
-        transition: {
-          duration: 1
-        }
-      }}
-      viewport={{ once: true }}
-    >
+    <section id="#customer-review" className="bg-light-blue">
       <div className="container">
-        <div className={styles["customer-review"]}>
-          <div>
-            <div>
-              <h3 className={styles["review-title"]}>
-                What our customers are saying us?
-              </h3>
-              <p className={styles["review-des"]}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Maecenas varius tortor nibh, sit amet tempor nibh finibus et.
-                Aenean eu enim justo.
-              </p>
+        <motion.div
+          layout
+          className={styles.customer}
+          initial={{
+            opacity: 0,
+            y: "120px"
+          }}
+          whileInView={{
+            opacity: 1,
+            y: "0px",
+            transition: {
+              duration: 1
+            }
+          }}
+          viewport={{ once: true }}
+        >
+          <div className={styles["customer-review"]}>
+            <div className={styles["customer-review-wrapper"]}>
+              <div className={styles["review-headline"]}>
+                <h3 className={styles["review-title"]}>
+                  What our customers are saying us?
+                </h3>
+                <p className={styles["review-des"]}>
+                  Lorem ipsum dolor sit amet, consectetur elit. Maecenas varius
+                  tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim
+                  justo.
+                </p>
+              </div>
+              <div className={styles["review-details"]}>
+                <div className={styles["review-caption"]}>
+                  <span className={styles["review-caption-amount"]}>
+                    <motion.span ref={reviewCountRef}>{rounded}</motion.span>
+                    m+
+                  </span>
+                  <span className={styles["review-caption-text"]}>
+                    Happy People
+                  </span>
+                </div>
+                <div className={styles["review-rating"]}>
+                  <span className={styles["review-rating-avg"]}>4.88</span>
+                  <span className={styles["review-rating-text"]}>
+                    Overall rating
+                  </span>
+                  <span className={styles["review-rating-stars"]}>
+                    <GoStarFill className={styles["review-rating-star"]} />
+                    <GoStarFill className={styles["review-rating-star"]} />
+                    <GoStarFill className={styles["review-rating-star"]} />
+                    <GoStarFill className={styles["review-rating-star"]} />
+                    <GoStarFill className={styles["review-rating-star"]} />
+                  </span>
+                </div>
+              </div>
             </div>
+            <div></div>
+          </div>
+          <div className={styles["customer-info"]}>
+            <div className={styles["customer-user"]}>
+              <Image
+                src="/user/micheal-dam.jpg"
+                width={80}
+                height={80}
+                alt="micheal"
+                className={styles["customer-user-img"]}
+              />
+              <div className={styles["customer-user-job"]}>
+                <p className={styles["customer-user__name"]}>David Michel</p>
+                <p className={styles["customer-user__title"]}>
+                  UX / UI Designer
+                </p>
+              </div>
+            </div>
+            <p>
+              The place is in a great location in Gumbet. The area is safe and
+              beautiful. The apartment was comfortable and the host was kind and
+              responsive to our requests.
+            </p>
             <div>
-              <motion.span
-                className={styles["review-number"]}
-                ref={reviewCountRef}
-              >
-                {rounded}
-              </motion.span>
-              m+
+              <span>01</span>
+              <span></span>
+              <span>05</span>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 }
 
