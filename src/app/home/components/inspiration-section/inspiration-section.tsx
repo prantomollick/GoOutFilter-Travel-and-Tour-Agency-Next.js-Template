@@ -1,9 +1,21 @@
+"use client";
 import styles from "./inspiration-section.module.scss";
 
 import Link from "next/link";
 
 import CardBlog from "@/components/card-blog/card-blog";
 import { blogData } from "@/data/blog-data";
+import { delay, motion } from "framer-motion";
+
+const variants = {
+  visible: (i: number) => ({
+    opacity: 1,
+    transition: {
+      delay: i * 0.3
+    }
+  }),
+  hidden: { opacity: 0 }
+};
 
 function InspirationSection() {
   return (
@@ -14,15 +26,22 @@ function InspirationSection() {
           <p className="s-heading-subtitle">Interdum et malesuada fames</p>
         </div>
         <div className={styles.blogs}>
-          {blogData.map((blog) => (
-            <Link href="#" key={blog.blogId} className={styles.blog}>
-              <CardBlog
-                date={blog.createdAt}
-                imgLink={blog.image}
-                title={blog.title}
-                size="md"
-              />
-            </Link>
+          {blogData.map((blog, i) => (
+            <motion.div
+              key={blog.blogId}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: i * 0.4 }}
+            >
+              <Link href="#" className={styles.blog}>
+                <CardBlog
+                  date={blog.createdAt}
+                  imgLink={blog.image}
+                  title={blog.title}
+                  size="md"
+                />
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>
