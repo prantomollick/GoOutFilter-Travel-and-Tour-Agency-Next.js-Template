@@ -29,9 +29,10 @@ function InspirationSection() {
           {blogData.map((blog, i) => (
             <motion.div
               key={blog.blogId}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 1, delay: i * 0.4 }}
+              variants={variants}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
             >
               <Link href="#" className={styles.blog}>
                 <CardBlog
