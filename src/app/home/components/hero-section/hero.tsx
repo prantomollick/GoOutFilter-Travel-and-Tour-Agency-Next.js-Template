@@ -3,7 +3,8 @@ import styles from "./hero-section.module.scss";
 
 import classNames from "classnames";
 import { useState } from "react";
-import SearchForm from "../search-form/search-form";
+import SearchForm from "./search-form/search-form";
+
 type Nav = {
   label: string;
   isActive: boolean;

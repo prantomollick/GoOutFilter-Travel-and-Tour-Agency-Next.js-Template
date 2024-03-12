@@ -18,8 +18,6 @@ function CustomerReviewSection() {
   const reviewCountRef = useRef<HTMLSpanElement>(null);
   const isReviewCountInView = useInView(reviewCountRef, { once: true });
 
-  console.log(isReviewCountInView);
-
   useEffect(() => {
     if (isReviewCountInView) {
       const animation = animate(count, 13, {
