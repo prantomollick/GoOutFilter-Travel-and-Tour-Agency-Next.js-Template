@@ -99,79 +99,76 @@ function renderColorVarientCssClass<T extends GenericButtonProps>(
   endicon: T["endicon"],
   className: T["className"]
 ): string {
-  return classNames(
-    {
-      //button color, outline
-      [styles[
-        `${
-          color === "default" && variant === "bordered"
-            ? "button-default-outline"
-            : "button-default"
-        }`
-      ]]: color === "default",
+  return classNames(className, {
+    //button color, outline
+    [styles[
+      `${
+        color === "default" && variant === "bordered"
+          ? "button-default-outline"
+          : "button-default"
+      }`
+    ]]: color === "default",
 
-      [styles[
-        `${
-          color === "white" && variant === "bordered"
-            ? "button-white-outline"
-            : "button-white"
-        }`
-      ]]: color === "white",
+    [styles[
+      `${
+        color === "white" && variant === "bordered"
+          ? "button-white-outline"
+          : "button-white"
+      }`
+    ]]: color === "white",
 
-      [styles[
-        `${
-          color === "blue" && variant === "bordered"
-            ? "button-blue-outline"
-            : "button-blue"
-        }`
-      ]]: color === "blue",
+    [styles[
+      `${
+        color === "blue" && variant === "bordered"
+          ? "button-blue-outline"
+          : "button-blue"
+      }`
+    ]]: color === "blue",
 
-      [styles[
-        `${
-          color === "dark-blue" && variant === "bordered"
-            ? "button-dark-blue-outline"
-            : "button-dark-blue"
-        }`
-      ]]: color === "dark-blue",
+    [styles[
+      `${
+        color === "dark-blue" && variant === "bordered"
+          ? "button-dark-blue-outline"
+          : "button-dark-blue"
+      }`
+    ]]: color === "dark-blue",
 
-      [styles[
-        `${
-          color === "darker-blue" && variant === "bordered"
-            ? "button-darker-blue-outline"
-            : "button-darker-blue"
-        }`
-      ]]: color === "darker-blue",
+    [styles[
+      `${
+        color === "darker-blue" && variant === "bordered"
+          ? "button-darker-blue-outline"
+          : "button-darker-blue"
+      }`
+    ]]: color === "darker-blue",
 
-      [styles[
-        `${
-          color === "darkest-gray" && variant === "bordered"
-            ? "button-darkest-gray-outline"
-            : "button-darkest-gray"
-        }`
-      ]]: color === "darkest-gray",
+    [styles[
+      `${
+        color === "darkest-gray" && variant === "bordered"
+          ? "button-darkest-gray-outline"
+          : "button-darkest-gray"
+      }`
+    ]]: color === "darkest-gray",
 
-      //radius
-      [`${styles["rounded-sm"]}`]: radius === "sm",
-      [`${styles["rounded-md"]}`]: radius === "md",
-      [`${styles["rounded-lg"]}`]: radius === "lg",
-      [`${styles["rounded-full"]}`]: radius === "full",
+    //radius
+    [`${styles["rounded-sm"]}`]: radius === "sm",
+    [`${styles["rounded-md"]}`]: radius === "md",
+    [`${styles["rounded-lg"]}`]: radius === "lg",
+    [`${styles["rounded-full"]}`]: radius === "full",
 
-      //size
-      [`${styles["button-size-sm"]}`]: size === "sm",
-      [`${styles["button-size-md"]}`]: size === "md",
-      [`${styles["button-size-lg"]}`]: size === "lg",
+    //size
+    [`${styles["button-size-sm"]}`]: size === "sm",
+    [`${styles["button-size-md"]}`]: size === "md",
+    [`${styles["button-size-lg"]}`]: size === "lg",
 
-      //font Wieght
-      [`${styles["font-normal"]}`]: fontWeight === "normal",
-      [`${styles["font-medium"]}`]: fontWeight === "medium",
-      [`${styles["font-semibold"]}`]: fontWeight === "semibold",
+    //font Wieght
+    [`${styles["font-normal"]}`]: fontWeight === "normal",
+    [`${styles["font-medium"]}`]: fontWeight === "medium",
+    [`${styles["font-semibold"]}`]: fontWeight === "semibold",
 
-      // Flex Gap maintain twik class
-      [`${styles["gap-10px"]}`]: starticon,
-      [`${styles["gap-13px"]}`]: endicon
-    },
-    className
-  );
+    // Flex Gap maintain twik class
+    [`${styles["gap-10px"]}`]: starticon,
+    [`${styles["gap-13px"]}`]: endicon
+  });
 }
 
 export default Button;
