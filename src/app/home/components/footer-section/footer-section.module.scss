@@ -1,0 +1,102 @@
+.footer__content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+}
+
+.s-contact__t,
+.s-company__t,
+.s-support__t,
+.s-others__t,
+.s-mobile__t {
+  font-family: inherit;
+  font-size: var(--font-size-1_6rem);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-dark);
+  line-height: calc(3rem / 1.6rem);
+  margin-bottom: 3rem;
+}
+
+.s-contact__phone {
+  margin-bottom: 3.6rem;
+}
+.s-contact__phone,
+.s-contact__email {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.s-contact__no-t,
+.s-contact__e-t {
+  font-family: inherit;
+  font-size: var(--font-size-1_4rem);
+  font-weight: var(--font-weight-regular);
+  line-height: calc(2rem / 1.4rem);
+}
+
+.s-contact__no,
+.s-contact__e {
+  font-family: inherit;
+  font-size: var(--font-size-1_8rem);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-primary-blue);
+  line-height: calc(3rem / 1.8rem);
+}
+
+.s-company__list,
+.s-support__list,
+.s-others__list {
+  list-style: none;
+}
+
+.s-company__link,
+.s-support__link,
+.s-others__link {
+  font-family: inherit;
+  font-size: var(--font-size-1_5rem);
+  color: var(--text-dark);
+  font-style: normal;
+  line-height: calc(3.5rem / 1.5rem);
+  font-weight: var(--font-weight-regular);
+}
+
+.s-mobile__app-store {
+  width: 19rem;
+  height: 6rem;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.2rem;
+
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-small);
+
+  font-family: inherit;
+  color: inherit;
+
+  &:nth-of-type(1) {
+    margin-bottom: 2rem;
+  }
+
+  .s-mobile__app-icon {
+    width: 2.4rem;
+    height: 3rem;
+  }
+
+  .s-mobile__app-content {
+    p {
+      font-family: inherit;
+      font-size: var(--font-size-1_4rem);
+      font-weight: var(--font-weight-regular);
+      color: var(--text-light);
+    }
+
+    h3 {
+      font-family: inherit;
+      font-size: var(--font-size-1_5rem);
+      color: var(--text-dark);
+      font-weight: var(--font-weight-medium);
+    }
+  }
+}
