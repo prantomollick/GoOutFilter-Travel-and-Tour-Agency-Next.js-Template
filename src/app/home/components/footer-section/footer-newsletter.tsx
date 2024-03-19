@@ -6,7 +6,7 @@ import Button from "@/components/ui/button/button";
 import Image from "next/image";
 import React, { FormEvent, useState } from "react";
 
-function FooterHeader() {
+function FooterNewsLetter() {
   const [email, setEmail] = useState<string>("");
 
   const handleSubscribe = (e: FormEvent) => {
@@ -66,4 +66,4 @@ function FooterHeader() {
   );
 }
 
-export default FooterHeader;
+export default FooterNewsLetter;

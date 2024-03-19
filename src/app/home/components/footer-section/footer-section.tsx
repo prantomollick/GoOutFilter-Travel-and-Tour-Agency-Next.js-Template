@@ -1,9 +1,9 @@
 import styles from "./footer-section.module.scss";
 
-import React from "react";
-import FooterHeader from "./footer-header";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import FooterNewsLetter from "./footer-newsletter";
+import FooterCopyright from "./footer-copyright";
 
 function FooterSection() {
   const companyLinks = [
@@ -35,7 +35,7 @@ function FooterSection() {
 
   return (
     <footer className="footer-section" id="#footer">
-      <FooterHeader />
+      <FooterNewsLetter />
       <div className="container py-6">
         <div className={styles["footer__content"]}>
           <div className={styles["s-contact"]}>
@@ -142,6 +142,7 @@ function FooterSection() {
           </div>
         </div>
       </div>
+      <FooterCopyright />
     </footer>
   );
 }
