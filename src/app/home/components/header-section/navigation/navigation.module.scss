@@ -1,3 +1,5 @@
+@import "@/app/mixins";
+
 .nav {
   display: flex;
   align-items: center;
@@ -13,6 +15,12 @@
       padding: 0;
       margin: 0;
       height: 5rem;
+    }
+  }
+
+  @include respond("desktop-lg") {
+    &__cur-lng {
+      display: none;
     }
   }
 

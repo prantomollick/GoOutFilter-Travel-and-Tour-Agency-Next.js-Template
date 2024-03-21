@@ -22,7 +22,7 @@ function Navigation() {
 
   return (
     <nav
-      className={classNames(styles.nav, "py-2")}
+      className={classNames(styles.nav, "py-2", "px-2")}
       role="navigation"
       aria-label="breadcrumb"
     >
@@ -34,7 +34,7 @@ function Navigation() {
       </div>
 
       <div className="flex item-center gap-2">
-        <div className="flex gap-2">
+        <div className={classNames(styles["nav__cur-lng"], "flex", "gap-2")}>
           <CurrencyBtn onClick={currencyActions.onOpen}>
             {currencyState.content?.currency?.code} <GoTriangleDown />
           </CurrencyBtn>

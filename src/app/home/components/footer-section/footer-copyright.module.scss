@@ -4,6 +4,8 @@
   justify-content: space-between;
   align-items: center;
 
+  border-top: 1px solid var(--border-color);
+
   &__left {
     display: flex;
     align-items: center;
@@ -40,6 +42,8 @@
   &__right {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    gap: 3rem;
   }
 
   &__lc {
@@ -52,17 +56,36 @@
       display: flex;
       align-items: center;
       gap: 1rem;
+    }
 
+    &-l-link,
+    &-c-link {
       font-family: inherit;
       font-size: var(--font-size-1_4rem);
-      font-weight: var(--font-weight-regular);
+      font-weight: var(--font-weight-medium);
       line-height: calc(2rem / 1.4rem);
-      &-link {
-        &:link,
-        &:visited {
+      color: var(--text-dark);
+
+      &:link,
+      &:visited {
+        span {
           text-decoration: underline;
+          text-decoration-color: var(--text-dark);
+          text-decoration-skip-ink: var(--text-dark);
+          text-decoration-thickness: 1px;
         }
       }
+    }
+  }
+
+  &__right-social {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    &-link:link,
+    &-link:visited {
+      color: var(--text-dark);
     }
   }
 }

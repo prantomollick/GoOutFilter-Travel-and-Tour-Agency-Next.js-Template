@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import styles from "./footer-copyright.module.scss";
 
 import Image from "next/image";
@@ -13,7 +14,7 @@ import {
 function FooterCopyright() {
   return (
     <div className="container">
-      <div className={styles["f-copyright"]}>
+      <div className={classNames(styles["f-copyright"], "py-2")}>
         <div className={styles["f-copyright__left"]}>
           <p className={styles["f-copyright__left-text"]}>
             © {new Date().getFullYear()} GoTrip LLC All rights reserved.
@@ -41,12 +42,12 @@ function FooterCopyright() {
             <div className={styles["f-copyright__lc-l"]}>
               <Image src="/icon/globe.svg" width={16} height={16} alt="globe" />
               <Link href="#" className={styles["f-copyright__lc-l-link"]}>
-                English (US)
+                <span>English&nbsp;(US)</span>
               </Link>
             </div>
             <div className={styles["f-copyright__lc-c"]}>
-              <Link href="#">
-                <span>$</span> USD
+              <Link href="#" className={styles["f-copyright__lc-c-link"]}>
+                $&nbsp;<span>USD</span>
               </Link>
             </div>
           </div>
