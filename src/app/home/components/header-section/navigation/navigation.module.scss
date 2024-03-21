@@ -1,12 +1,14 @@
 @import "@/app/mixins";
 
 .nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: var(--font-size-1_5rem);
-  font-weight: inherit;
-  color: inherit;
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: var(--font-size-1_5rem);
+    font-weight: inherit;
+    color: inherit;
+  }
 
   &__brand-link {
     &:link,
@@ -27,5 +29,18 @@
   &__actions {
     display: flex;
     gap: 2rem;
+  }
+
+  &__toggler {
+    display: none;
+  }
+
+  @include respond("desktop") {
+    &__actions {
+      display: none;
+    }
+    &__toggler {
+      display: flex;
+    }
   }
 }

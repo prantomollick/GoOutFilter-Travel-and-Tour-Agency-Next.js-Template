@@ -4,10 +4,23 @@ import styles from "./hero-section.module.scss";
 import classNames from "classnames";
 import { useState } from "react";
 import SearchForm from "./search-form/search-form";
+import { motion } from "framer-motion";
 
 type Nav = {
   label: string;
   isActive: boolean;
+};
+
+const container = {
+  hidden: {
+    opacity: 0,
+    y: 100
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { ease: "easeOut", duration: 1 }
+  }
 };
 
 function HeroSection() {
@@ -42,7 +55,12 @@ function HeroSection() {
       className={classNames(styles["hero-section"])}
       role="banner"
     >
-      <div className={styles["hero-wrapper"]}>
+      <motion.div
+        className={styles["hero-wrapper"]}
+        variants={container}
+        initial="hidden"
+        animate="show"
+      >
         <div className={styles["hero-text"]}>
           <h1 className={styles["hero-title"]}>Find Next Place To Visit</h1>
           <p className={styles["hero-subtitle"]}>
@@ -67,7 +85,7 @@ function HeroSection() {
 
           {isNavActive && <SearchForm />}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

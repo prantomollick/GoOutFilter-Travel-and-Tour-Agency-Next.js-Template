@@ -15,6 +15,7 @@ import Brand from "./brand";
 import CurrencyBtn from "./currency-btn/currency-btn";
 import LanguageBtn from "./language-btn/language-btn";
 import NavigationItem from "./navigation-item";
+import Image from "next/image";
 
 function Navigation() {
   const { actions: currencyActions, state: currencyState } = useCurrencyModal();
@@ -22,38 +23,63 @@ function Navigation() {
 
   return (
     <nav
-      className={classNames(styles.nav, "py-2", "px-2")}
+      className={classNames(styles.nav, "py-2")}
       role="navigation"
       aria-label="breadcrumb"
     >
-      <div className="flex item-center gap-3">
-        <Link href="/" className={styles["nav__brand-link"]}>
-          <Brand variant="white" />
-        </Link>
-        <NavigationItem navigationContent={navigationMenu} />
-      </div>
+      <div className="container-fluid">
+        <div className={classNames(styles["nav__wrapper"])}>
+          <div className="flex item-center gap-3">
+            <Link href="/" className={styles["nav__brand-link"]}>
+              <Brand variant="white" />
+            </Link>
+            <NavigationItem navigationContent={navigationMenu} />
+          </div>
 
-      <div className="flex item-center gap-2">
-        <div className={classNames(styles["nav__cur-lng"], "flex", "gap-2")}>
-          <CurrencyBtn onClick={currencyActions.onOpen}>
-            {currencyState.content?.currency?.code} <GoTriangleDown />
-          </CurrencyBtn>
-          <span className="divider-line bg-white"></span>
-          <LanguageBtn
-            countryCode={languageState.content?.language?.code}
-            onClick={languageActions.onOpen}
-          >
-            <span>{languageState.content?.language?.name}</span>
-            <GoTriangleDown />
-          </LanguageBtn>
-        </div>
-        <div className={styles.nav__actions}>
-          <Button color="white" radius="sm" size="sm">
-            Become An Expert
-          </Button>
-          <Button color="white" variant="bordered" radius="sm" size="sm">
-            Sign In / Register
-          </Button>
+          <div className={classNames(styles[""], "flex item-center gap-2")}>
+            <div
+              className={classNames(styles["nav__cur-lng"], "flex", "gap-2")}
+            >
+              <CurrencyBtn onClick={currencyActions.onOpen}>
+                {currencyState.content?.currency?.code} <GoTriangleDown />
+              </CurrencyBtn>
+              <span className="divider-line bg-white"></span>
+              <LanguageBtn
+                countryCode={languageState.content?.language?.code}
+                onClick={languageActions.onOpen}
+              >
+                <span>{languageState.content?.language?.name}</span>
+                <GoTriangleDown />
+              </LanguageBtn>
+            </div>
+            <div className={styles.nav__actions}>
+              <Button color="white" radius="sm" size="sm">
+                Become An Expert
+              </Button>
+              <Button color="white" variant="bordered" radius="sm" size="sm">
+                Sign In / Register
+              </Button>
+            </div>
+          </div>
+          <div className={styles["nav__toggler"]}>
+            <div>
+              <Image
+                src={"/icon/navigation/nav-user.svg"}
+                width={20}
+                height={20}
+                alt="user icon"
+                priority
+              />
+            </div>
+            <button>
+              <Image
+                width={25}
+                height={12}
+                src="/icon/navigation/nav-icon.svg"
+                alt="nav-icon"
+              />
+            </button>
+          </div>
         </div>
       </div>
     </nav>

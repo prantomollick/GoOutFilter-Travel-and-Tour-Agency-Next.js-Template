@@ -1,7 +1,15 @@
+@import "@/app/mixins";
+
 .nav__menu {
   list-style: none;
   display: flex;
   gap: 3.8rem;
+
+  @include respond("desktop") {
+    & {
+      display: none;
+    }
+  }
 
   &-item {
     position: relative;

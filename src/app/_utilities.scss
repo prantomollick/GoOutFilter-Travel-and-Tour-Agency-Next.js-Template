@@ -1,12 +1,10 @@
 @import "mixins";
 //Container
 .container-fluid {
-  @include respond(big-desktop) {
-    max-width: 192rem;
-    width: 100%;
-    padding: 0 3rem;
-    margin: 0 auto;
-  }
+  max-width: 192rem;
+  width: 100%;
+  padding: 0 3rem;
+  margin: 0 auto;
 }
 
 .container {
