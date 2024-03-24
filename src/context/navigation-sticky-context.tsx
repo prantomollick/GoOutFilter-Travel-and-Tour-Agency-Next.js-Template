@@ -1,8 +1,14 @@
-import { createContext, PropsWithChildren, useContext, useState } from "react";
+import {
+  createContext,
+  PropsWithChildren,
+  useContext,
+  useMemo,
+  useState
+} from "react";
 
 type StickyNavigationCtxType = {
   isSticky: boolean;
-  onChangeSticky: () => void;
+  onChangeSticky: (sticky: boolean) => void;
 };
 
 export const StickyNavigationCtx =
@@ -11,11 +17,11 @@ export const StickyNavigationCtx =
 export function StickyNavigationProvider({ children }: PropsWithChildren<{}>) {
   const [isSticky, setIsSticky] = useState(false);
 
-  const onChangeSticky = () => setIsSticky((prevValue) => !prevValue);
+  // const onChangeSticky = (sticky: boolean) => setIsSticky(sticky);
 
   const ctxValue = {
     isSticky: isSticky,
-    onChangeSticky
+    onChangeSticky: setIsSticky
   };
 
   return (

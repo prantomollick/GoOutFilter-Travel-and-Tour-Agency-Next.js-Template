@@ -11,11 +11,11 @@ import { GoTriangleDown } from "react-icons/go";
 
 import { useCurrencyModal } from "@/context/currency-modal-context";
 import { useLanguageModal } from "@/context/language-modal-context";
+import Image from "next/image";
 import Brand from "./brand";
 import CurrencyBtn from "./currency-btn/currency-btn";
 import LanguageBtn from "./language-btn/language-btn";
 import NavigationItem from "./navigation-item";
-import Image from "next/image";
 
 function Navigation() {
   const { actions: currencyActions, state: currencyState } = useCurrencyModal();

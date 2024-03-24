@@ -2,9 +2,10 @@
 import styles from "./hero-section.module.scss";
 
 import classNames from "classnames";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SearchForm from "./search-form/search-form";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useStickyNavigation } from "@/context/navigation-sticky-context";
 
 type Nav = {
   label: string;
@@ -24,6 +25,11 @@ const container = {
 };
 
 function HeroSection() {
+  const { onChangeSticky, isSticky } = useStickyNavigation();
+
+  const headRef = useRef<HTMLHeadingElement>(null);
+  const isInView = useInView(headRef, { margin: "-200px 0px 0px 0px" });
+
   const [isNavActive, setIsNavActive] = useState({
     label: "Hotel",
     isActive: true
@@ -49,6 +55,12 @@ function HeroSection() {
     );
   };
 
+  useEffect(() => {
+    if (isInView) {
+      onChangeSticky(false);
+    }
+  }, [isInView, onChangeSticky]);
+
   return (
     <section
       id="#hero"
@@ -62,7 +74,9 @@ function HeroSection() {
         animate="show"
       >
         <div className={styles["hero-text"]}>
-          <h1 className={styles["hero-title"]}>Find Next Place To Visit</h1>
+          <h1 className={styles["hero-title"]} ref={headRef}>
+            Find Next Place To Visit
+          </h1>
           <p className={styles["hero-subtitle"]}>
             Discover amzaing places at exclusive deals
           </p>

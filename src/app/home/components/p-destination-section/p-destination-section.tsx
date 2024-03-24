@@ -1,12 +1,16 @@
+"use client";
+
 import styles from "./p-destination-section.module.scss";
 
 import HorizontalScrollSlider, {
   type SliderItem
 } from "@/components/slider/horizontal-scroll-slider";
 import Button from "@/components/ui/button/button";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { GoArrowUpRight } from "react-icons/go";
 import DestinationBanner from "./destination-banner";
+import { useInView } from "framer-motion";
+import { useStickyNavigation } from "@/context/navigation-sticky-context";
 
 const sliderData: SliderItem[] = [
   {
@@ -87,8 +91,21 @@ const bannerData: BannerItem[] = [
 ];
 
 function PdestinationSection() {
+  const { onChangeSticky } = useStickyNavigation();
+
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, {
+    margin: "0px 0px -200px 0px"
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      onChangeSticky(true);
+    }
+  }, [isInView, onChangeSticky]);
+
   return (
-    <section className="pt-12 pb-12">
+    <section className="pt-12 pb-12" ref={sectionRef}>
       <div className="container">
         <div className={styles["d-slider-section"]}>
           <div className={styles["section-head"]}>
