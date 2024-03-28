@@ -19,6 +19,9 @@
       height: 5rem;
     }
   }
+  &__brand-mobile {
+    display: none;
+  }
 
   @include respond("desktop-lg") {
     &__cur-lng {
@@ -36,11 +39,68 @@
   }
 
   @include respond("desktop") {
-    &__actions {
-      display: none;
+    & {
+      position: relative;
+      height: 9rem;
     }
+
+    &__wrapper {
+    }
+
+    &__main {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 428px;
+      height: 100vh;
+      z-index: 2;
+
+      background-color: var(--bg-white);
+      color: var(--text-dark);
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      // transform: translateX(-100%);
+    }
+
+    &__brand-mobile {
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+      top: 0;
+
+      width: 100%;
+      // padding: 2rem;
+
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    &__brand-link-mobile {
+    }
+
+    &__brand-link {
+      &:link,
+      &:visited {
+        position: absolute;
+        left: calc(100% + 2rem);
+        top: 2rem;
+      }
+    }
+
+    &__cur-lng-act {
+      gap: 3.5rem;
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+    }
+
     &__toggler {
       display: flex;
+      align-items: center;
+      gap: 2rem;
     }
   }
 }

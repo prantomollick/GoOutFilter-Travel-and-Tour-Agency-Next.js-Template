@@ -7,7 +7,28 @@
 
   @include respond("desktop") {
     & {
-      display: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      width: 100%;
+
+      margin-top: 4rem;
+    }
+
+    &-item {
+      width: 100%;
+    }
+
+    .nav__menu-link {
+      font-family: inherit;
+      font-weight: var(--font-weight-medium);
+      font-size: var(--font-size-2rem);
+      color: var(--text-dark);
+
+      display: flex;
+      justify-content: space-between;
+
+      padding: 2rem;
     }
   }
 
