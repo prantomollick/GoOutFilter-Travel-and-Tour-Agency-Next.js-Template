@@ -5,33 +5,6 @@
   display: flex;
   gap: 3.8rem;
 
-  @include respond("desktop") {
-    & {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      width: 100%;
-
-      margin-top: 4rem;
-    }
-
-    &-item {
-      width: 100%;
-    }
-
-    .nav__menu-link {
-      font-family: inherit;
-      font-weight: var(--font-weight-medium);
-      font-size: var(--font-size-2rem);
-      color: var(--text-dark);
-
-      display: flex;
-      justify-content: space-between;
-
-      padding: 2rem;
-    }
-  }
-
   &-item {
     position: relative;
 
@@ -58,5 +31,41 @@
     gap: 1rem;
     color: inherit;
     font-size: inherit;
+  }
+
+  @include respond("desktop") {
+    & {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      width: 100%;
+
+      margin-top: 1rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    &-item {
+    }
+
+    .nav__menu-link {
+      font-family: inherit;
+      font-weight: var(--font-weight-medium);
+      font-size: var(--font-size-2rem);
+
+      color: var(--text-dark);
+
+      display: flex;
+      justify-content: space-between;
+
+      padding: 2rem;
+      border-radius: var(--border-radius-small);
+
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: var(--bg-light-blue);
+      }
+    }
   }
 }

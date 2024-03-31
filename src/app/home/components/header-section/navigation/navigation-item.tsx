@@ -11,9 +11,10 @@ import SubMenu from "./sub-menu/sub-nav";
 
 interface NavigationItemProps {
   navigationContent: NavigationItem[];
+  isSidebar: boolean;
 }
 
-function NavigationItem({ navigationContent }: NavigationItemProps) {
+function NavigationItem({ navigationContent, isSidebar }: NavigationItemProps) {
   const path = usePathname();
 
   return (
@@ -30,7 +31,7 @@ function NavigationItem({ navigationContent }: NavigationItemProps) {
                 nav.link === "/" && "active-primary"
               )}
             >
-              {nav.label} {nav.subnav && <GoTriangleDown />}
+              {nav.label} {nav.subnav && !isSidebar && <GoTriangleDown />}
             </Link>
 
             {nav.subnav && nav.label.toLowerCase() !== "categories" ? (

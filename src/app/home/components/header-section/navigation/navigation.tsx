@@ -16,17 +16,32 @@ import Brand from "./brand";
 import CurrencyBtn from "./currency-btn/currency-btn";
 import LanguageBtn from "./language-btn/language-btn";
 import NavigationItem from "./navigation-item";
+import { useState } from "react";
 
 function Navigation() {
   const { actions: currencyActions, state: currencyState } = useCurrencyModal();
   const { actions: languageActions, state: languageState } = useLanguageModal();
+  const [isSidebar, setIsSidebar] = useState<boolean>(false);
+
+  const sidebarOpenHandler = () => {
+    setIsSidebar((prev) => !prev);
+  };
+
+  const sidebarCloseHandler = () => {
+    setIsSidebar(false);
+  };
 
   return (
     <nav
-      className={classNames(styles.nav, "py-2")}
+      className={classNames(
+        styles.nav,
+        "py-2",
+        styles[`${isSidebar && "sidebar-visible"}`]
+      )}
       role="navigation"
       aria-label="breadcrumb"
     >
+      <div className={styles.backdrop} onClick={sidebarCloseHandler}></div>
       <div className="container-fluid">
         <div className={classNames(styles["nav__wrapper"])}>
           <div
@@ -35,16 +50,19 @@ function Navigation() {
               "flex item-center gap-3"
             )}
           >
-            <Link href="/" className={styles["nav__brand-link"]}>
+            <Link href="/" className={classNames(styles["nav__brand-link"])}>
               <Brand variant="white" />
             </Link>
             <div className={styles["nav__brand-mobile"]}>
               <Link href="/" className={styles["nav__brand-link-mobile"]}>
                 <Brand variant="primary" />
               </Link>
-              <button>X</button>
+              <button onClick={sidebarCloseHandler}>X</button>
             </div>
-            <NavigationItem navigationContent={navigationMenu} />
+            <NavigationItem
+              navigationContent={navigationMenu}
+              isSidebar={isSidebar}
+            />
           </div>
 
           <div
@@ -86,7 +104,10 @@ function Navigation() {
                   priority
                 />
               </div>
-              <button className={classNames(styles["nav__toggler-btn"], "btn")}>
+              <button
+                className={classNames(styles["nav__toggler-btn"], "btn")}
+                onClick={sidebarOpenHandler}
+              >
                 <Image
                   width={25}
                   height={12}
