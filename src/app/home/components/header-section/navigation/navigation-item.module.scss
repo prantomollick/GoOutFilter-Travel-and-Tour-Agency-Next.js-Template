@@ -9,13 +9,7 @@
     position: relative;
 
     &:hover {
-      & > ul {
-        visibility: visible;
-      }
-
-      & > :last-child {
-        visibility: visible;
-      }
+      & > ul,
       & > div {
         visibility: visible;
       }
@@ -45,7 +39,11 @@
       padding-right: 2rem;
     }
 
-    &-item {
+    &-item:hover {
+      & > ul,
+      & > div {
+        visibility: collapse;
+      }
     }
 
     .nav__menu-link {
@@ -66,6 +64,11 @@
       &:hover {
         background-color: var(--bg-light-blue);
       }
+    }
+
+    &-item:global(.subnav-visible) > div,
+    &-item:global(.subnav-visible) > ul {
+      visibility: visible;
     }
   }
 }

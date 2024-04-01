@@ -1,54 +1,63 @@
 import styles from "./category-navigation.module.scss";
 
-import React, { Fragment, useState } from "react";
-import {
-  SubNavigationItem,
-  TabCard,
-  TabDetail
-} from "../../../../navigation-menu";
-import Link from "next/link";
+import { Fragment, useState } from "react";
+import { SubNavigationItem, TabCard, TabDetail } from "@/app/navigation-menu";
 import NavigationTabCard from "@/components/navigation-tab-card/navigation-tab-card";
 import classNames from "classnames";
+import Link from "next/link";
+import { GoTriangleRight } from "react-icons/go";
 
 interface TabCardProps {
   catNavDetails: SubNavigationItem[];
+  className: string;
 }
 
-function CategoryNavigation({ catNavDetails: subNavs }: TabCardProps) {
-  const [selectedTabDetails, setSelectedTabDetails] =
-    useState<SubNavigationItem>(subNavs[0]);
+function CategoryNavigation({
+  catNavDetails: subNavs,
+  className
+}: TabCardProps) {
+  const [catNavs, setCatNavs] = useState(subNavs);
 
-  const handleTabSelected = (subNav: SubNavigationItem) => {
-    setSelectedTabDetails(subNav);
+  const handleTabSelected = (subNav: SubNavigationItem, idx: number) => {
+    const updateCatNavs = catNavs.map((nav) => {
+      if (nav.label.toLowerCase() === subNav.label.toLowerCase()) {
+        return {
+          ...nav,
+          isActive: !nav.isActive
+        };
+      } else {
+        return {
+          ...nav,
+          isActive: false
+        };
+      }
+    });
+    setCatNavs(updateCatNavs);
   };
 
   return (
-    <div className={styles["cat__nav"]}>
+    <div className={classNames(styles["cat__nav"], className)}>
       <ul className={styles["cat__nav--list"]}>
-        {subNavs.map((subNav) => (
-          <li
-            key={subNav.label}
-            className={classNames(
-              styles["cat__nav--item"],
-              styles[
-                `${
-                  selectedTabDetails.label === subNav.label &&
-                  "cat__nav-selected"
-                }`
-              ]
-            )}
-            onClick={() => handleTabSelected(subNav)}
-          >
-            {subNav.label}
-          </li>
+        {catNavs.map((nav, idx) => (
+          <Fragment key={idx}>
+            <li
+              className={classNames(
+                styles["cat__nav--item"],
+                styles[`${nav.isActive && "cat__nav-selected"}`]
+              )}
+              onClick={() => handleTabSelected(nav, idx)}
+            >
+              {nav.label}
+              {className == "subnav-visible" && <GoTriangleRight />}
+            </li>
+            <CatNavigationTabDetails
+              tabDetails={nav.tabDetails || []}
+              tabCard={nav.tabCard!}
+              className={nav.isActive ? "cat-tab-active" : ""}
+            />
+          </Fragment>
         ))}
       </ul>
-      {
-        <CatNavigationTabDetails
-          tabDetails={selectedTabDetails.tabDetails || []}
-          tabCard={selectedTabDetails.tabCard!}
-        />
-      }
     </div>
   );
 }
@@ -58,14 +67,16 @@ export default CategoryNavigation;
 interface CatNavigationTabDetailsProps {
   tabDetails: TabDetail[];
   tabCard: TabCard;
+  className: string;
 }
 
 function CatNavigationTabDetails({
   tabDetails,
-  tabCard
+  tabCard,
+  className
 }: CatNavigationTabDetailsProps) {
   return (
-    <div className={styles["navTabDetails"]}>
+    <div className={classNames(styles["navTabDetails"], className)}>
       <ul className={styles["navTabDetails__list"]}>
         {tabDetails.map((tab) => (
           <Fragment key={tab.title}>

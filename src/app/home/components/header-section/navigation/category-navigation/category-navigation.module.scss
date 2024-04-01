@@ -1,5 +1,7 @@
+@import "@/app/mixins";
+
 .cat__nav {
-  transition: all 0.2s ease;
+  transition: visibility 0.2s ease;
   visibility: collapse;
 
   &::before {
@@ -22,10 +24,17 @@
   list-style: none;
 
   &--list {
-    display: flex;
-    gap: 4.4rem;
-    border-bottom: 1px solid var(--border-color);
+    display: grid;
+    grid-template-columns: repeat(7, minmax(min-content, max-content)) 1fr;
+    column-gap: 4.4rem;
     padding-bottom: 3px;
+
+    &::before {
+      content: "";
+      grid-column: 1 / -1;
+      grid-row-start: 2;
+      border-bottom: 1px solid var(--border-color);
+    }
   }
 
   &--item {
@@ -40,10 +49,12 @@
     transition: color 0.2s ease;
     cursor: pointer;
 
+    grid-row-start: 1;
+
     &::before {
       content: "";
       position: absolute;
-      top: 110%;
+      top: 100%;
       left: 0;
       width: 0%;
       transition: width 0.2s ease;
@@ -62,13 +73,76 @@
       width: 100%;
     }
   }
+
+  @include respond("desktop") {
+    & {
+      padding: 0 2rem;
+      width: 100%;
+      position: relative;
+      top: 0;
+      left: 0;
+      box-shadow: none;
+      visibility: collapse;
+      height: 0;
+
+      transition: height 0.3s ease;
+    }
+
+    &::before {
+      content: none;
+      display: none;
+      visibility: hidden;
+    }
+
+    &:global(.subnav-visible) {
+      visibility: visible;
+      height: auto;
+    }
+
+    &--list {
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    &--item {
+      font-size: var(--font-size-1_8rem);
+      font-weight: var(--font-weight-regular);
+      line-height: 1;
+      color: var(--text-dark);
+      padding: 1.5rem;
+      border-radius: var(--border-radius-small);
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &::before {
+        content: none;
+        display: none;
+        visibility: hidden;
+      }
+
+      &:hover {
+        background-color: var(--bg-light-blue);
+        color: var(--primary-blue);
+      }
+    }
+  }
 }
 
 .navTabDetails {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding-top: 3rem;
+  position: relative;
+  display: none;
+
+  &:global(.cat-tab-active) {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 3rem;
+  }
 
   &__list {
     list-style: none;

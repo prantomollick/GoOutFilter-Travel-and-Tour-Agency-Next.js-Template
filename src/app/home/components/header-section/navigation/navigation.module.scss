@@ -73,8 +73,9 @@
       flex-direction: column;
       align-items: flex-start;
       transform: translateX(-100%);
-
       transition: transform 0.3s ease;
+
+      overflow-y: scroll;
     }
 
     &.sidebar-visible .nav__main {
@@ -96,6 +97,9 @@
         left: calc(100% + 2rem);
         top: 2rem;
         opacity: 100%;
+        overflow: visible;
+
+        visibility: visible;
         transition: opacity 0.3s ease 0.3s;
       }
     }

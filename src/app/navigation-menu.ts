@@ -2,6 +2,7 @@ export interface NavigationItem {
   label: string;
   link: string;
   subnav?: SubNavigationItem[];
+  isSubnavActive?: boolean;
 }
 
 export interface SubNavigationItem {
@@ -38,7 +39,7 @@ export const navigationMenu: NavigationItem[] = [
     subnav: [
       {
         label: "Hotel",
-        isActive: false,
+        isActive: true,
         tabDetails: [
           {
             title: "Hotel List",
