@@ -1,10 +1,12 @@
+@import "@/app/mixins";
+
 .section-header {
   display: flex;
   flex-direction: column;
   gap: 5px;
-
   margin-bottom: 4rem;
 }
+
 .tabs {
   margin-bottom: 3rem;
 }

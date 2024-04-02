@@ -1,11 +1,22 @@
+@import "@/app/mixins";
+
 .d-slider-section {
   margin-bottom: 4.3rem;
+
+  @include respond("desktop") {
+    padding: 0 2rem;
+  }
 }
 .d-banner {
   margin-top: 12rem;
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
+
+  @include respond("desktop") {
+    padding: 0 2rem;
+    justify-content: space-between;
+  }
 }
 
 .section {

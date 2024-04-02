@@ -1,4 +1,5 @@
 "use client";
+
 import styles from "./destination-section.module.scss";
 
 import { City, updatedDestinationData } from "@/data/destination-data";
