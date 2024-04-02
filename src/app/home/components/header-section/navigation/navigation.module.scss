@@ -107,6 +107,7 @@
 
     &:global(.sidebar-visible) &__brand-mobile {
       display: flex;
+      align-items: center;
       justify-content: space-between;
       width: 100%;
       border-bottom: 1px solid var(--border-color);

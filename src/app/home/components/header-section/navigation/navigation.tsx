@@ -7,7 +7,7 @@ import Link from "next/link";
 import { navigationMenu } from "@/app/navigation-menu";
 import Button from "@/components/ui/button/button";
 
-import { GoTriangleDown } from "react-icons/go";
+import { GoTriangleDown, GoX } from "react-icons/go";
 
 import { useCurrencyModal } from "@/context/currency-modal-context";
 import { useLanguageModal } from "@/context/language-modal-context";
@@ -57,7 +57,9 @@ function Navigation() {
               <Link href="/" className={styles["nav__brand-link-mobile"]}>
                 <Brand variant="primary" />
               </Link>
-              <button onClick={sidebarCloseHandler}>X</button>
+              <button onClick={sidebarCloseHandler} className="btn flex">
+                <GoX size={35} />
+              </button>
             </div>
             <NavigationItem
               navigationContent={navigationMenu}
