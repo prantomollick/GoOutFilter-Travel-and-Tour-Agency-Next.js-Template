@@ -19,6 +19,7 @@
       height: 5rem;
     }
   }
+
   &__brand-mobile {
     display: none;
   }
@@ -44,7 +45,7 @@
       height: 9rem;
     }
 
-    &.sidebar-visible .backdrop {
+    &:global(.sidebar-visible) .backdrop {
       position: absolute;
       top: 0;
       left: 0;
@@ -58,7 +59,7 @@
     }
 
     &__main {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
 
@@ -72,17 +73,18 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+
       transform: translateX(-100%);
+
       transition: transform 0.3s ease;
-
-      overflow-y: scroll;
     }
 
-    &.sidebar-visible .nav__main {
+    &:global(.sidebar-visible) .nav__main {
       transform: translateX(0);
+      overflow-y: auto;
     }
 
-    &.sidebar-visible &__brand-mobile {
+    &:global(.sidebar-visible) &__brand-mobile {
       display: flex;
       justify-content: space-between;
       width: 100%;
@@ -93,18 +95,16 @@
     &__brand-link {
       &:link,
       &:visited {
-        position: absolute;
+        position: relative;
         left: calc(100% + 2rem);
         top: 2rem;
         opacity: 100%;
-        overflow: visible;
-
         visibility: visible;
         transition: opacity 0.3s ease 0.3s;
       }
     }
 
-    &.sidebar-visible &__brand-link {
+    &:global(.sidebar-visible) &__brand-link {
       &:link,
       &:visited {
         opacity: 0;

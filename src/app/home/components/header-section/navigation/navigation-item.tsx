@@ -3,12 +3,11 @@ import type { NavigationItem } from "@/app/navigation-menu";
 import classNames from "classnames";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { GoTriangleDown, GoTriangleRight } from "react-icons/go";
-import styles from "./navigation-item.module.scss";
-import SubNev from "./sub-menu/sub-nav";
-import CategoryNavigation from "./category-navigation/category-navigation";
-import SubMenu from "./sub-menu/sub-nav";
 import { useState } from "react";
+import { GoTriangleDown, GoTriangleRight } from "react-icons/go";
+import CategoryNavigation from "./category-navigation/category-navigation";
+import styles from "./navigation-item.module.scss";
+import SubMenu from "./sub-menu/sub-nav";
 
 interface NavigationItemProps {
   navigationContent: NavigationItem[];
@@ -42,8 +41,6 @@ function NavigationItem({ navigationContent, isSidebar }: NavigationItemProps) {
         return nav;
       }
     });
-
-    console.log(filteredNavs);
 
     setNavs(filteredNavs);
   };
@@ -83,7 +80,7 @@ function NavigationItem({ navigationContent, isSidebar }: NavigationItemProps) {
               {nav.subnav && isSidebar && !nav.isSubnavActive && (
                 <GoTriangleRight />
               )}
-              {nav.isSubnavActive && <GoTriangleDown />}
+              {isSidebar && nav.isSubnavActive && <GoTriangleDown />}
             </Link>
 
             {nav.subnav && nav.label.toLowerCase() !== "categories" ? (

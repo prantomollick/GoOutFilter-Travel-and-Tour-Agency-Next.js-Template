@@ -33,11 +33,7 @@ function Navigation() {
 
   return (
     <nav
-      className={classNames(
-        styles.nav,
-        "py-2",
-        styles[`${isSidebar && "sidebar-visible"}`]
-      )}
+      className={classNames(styles.nav, "py-2", isSidebar && "sidebar-visible")}
       role="navigation"
       aria-label="breadcrumb"
     >
@@ -50,9 +46,13 @@ function Navigation() {
               "flex item-center gap-3"
             )}
           >
-            <Link href="/" className={classNames(styles["nav__brand-link"])}>
+            <Link
+              href="/"
+              className={classNames(styles["nav__brand-link"], "o-visible")}
+            >
               <Brand variant="white" />
             </Link>
+
             <div className={styles["nav__brand-mobile"]}>
               <Link href="/" className={styles["nav__brand-link-mobile"]}>
                 <Brand variant="primary" />
