@@ -10,11 +10,13 @@ import { GoTriangleRight } from "react-icons/go";
 interface TabCardProps {
   catNavDetails: SubNavigationItem[];
   className: string;
+  isSidebar: boolean;
 }
 
 function CategoryNavigation({
   catNavDetails: subNavs,
-  className
+  className,
+  isSidebar
 }: TabCardProps) {
   const [catNavs, setCatNavs] = useState(subNavs);
 
@@ -48,7 +50,9 @@ function CategoryNavigation({
               onClick={() => handleTabSelected(nav, idx)}
             >
               {nav.label}
-              {className == "subnav-visible" && <GoTriangleRight />}
+              {isSidebar && className == "subnav-visible" && (
+                <GoTriangleRight />
+              )}
             </li>
             <CatNavigationTabDetails
               tabDetails={nav.tabDetails || []}
