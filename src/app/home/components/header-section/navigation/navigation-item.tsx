@@ -94,6 +94,7 @@ function NavigationItem({ navigationContent, isSidebar }: NavigationItemProps) {
               <CategoryNavigation
                 catNavDetails={nav.subnav}
                 className={nav.isSubnavActive ? "subnav-visible" : ""}
+                isSidebar={isSidebar}
               />
             )}
           </li>

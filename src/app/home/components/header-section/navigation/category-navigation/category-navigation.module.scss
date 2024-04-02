@@ -67,10 +67,19 @@
   }
 
   &-selected {
-    color: var(--primary-blue);
+    color: var(--text-primary-blue);
     &::before {
       border-bottom: 1px solid var(--border-primary);
       width: 100%;
+    }
+
+    @include respond("desktop") {
+      background-color: var(--bg-light-blue);
+      color: var(--text-primary-blue);
+      &::before {
+        border-bottom: none;
+        width: none;
+      }
     }
   }
 
@@ -105,6 +114,10 @@
       gap: 0px;
       border-bottom: none;
       padding-bottom: 0;
+
+      &::before {
+        display: none;
+      }
     }
 
     &--item {
@@ -144,18 +157,42 @@
     padding-top: 3rem;
   }
 
+  @include respond("desktop") {
+    &:global(.cat-tab-active) {
+      padding-top: 0rem;
+      flex-direction: column;
+      padding: 0 2rem;
+      gap: 1rem;
+      padding: 2rem;
+    }
+  }
+
   &__list {
     list-style: none;
     display: flex;
     gap: 6rem;
 
-    li {
+    &-item {
       text-wrap: nowrap;
       font-family: inherit;
       color: var(--text-dark);
       font-size: var(--font-size-1_5rem);
       font-weight: var(--font-weight-medium);
       line-height: calc(4rem / 1.5rem);
+    }
+
+    @include respond("desktop") {
+      flex-direction: column;
+      gap: 1rem;
+
+      &-item {
+        font-size: var(--font-size-1_6rem);
+        line-height: 1;
+
+        &:first-child &:last-child {
+          padding: 2rem;
+        }
+      }
     }
   }
 
@@ -173,6 +210,25 @@
 
     &:hover {
       color: var(--text-primary-blue);
+    }
+  }
+
+  @include respond("desktop") {
+    &__inner-list {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 0rem 1rem 1rem;
+    }
+
+    &__inner-link {
+      display: block;
+      padding: 1rem;
+      border-radius: var(--border-radius-small);
+
+      &:hover {
+        background-color: var(--bg-light-blue);
+        color: var(--text-primary-blue);
+      }
     }
   }
 }

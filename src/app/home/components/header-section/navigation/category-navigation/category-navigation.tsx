@@ -5,7 +5,7 @@ import { SubNavigationItem, TabCard, TabDetail } from "@/app/navigation-menu";
 import NavigationTabCard from "@/components/navigation-tab-card/navigation-tab-card";
 import classNames from "classnames";
 import Link from "next/link";
-import { GoTriangleRight } from "react-icons/go";
+import { GoTriangleDown, GoTriangleRight } from "react-icons/go";
 
 interface TabCardProps {
   catNavDetails: SubNavigationItem[];
@@ -37,6 +37,8 @@ function CategoryNavigation({
     setCatNavs(updateCatNavs);
   };
 
+  console.log();
+
   return (
     <div className={classNames(styles["cat__nav"], className)}>
       <ul className={styles["cat__nav--list"]}>
@@ -50,9 +52,10 @@ function CategoryNavigation({
               onClick={() => handleTabSelected(nav, idx)}
             >
               {nav.label}
-              {isSidebar && className == "subnav-visible" && (
+              {isSidebar && !nav.isActive && className == "subnav-visible" && (
                 <GoTriangleRight />
               )}
+              {isSidebar && nav.isActive && <GoTriangleDown />}
             </li>
             <CatNavigationTabDetails
               tabDetails={nav.tabDetails || []}
@@ -84,7 +87,7 @@ function CatNavigationTabDetails({
       <ul className={styles["navTabDetails__list"]}>
         {tabDetails.map((tab) => (
           <Fragment key={tab.title}>
-            <li key={tab.title}>
+            <li key={tab.title} className={styles["navTabDetails__list-item"]}>
               {tab.title}
               <ul className={styles["navTabDetails__inner-list"]}>
                 {tab.list.map((list) => (

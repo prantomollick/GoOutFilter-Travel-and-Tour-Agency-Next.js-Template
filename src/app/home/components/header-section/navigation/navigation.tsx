@@ -63,6 +63,33 @@ function Navigation() {
               navigationContent={navigationMenu}
               isSidebar={isSidebar}
             />
+
+            {isSidebar && (
+              <div className={styles["nav__sidebar-actions"]}>
+                <div className={styles.nav__actions}>
+                  <Button color="blue" radius="sm" size="sm" variant="bordered">
+                    Become An Expert
+                  </Button>
+                  <Button color="blue" radius="sm" size="sm">
+                    Sign In / Register
+                  </Button>
+                </div>
+
+                <div className={styles["nav__sidebar-cur-lng"]}>
+                  <CurrencyBtn onClick={currencyActions.onOpen}>
+                    {currencyState.content?.currency?.code} <GoTriangleDown />
+                  </CurrencyBtn>
+                  <span className="divider-line bg-white"></span>
+                  <LanguageBtn
+                    countryCode={languageState.content?.language?.code}
+                    onClick={languageActions.onOpen}
+                  >
+                    <span>{languageState.content?.language?.name}</span>
+                    <GoTriangleDown />
+                  </LanguageBtn>
+                </div>
+              </div>
+            )}
           </div>
 
           <div
