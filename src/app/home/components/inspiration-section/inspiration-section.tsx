@@ -2,10 +2,10 @@
 import styles from "./inspiration-section.module.scss";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 import CardBlog from "@/components/card-blog/card-blog";
 import { blogData } from "@/data/blog-data";
-import { motion } from "framer-motion";
 
 const variants = {
   visible: (i: number) => ({
