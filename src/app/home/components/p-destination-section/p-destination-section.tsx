@@ -2,15 +2,16 @@
 
 import styles from "./p-destination-section.module.scss";
 
+import React, { useEffect, useRef } from "react";
+import { GoArrowUpRight } from "react-icons/go";
+import { motion, useInView } from "framer-motion";
+
+import { useStickyNavigation } from "@/context/navigation-sticky-context";
 import HorizontalScrollSlider, {
   type SliderItem
 } from "@/components/slider/horizontal-scroll-slider";
 import Button from "@/components/ui/button/button";
-import React, { useEffect, useRef } from "react";
-import { GoArrowUpRight } from "react-icons/go";
 import DestinationBanner from "./destination-banner";
-import { useInView } from "framer-motion";
-import { useStickyNavigation } from "@/context/navigation-sticky-context";
 
 const sliderData: SliderItem[] = [
   {
@@ -107,35 +108,46 @@ function PdestinationSection() {
   return (
     <section className="pt-12 pb-12" ref={sectionRef}>
       <div className="container">
-        <div className={styles["d-slider-section"]}>
-          <div className={styles["section-head"]}>
-            <div className={styles["section-title"]}>
-              <h2 className="s-heading">Popular Destinations</h2>
-              <p className="s-heading-subtitle">
-                These popular destinations have a lot to offer
-              </p>
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+            transition: {
+              duration: 1
+            }
+          }}
+        >
+          <div className={styles["d-slider-section"]}>
+            <div className={styles["section-head"]}>
+              <div className={styles["section-title"]}>
+                <h2 className="s-heading">Popular Destinations</h2>
+                <p className="s-heading-subtitle">
+                  These popular destinations have a lot to offer
+                </p>
+              </div>
+              <Button
+                size="lg"
+                radius="sm"
+                endicon={<GoArrowUpRight size={20} />}
+              >
+                View All Destinations
+              </Button>
             </div>
-            <Button
-              size="lg"
-              radius="sm"
-              endicon={<GoArrowUpRight size={20} />}
-            >
-              View All Destinations
-            </Button>
+            <HorizontalScrollSlider sliderData={sliderData} />
           </div>
-          <HorizontalScrollSlider sliderData={sliderData} />
-        </div>
-        <div className={styles["d-banner"]}>
-          {bannerData.map((banner) => (
-            <DestinationBanner
-              key={banner.title}
-              title={banner.title}
-              imgLink={banner.imgLink}
-              btnText={banner.btnText}
-              captionText={banner.captionText}
-            />
-          ))}
-        </div>
+          <div className={styles["d-banner"]}>
+            {bannerData.map((banner) => (
+              <DestinationBanner
+                key={banner.title}
+                title={banner.title}
+                imgLink={banner.imgLink}
+                btnText={banner.btnText}
+                captionText={banner.captionText}
+              />
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

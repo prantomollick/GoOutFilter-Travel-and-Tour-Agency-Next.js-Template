@@ -1,8 +1,14 @@
+@import "@/app/mixins";
+
 .section__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 4rem;
+
+  @include respond("desktop") {
+    padding: 0 2rem;
+  }
 
   &-title {
     display: flex;
@@ -40,6 +46,12 @@
       font-size: var(--font-size-1_6rem);
       font-weight: var(--font-weight-medium);
     }
+  }
+}
+
+@include respond("desktop") {
+  .swiper__wrapper {
+    padding: 0 2rem;
   }
 }
 

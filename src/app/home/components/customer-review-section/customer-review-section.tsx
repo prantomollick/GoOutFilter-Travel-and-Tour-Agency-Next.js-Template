@@ -28,7 +28,7 @@ function CustomerReviewSection() {
   }, [count, isReviewCountInView]);
 
   return (
-    <section id="#customer-review" className="bg-light-blue">
+    <section id="#customer-review" className="bg-light-blue py-12">
       <div className="container">
         <motion.div
           className={styles.customer}

@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import CardBlog from "@/components/card-blog/card-blog";
 import { blogData } from "@/data/blog-data";
-import { delay, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const variants = {
   visible: (i: number) => ({

@@ -1,9 +1,14 @@
+@import "@/app/mixins";
+
 .customer {
-  padding: 12rem 0px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+
+  @include respond("desktop") {
+    padding: 0 2rem;
+  }
 
   &-review {
     width: 52rem;

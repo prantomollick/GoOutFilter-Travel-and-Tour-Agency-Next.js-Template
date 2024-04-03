@@ -1,8 +1,21 @@
+"use client";
+
 import styles from "./feature-section.module.scss";
 
 import Image from "next/image";
 import React from "react";
 import type { Features } from "../../page";
+import { motion } from "framer-motion";
+
+const variants = {
+  visible: (i: number) => ({
+    opacity: 1,
+    transition: {
+      delay: i * 0.3
+    }
+  }),
+  hidden: { opacity: 0 }
+};
 
 interface Props {
   features: Features[];
@@ -15,7 +28,14 @@ function FeatureSection({ features }: Props) {
         <div className={styles.features}>
           {features.map((feature, i) => {
             return (
-              <div className={styles["feature"]} key={i}>
+              <motion.div
+                className={styles["feature"]}
+                key={i}
+                variants={variants}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+              >
                 <Image
                   width={70}
                   height={70}
@@ -26,7 +46,7 @@ function FeatureSection({ features }: Props) {
                 />
                 <h3 className={styles["feature__title"]}>{feature.title}</h3>
                 <p className={styles["feature__des"]}>{feature.description}</p>
-              </div>
+              </motion.div>
             );
           })}
         </div>
