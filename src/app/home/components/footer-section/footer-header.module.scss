@@ -1,9 +1,16 @@
+@import "@/app/mixins";
+
 .subscription {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 6.5rem 0;
+
+  @include respond("desktop") {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 
   &__content {
     display: flex;

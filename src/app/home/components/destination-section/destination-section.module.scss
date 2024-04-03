@@ -5,6 +5,16 @@
   flex-direction: column;
   gap: 5px;
   margin-bottom: 4rem;
+
+  @include respond("desktop") {
+    padding: 0 2rem;
+  }
+}
+
+@include respond("desktop") {
+  .destination__wrapper {
+    padding: 0 2rem;
+  }
 }
 
 .tabs {

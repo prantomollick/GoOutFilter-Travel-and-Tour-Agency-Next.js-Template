@@ -1,10 +1,16 @@
+@import "@/app/mixins";
+
 .f-copyright {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-
   border-top: 1px solid var(--border-color);
+
+  @include respond("desktop") {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 
   &__left {
     display: flex;

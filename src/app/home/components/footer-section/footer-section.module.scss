@@ -1,6 +1,13 @@
+@import "@/app/mixins";
+
 .footer__content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+
+  @include respond("desktop") {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 .s-contact__t,

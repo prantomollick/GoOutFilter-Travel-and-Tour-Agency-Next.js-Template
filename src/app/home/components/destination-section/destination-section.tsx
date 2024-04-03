@@ -47,7 +47,7 @@ function DestinationSection() {
             Interdum et malesuada fames ac ante ipsum
           </p>
         </div>
-        <div>
+        <div className={styles["destination__wrapper"]}>
           <div className={styles.tabs}>
             {tabs?.map((tab) => (
               <Button
