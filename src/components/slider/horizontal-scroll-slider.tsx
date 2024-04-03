@@ -1,6 +1,6 @@
 // Import Swiper React components
 "use client";
-import styles from "./slide.module.scss";
+import styles from "./horizontal-scroll-slider.module.scss";
 
 import { useRef, useState } from "react";
 import { A11y, Navigation, Scrollbar } from "swiper/modules";
@@ -37,13 +37,23 @@ const HorizontalScrollSlider: React.FC<SliderData> = ({ sliderData }) => {
         modules={[Navigation, Scrollbar, A11y]}
         spaceBetween={30}
         slidesPerView={4}
+        breakpoints={{
+          1290: {
+            slidesPerView: 4,
+            spaceBetween: 30
+          },
+          1200: {
+            slidesPerView: 3.5,
+            spaceBetween: 40
+          }
+        }}
         navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
         scrollbar={{
           draggable: true,
           el: ".swiper-scrollbar",
           horizontalClass: "swiper-scrollbar-horizontal",
           dragClass: `${styles["slide-scroll-bar-control"]}`,
-          dragSize: 348
+          dragSize: "auto"
         }}
         onInit={() => setInit(true)}
         style={{ overflow: "visible" }}

@@ -1,5 +1,11 @@
+@import "@/app/mixins";
+
 .slide-container {
   position: relative;
+
+  :global(.swiper-slide) {
+    width: fit-content !important;
+  }
 
   .slide-previous-btn {
     position: absolute;
