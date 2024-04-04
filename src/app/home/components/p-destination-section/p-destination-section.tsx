@@ -144,6 +144,7 @@ function PdestinationSection() {
                 imgLink={banner.imgLink}
                 btnText={banner.btnText}
                 captionText={banner.captionText}
+                width={350}
               />
             ))}
           </div>
