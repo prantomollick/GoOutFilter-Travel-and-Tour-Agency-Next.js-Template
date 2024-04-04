@@ -10,8 +10,16 @@
     padding: 0 2rem;
   }
 
+  @include respond("tab-land") {
+    gap: 1rem;
+  }
+
   &-review {
     width: 52rem;
+
+    @include respond("tab-land") {
+      width: 42rem;
+    }
 
     &-wrapper {
       display: flex;
@@ -34,6 +42,10 @@
       line-height: calc(4.3rem / 3rem);
 
       color: var(--text-dark);
+
+      @include respond("tab-land") {
+        font-size: var(--font-size-2_6rem);
+      }
     }
 
     .review-des {
@@ -43,6 +55,10 @@
       line-height: calc(3rem / 1.6rem);
 
       color: var(--text-light);
+
+      @include respond("tab-land") {
+        font-size: var(--font-size-1_5rem);
+      }
     }
 
     .review-details {
