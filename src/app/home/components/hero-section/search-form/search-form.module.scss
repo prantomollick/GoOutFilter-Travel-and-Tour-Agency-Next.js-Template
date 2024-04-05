@@ -131,6 +131,26 @@
   transform: translateX(-30%);
   border-radius: 4px;
   z-index: 10;
+
+  &.form-date-tri-b {
+    top: 150%;
+  }
+  &.form-date-tri-t {
+    bottom: 150%;
+  }
+
+  @include respond("tab-port") {
+    left: 101px;
+    box-shadow: var(--box-shadow-2);
+
+    &.form-date-tri-b {
+      top: 100%;
+    }
+
+    &.form-date-tri-t {
+      bottom: 65%;
+    }
+  }
 }
 
 .form-date-tri-t::before {
@@ -156,4 +176,12 @@
 .form-btn {
   letter-spacing: 0.16px;
   line-height: calc(2.2rem / 1.5rem);
+
+  @include respond("tab-port") {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-radius: var(--border-radius-small);
+  }
 }

@@ -49,9 +49,6 @@ function LocationSearchInput({
               : styles["suggestion-top-tri"]
           )}
           ref={locSuggRefPopup}
-          style={{
-            [isSuggFilpToTop ? "bottom" : "top"]: "150%"
-          }}
         >
           <ul className={styles["suggestion__list"]}>
             {suggestions.map((suggestion) => (

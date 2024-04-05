@@ -1,11 +1,35 @@
+@import "@/app/mixins";
+
 .suggestion {
   position: absolute;
-  // top: 150%;
   background-color: var(--bg-white);
   border-radius: var(--border-radius-small);
   box-shadow: var(--box-shadow-2);
   padding: 3rem;
   width: 49.2rem;
+  z-index: 10;
+
+  &-top-tri {
+    top: 150%;
+  }
+
+  &-bottom-tri {
+    bottom: 150%;
+  }
+
+  @include respond("tab-port") {
+    box-shadow: var(--box-shadow-1);
+    left: -18px;
+    width: 42rem;
+
+    &-top-tri {
+      top: 120%;
+    }
+
+    &-bottom-tri {
+      bottom: 120%;
+    }
+  }
 
   &-top-tri::before {
     content: "";
@@ -63,6 +87,10 @@
       font-size: var(--font-size-1_5rem);
       font-weight: var(--border-radius-medium);
       line-height: calc(2.2rem / 1.5rem);
+
+      @include respond("tab-port") {
+        font-size: var(--font-size-1_6rem);
+      }
     }
 
     &-location {
@@ -71,6 +99,10 @@
       font-size: var(--font-size-1_4rem);
       line-height: calc(2rem / 1.4rem);
       font-weight: var(--font-weight-regular);
+
+      @include respond("tab-port") {
+        font-size: var(--font-size-1_5rem);
+      }
     }
   }
 }

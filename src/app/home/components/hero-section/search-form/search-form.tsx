@@ -122,7 +122,6 @@ function SearchForm() {
                   ? styles["form-date-tri-t"]
                   : styles["form-date-tri-b"]
               )}
-              style={{ [isDateFlipToTop ? "bottom" : "top"]: "150%" }}
             >
               <MyDateRange
                 onChange={handleChange}

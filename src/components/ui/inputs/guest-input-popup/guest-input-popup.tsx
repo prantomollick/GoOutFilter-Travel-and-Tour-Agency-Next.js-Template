@@ -28,9 +28,6 @@ const GuestInputPopup = forwardRef<HTMLDivElement, GuestInputPopupProps>(
             }`
           ]
         )}
-        style={{
-          [!guestPopupFlipToTop ? "top" : "bottom"]: "150%"
-        }}
         ref={ref}
       >
         <div className={styles["guest-input-section"]}>
