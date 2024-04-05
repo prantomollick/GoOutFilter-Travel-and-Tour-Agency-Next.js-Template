@@ -68,6 +68,10 @@ function RecommendSection() {
                 900: {
                   slidesPerView: 3,
                   spaceBetween: 30
+                },
+                600: {
+                  slidesPerView: 2,
+                  spaceBetween: 30
                 }
               }}
               navigation={{
@@ -85,7 +89,7 @@ function RecommendSection() {
               {hotels.map((hotel) => {
                 if (hotel.isRecommend) {
                   return (
-                    <SwiperSlide key={hotel.hotelId} className="k">
+                    <SwiperSlide key={hotel.hotelId}>
                       <Link href={"#"}>
                         <CardMdHotel
                           images={hotel.images! as string[]}

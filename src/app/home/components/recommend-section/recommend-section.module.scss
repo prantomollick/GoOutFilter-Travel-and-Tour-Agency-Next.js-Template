@@ -52,21 +52,29 @@
 @include respond("desktop") {
   .swiper__wrapper {
     padding: 0 16.5rem;
-
-    :global(.swiper-slide) {
-      width: fit-content !important;
-    }
-
     justify-content: space-evenly;
   }
 
   @include respond("tab-land") {
     .swiper__wrapper {
-      // justify-content: space-evenly;
       padding: 0 12rem;
+    }
 
-      :global(.swiper-slide) {
-        width: fit-content !important;
+    @media only screen and (max-width: 71.875em) {
+      .swiper__wrapper {
+        padding: 0 4rem;
+      }
+    }
+
+    @media only screen and (max-width: 62.5em) {
+      .swiper__wrapper {
+        padding: 0 2rem;
+      }
+    }
+
+    @include respond("tab-port") {
+      .swiper__wrapper {
+        padding: 0 2rem;
       }
     }
   }
