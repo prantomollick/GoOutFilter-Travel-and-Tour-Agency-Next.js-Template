@@ -1,5 +1,21 @@
 @import "@/app/mixins";
 
+.section-feature {
+  padding-bottom: 12rem;
+
+  @include respond("desktop") {
+    padding-bottom: 11rem;
+  }
+
+  @include respond("tab-land") {
+    padding-bottom: 10rem;
+  }
+
+  @include respond("tab-port") {
+    padding-bottom: 8rem;
+  }
+}
+
 .features {
   display: flex;
   flex-wrap: wrap;
@@ -8,6 +24,12 @@
 
   @include respond("desktop") {
     padding: 0 2rem;
+  }
+
+  @include respond("tab-port") {
+    justify-content: center;
+    row-gap: 2rem;
+    column-gap: 2rem;
   }
 }
 

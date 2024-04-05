@@ -1,5 +1,21 @@
 @import "@/app/mixins";
 
+.section-customer-review {
+  padding: 12rem 0;
+
+  @include respond("desktop") {
+    padding: 11rem 0;
+  }
+
+  @include respond("tab-land") {
+    padding: 10rem 0;
+  }
+
+  @include respond("tab-port") {
+    padding: 8rem 0;
+  }
+}
+
 .customer {
   display: flex;
   flex-wrap: wrap;
@@ -11,14 +27,22 @@
   }
 
   @include respond("tab-land") {
-    gap: 1rem;
+    justify-content: center;
+    column-gap: 3rem;
+    // gap: 2rem;
+    row-gap: 2rem;
+  }
+
+  @include respond("tab-port") {
+    justify-content: center;
+    gap: 2rem;
   }
 
   &-review {
     width: 52rem;
 
     @include respond("tab-land") {
-      width: 42rem;
+      width: 43rem;
     }
 
     &-wrapper {
@@ -120,6 +144,14 @@
 
   &-info {
     width: 63rem;
+
+    @include respond("tab-land") {
+      width: 43rem;
+    }
+
+    @include respond("tab-port") {
+      width: 43rem;
+    }
 
     .customer-user {
       display: flex;

@@ -6,6 +6,7 @@ import Image from "next/image";
 import React from "react";
 import type { Features } from "../../page";
 import { motion } from "framer-motion";
+import classNames from "classnames";
 
 const variants = {
   visible: (i: number) => ({
@@ -23,7 +24,7 @@ interface Props {
 
 function FeatureSection({ features }: Props) {
   return (
-    <section id="#feature" className="pb-12">
+    <section id="#feature" className={classNames(styles["section-feature"])}>
       <div className="container">
         <div className={styles.features}>
           {features.map((feature, i) => {

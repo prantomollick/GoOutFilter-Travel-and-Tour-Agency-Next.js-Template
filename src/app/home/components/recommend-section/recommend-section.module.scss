@@ -1,5 +1,21 @@
 @import "@/app/mixins";
 
+.section-recommend {
+  padding-bottom: 12rem;
+
+  @include respond("desktop") {
+    padding-bottom: 11rem;
+  }
+
+  @include respond("tab-land") {
+    padding-bottom: 10rem;
+  }
+
+  @include respond("tab-port") {
+    padding-bottom: 8rem;
+  }
+}
+
 .section__header {
   display: flex;
   align-items: center;

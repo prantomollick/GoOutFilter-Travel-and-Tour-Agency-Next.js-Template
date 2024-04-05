@@ -1,4 +1,5 @@
 "use client";
+import classNames from "classnames";
 import styles from "./customer-review-section.module.scss";
 
 import {
@@ -28,7 +29,13 @@ function CustomerReviewSection() {
   }, [count, isReviewCountInView]);
 
   return (
-    <section id="#customer-review" className="bg-light-blue py-12">
+    <section
+      id="#customer-review"
+      className={classNames(
+        styles["section-customer-review"],
+        "bg-light-blue py-12"
+      )}
+    >
       <div className="container">
         <motion.div
           className={styles.customer}

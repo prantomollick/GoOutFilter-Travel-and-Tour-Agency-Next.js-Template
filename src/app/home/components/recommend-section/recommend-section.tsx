@@ -27,7 +27,7 @@ function RecommendSection() {
     .subnav?.map((cat) => cat.label);
 
   return (
-    <section id="#recommend" className="pb-12">
+    <section id="#recommend" className={styles["section-recommend"]}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
