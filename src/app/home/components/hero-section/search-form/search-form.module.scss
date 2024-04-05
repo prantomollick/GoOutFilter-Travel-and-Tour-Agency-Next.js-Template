@@ -1,10 +1,8 @@
+@import "@/app/mixins";
+
 .search-form {
-  // width: 90rem;
   box-sizing: border-box;
-  // background-color: var(--bg-light-blue);
   box-shadow: var(--box-shadow-2);
-  // border-radius: var(--border-radius-full);
-  // overflow: hidden;
 
   display: inline-flex;
   flex-wrap: wrap;
@@ -17,6 +15,21 @@
     display: inline-flex;
     flex-wrap: wrap;
     gap: 3rem;
+  }
+
+  @include respond("tab-port") {
+    border-radius: var(--border-radius-small);
+    flex-direction: column;
+    padding: 2rem;
+    width: 100%;
+    align-items: flex-start;
+    gap: 2rem;
+
+    &__inputs {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
 
@@ -42,6 +55,31 @@
     // 246.98
     width: 24.6986rem;
   }
+
+  @include respond("tab-port") {
+    &:nth-child(2),
+    &:nth-child(3) {
+      border-left: none;
+      padding-left: 0px;
+    }
+
+    &:nth-child(1),
+    &:nth-child(2) {
+      border-bottom: 1px solid var(--border-soft-blue);
+    }
+
+    &:nth-child(1) {
+      width: 100%;
+    }
+
+    &:nth-child(2) {
+      width: 100%;
+    }
+    &:nth-child(3) {
+      // 246.98
+      width: 100%;
+    }
+  }
 }
 
 .form-label {
@@ -51,6 +89,10 @@
   font-weight: var(--font-weight-medium);
   line-height: calc(2.2rem / 1.5rem);
   margin-bottom: 3px;
+
+  @include respond("tab-port") {
+    font-size: var(--font-size-1_6rem);
+  }
 }
 
 .form-input {
@@ -71,6 +113,15 @@
   &::placeholder {
     font-family: inherit;
     font-size: var(--font-size-1_5rem);
+  }
+
+  @include respond("tab-port") {
+    margin-bottom: 1.1rem;
+
+    &::placeholder {
+      font-family: inherit;
+      font-size: var(--font-size-1_6rem);
+    }
   }
 }
 
