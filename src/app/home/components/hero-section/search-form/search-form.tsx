@@ -4,6 +4,7 @@ import styles from "./search-form.module.scss";
 import type { FormEvent } from "react";
 import { GoSearch } from "react-icons/go";
 import classNames from "classnames";
+import { useMediaQuery } from "react-responsive";
 
 import GuestInputPopup from "@/components/ui/inputs/guest-input-popup/guest-input-popup";
 import { useGuestInput } from "@/components/ui/inputs/guest-input-popup/use-guest-input";
@@ -16,6 +17,8 @@ import { useDateRange } from "@/components/ui/inputs/my-date-range/useDateRange"
 import Button from "@/components/ui/button/button";
 
 function SearchForm() {
+  const isTabletPotrait = useMediaQuery({ query: "(max-device-width: 900px)" });
+
   const {
     handleChange,
     selectedDateRange,
@@ -126,7 +129,7 @@ function SearchForm() {
                 ranges={[selectedDateRange]}
                 onVisibleChange={onVisibilityChange}
                 onRangeFocusChange={onRangeFocusChange}
-                months={2}
+                months={isTabletPotrait ? 1 : 2}
               />
             </div>
           )}

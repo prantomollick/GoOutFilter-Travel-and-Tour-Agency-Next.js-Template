@@ -125,6 +125,17 @@
         transition: opacity 0.3s ease 0.3s;
       }
     }
+    @include respond("tab-port") {
+      &__brand-link {
+        &:link,
+        &:visited {
+          left: 33rem;
+        }
+      }
+      &__brand-img {
+        height: 4rem;
+      }
+    }
 
     &:global(.sidebar-visible) &__brand-link {
       &:link,

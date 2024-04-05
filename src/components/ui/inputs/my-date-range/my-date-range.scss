@@ -1,13 +1,12 @@
 @import url("https://fonts.cdnfonts.com/css/sofia-pro");
+
 .rdrDateRangeWrapper {
   display: inline-flex;
-
   position: relative;
-  // width: 90rem;
-
-  // height: 42.4rem;
   padding: 2.5rem;
   box-shadow: var(--box-shadow-2);
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 .rdrDateDisplayWrapper {
@@ -70,8 +69,8 @@
 .rdrMonthName {
   font-family: inherit;
   color: var(--text-dark);
-  font-size: var(--font-size-1_8rem);
-  font-weight: var(--font-weight-medium);
+  font-size: 18px;
+  font-weight: 500;
   line-height: calc(3rem / 1.8rem);
   margin-bottom: 1.456rem;
 
@@ -90,6 +89,12 @@
   grid-column-gap: 11.53px;
   justify-items: center;
   margin-bottom: 1.4rem;
+
+  @media only screen and (max-width: 56.25em) {
+    font-weight: 500;
+    grid-column-gap: 6px;
+    margin-bottom: 1.2rem;
+  }
 }
 
 .rdrDays {
@@ -97,7 +102,11 @@
   grid-template-columns: repeat(7, 1fr);
   grid-column-gap: 11.53px;
   grid-row-gap: 11.22px;
-  align-items: center;
+
+  @media only screen and (max-width: 56.25em) {
+    grid-column-gap: 6px;
+    grid-row-gap: 6px;
+  }
 }
 //day button
 .rdrDay {
@@ -113,8 +122,7 @@
   width: 46.12px;
   height: 27.38px;
 
-  // width: 47.78px;
-  // height: 47.78px;
+  justify-self: center;
 
   display: flex;
   align-items: center;
@@ -123,6 +131,16 @@
   border: none;
   outline: none;
   background-color: transparent;
+
+  @media only screen and (max-width: 56.25em) {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    margin-top: 3.5px;
+    margin-bottom: 3.5px;
+    justify-self: center;
+    align-self: center;
+  }
 }
 
 .rdrDayDisabled {
@@ -142,9 +160,16 @@
 
   width: 47.78px;
   height: 47.78px;
-  border-radius: var(--border-radius-full);
+  border-radius: 9999px;
   border: 2px solid var(--border-primary);
   outline: none;
+
+  @media only screen and (max-width: 56.25em) {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border-primary);
+    outline: none;
+  }
 }
 
 .rdrDayStartPreview,
@@ -159,12 +184,21 @@
 .rdrDayEndPreview {
   width: 47.78px;
   height: 47.78px;
-  // background-color: var(--bg-darker-blue);
   background-color: var(--bg-light-gray);
   border-radius: var(--border-radius-full);
   border: none;
   outline: 2px solid var(--border-primary);
   outline-offset: -2px;
+
+  @media only screen and (max-width: 56.25em) {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-light-gray);
+    outline-offset: -1px;
+    outline: 2px solid var(--border-primary);
+  }
 
   & ~ .rdrDayNumber {
     color: inherit;
@@ -177,6 +211,12 @@
   width: 100%;
   height: 40px;
   background-color: var(--bg-light-gray);
+
+  @media only screen and (max-width: 56.25em) {
+    .rdrDay > .rdrDayInPreview {
+      height: 100%;
+    }
+  }
 }
 
 .rdrDayInPreview::before,
@@ -226,6 +266,11 @@
   width: 100%;
   height: 40px;
   background-color: var(--bg-light-gray);
+
+  @media only screen and (max-width: 56.25em) {
+    background-color: var(--bg-light-gray);
+    height: 100%;
+  }
 }
 
 .rdrStartEdge,
@@ -238,6 +283,13 @@
   outline: 2px solid var(--border-white);
   outline-offset: -2px;
   z-index: 1;
+
+  @media only screen and (max-width: 56.25em) {
+    width: 36px;
+    height: 36px;
+    outline-offset: -1px;
+    outline: 1px solid var(--border-white);
+  }
 
   & ~ .rdrDayNumber {
     color: var(--text-white);

@@ -33,6 +33,7 @@ function InspirationSection() {
               custom={i}
               initial="hidden"
               whileInView="visible"
+              className={styles["blog-wrapper"]}
             >
               <Link href="#" className={styles.blog}>
                 <CardBlog

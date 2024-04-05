@@ -50,7 +50,7 @@ function Navigation() {
               href="/"
               className={classNames(styles["nav__brand-link"], "o-visible")}
             >
-              <Brand variant="white" />
+              <Brand variant="white" className={styles["nav__brand-img"]} />
             </Link>
 
             <div className={styles["nav__brand-mobile"]}>

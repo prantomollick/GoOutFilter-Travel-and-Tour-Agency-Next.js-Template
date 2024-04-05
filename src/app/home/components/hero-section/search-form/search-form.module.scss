@@ -77,8 +77,9 @@
 .form-date {
   background-color: var(--bg-white);
   position: absolute;
-  // top: 150%;
   transform: translateX(-30%);
+  border-radius: 4px;
+  z-index: 10;
 }
 
 .form-date-tri-t::before {

@@ -7,6 +7,9 @@
   align-items: center;
 
   margin-bottom: 4rem;
+  @include respond("tab-land") {
+    margin-bottom: 0rem;
+  }
 }
 
 .blogs {
@@ -16,6 +19,14 @@
 
   @include respond("desktop") {
     padding: 0 2rem;
+  }
+
+  @include respond("tab-land") {
+    justify-content: space-evenly;
+
+    .blog-wrapper {
+      margin-top: 4rem;
+    }
   }
 }
 
