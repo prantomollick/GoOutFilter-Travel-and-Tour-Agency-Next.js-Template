@@ -36,6 +36,14 @@
     top: 100%;
     margin-top: 4rem;
 
+    @include respond("tab-port") {
+      margin-top: 3rem;
+    }
+
+    @include respond("phone") {
+      margin-top: 1.5rem;
+    }
+
     &-control {
       // width: 40rem;
       height: 100%;

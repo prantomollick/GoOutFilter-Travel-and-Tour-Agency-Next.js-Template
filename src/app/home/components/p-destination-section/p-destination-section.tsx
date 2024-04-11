@@ -106,7 +106,11 @@ function PdestinationSection() {
   }, [isInView, onChangeSticky]);
 
   return (
-    <section className="pt-12 pb-12" ref={sectionRef}>
+    <section
+      id="#p-destination"
+      className={styles["section-p-destination"]}
+      ref={sectionRef}
+    >
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
