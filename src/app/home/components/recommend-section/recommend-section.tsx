@@ -72,6 +72,16 @@ function RecommendSection() {
                 600: {
                   slidesPerView: 2,
                   spaceBetween: 30
+                },
+
+                500: {
+                  slidesPerView: 1.5,
+                  spaceBetween: 30
+                },
+
+                300: {
+                  slidesPerView: 1,
+                  spaceBetween: 20
                 }
               }}
               navigation={{

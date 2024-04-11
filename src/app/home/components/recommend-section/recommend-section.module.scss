@@ -80,34 +80,25 @@
   }
 }
 
-@include respond("desktop") {
-  .swiper__wrapper {
+.swiper__wrapper {
+  @include respond("desktop") {
     padding: 0 16.5rem;
-    justify-content: space-evenly;
   }
 
   @include respond("tab-land") {
-    .swiper__wrapper {
-      padding: 0 12rem;
-    }
+    padding: 0 12rem;
+  }
 
-    @media only screen and (max-width: 71.875em) {
-      .swiper__wrapper {
-        padding: 0 4rem;
-      }
-    }
+  @media only screen and (max-width: 71.875em) {
+    padding: 0 4rem;
+  }
 
-    @media only screen and (max-width: 62.5em) {
-      .swiper__wrapper {
-        padding: 0 2rem;
-      }
-    }
+  @media only screen and (max-width: 62.5em) {
+    padding: 0 2rem;
+  }
 
-    @include respond("tab-port") {
-      .swiper__wrapper {
-        padding: 0 2rem;
-      }
-    }
+  @include respond("tab-port") {
+    padding: 0 2rem;
   }
 }
 
@@ -122,6 +113,11 @@
     gap: 2rem;
 
     margin-top: 4rem;
+
+    @include respond("phone") {
+      margin-top: 2rem;
+      justify-content: flex-start;
+    }
   }
 
   &-pagination--custom {
