@@ -14,6 +14,10 @@
   @include respond("tab-port") {
     padding-bottom: 8rem;
   }
+
+  @include respond("phone") {
+    padding-bottom: 4rem;
+  }
 }
 
 .section__header {
@@ -26,10 +30,21 @@
     padding: 0 2rem;
   }
 
+  @include respond("phone") {
+    margin-bottom: 2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 1rem;
+  }
+
   &-title {
     display: flex;
     flex-direction: column;
     gap: 5px;
+
+    @include respond("phone") {
+      gap: 2px;
+    }
   }
 
   &-select {
