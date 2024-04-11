@@ -4,7 +4,11 @@
   position: relative;
 
   :global(.swiper-slide) {
-    width: fit-content !important;
+    width: fit-content;
+
+    @include respond("phone") {
+      width: auto;
+    }
   }
 
   .slide-previous-btn {

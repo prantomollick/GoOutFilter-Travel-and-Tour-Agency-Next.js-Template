@@ -1,9 +1,7 @@
+@import "@/app/mixins";
+
 .hero-section {
   z-index: -1;
-
-  // position: absolute;
-  // top: 0;
-  // left: 0;
 
   height: 86rem;
   max-width: 100%;
@@ -31,11 +29,24 @@
   color: var(--text-white);
   text-align: center;
   font-family: inherit;
+
+  @include respond("phone") {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+
   .hero-title {
     font-size: var(--font-size-6rem);
     font-weight: var(--font-weight-semibold);
     line-height: calc(8.7rem / 6rem);
     margin-bottom: 6px;
+
+    @include respond("phone") {
+      font-size: var(--font-size-3rem);
+      line-height: calc(4.3rem / 3rem);
+      margin-bottom: 0px;
+    }
   }
 
   .hero-subtitle {
@@ -51,11 +62,20 @@
   gap: 2.1rem;
   align-items: center;
 
+  @include respond("phone") {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
   &__list {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
     gap: 4rem;
+
+    @include respond("phone") {
+      row-gap: 2rem;
+    }
   }
 
   &__item {

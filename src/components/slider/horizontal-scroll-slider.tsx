@@ -45,6 +45,25 @@ const HorizontalScrollSlider: React.FC<SliderData> = ({ sliderData }) => {
           1200: {
             slidesPerView: 3.5,
             spaceBetween: 40
+          },
+
+          900: {
+            slidesPerView: 2.5,
+            spaceBetween: 40
+          },
+
+          600: {
+            slidesPerView: 2,
+            spaceBetween: 10
+          },
+
+          500: {
+            slidesPerView: 1.8,
+            spaceBetween: 0
+          },
+          300: {
+            slidesPerView: 1,
+            spaceBetween: 0
           }
         }}
         navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
