@@ -12,11 +12,23 @@
     padding-right: 2rem;
   }
 
+  @include respond("tab-port") {
+    flex-direction: column;
+    row-gap: 2rem;
+    justify-content: center;
+  }
+
   &__content {
     display: flex;
     align-items: center;
     gap: 3.7rem;
     flex-wrap: wrap;
+
+    @include respond("tab-port") {
+      flex-direction: column;
+      align-items: center;
+      row-gap: 1rem;
+    }
 
     &-img-wrap {
       width: 6rem;
@@ -35,6 +47,10 @@
       font-weight: var(--font-weight-semibold);
       font-size: var(--font-size-2_6rem);
       line-height: calc(3.8rem / 2.6rem);
+
+      @include respond("tab-port") {
+        text-align: center;
+      }
     }
 
     &-subtitle {
@@ -43,6 +59,10 @@
       font-style: normal;
       font-weight: var(--font-weight-regular);
       line-height: calc(3rem / 1.6rem);
+
+      @include respond("tab-port") {
+        text-align: center;
+      }
     }
   }
 

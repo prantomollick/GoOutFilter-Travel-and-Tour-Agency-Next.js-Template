@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./footer-header.module.scss";
+import styles from "./footer-newsletter.module.scss";
 
 import Button from "@/components/ui/button/button";
 import Image from "next/image";
