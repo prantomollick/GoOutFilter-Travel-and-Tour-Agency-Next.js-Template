@@ -45,6 +45,13 @@
         line-height: 1;
         font-weight: var(--font-weight-regular);
         color: var(--text-dark);
+
+        @include respond("phone") {
+          padding-top: 1.5rem;
+          padding-bottom: 1.5rem;
+          padding-left: 1.5rem;
+          padding-right: auto;
+        }
       }
 
       &:hover {
