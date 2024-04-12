@@ -32,26 +32,19 @@
 
       &:visited,
       &:link {
-        display: block;
+        display: flex;
         border-radius: var(--border-radius-small);
 
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;
         padding-left: 1.5rem;
-        padding-right: auto;
+        // padding-right: auto;
 
         font-family: inherit;
         font-size: var(--font-size-1_5rem);
         line-height: 1;
         font-weight: var(--font-weight-regular);
         color: var(--text-dark);
-
-        @include respond("phone") {
-          padding-top: 1.5rem;
-          padding-bottom: 1.5rem;
-          padding-left: 1.5rem;
-          padding-right: auto;
-        }
       }
 
       &:hover {
