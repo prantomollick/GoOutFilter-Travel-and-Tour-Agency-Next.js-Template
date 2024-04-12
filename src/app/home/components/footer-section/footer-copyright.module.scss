@@ -12,6 +12,11 @@
     padding-right: 2rem;
   }
 
+  @include respond("tab-port") {
+    row-gap: 2rem;
+    flex-direction: column;
+  }
+
   &__left {
     display: flex;
     align-items: center;
