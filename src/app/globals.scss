@@ -18,6 +18,11 @@ html {
 
   @include respond("tab-port") {
     font-size: 56.25%;
+    overflow-x: hidden;
+  }
+
+  @include respond("phone") {
+    overflow-x: hidden;
   }
 }
 
@@ -27,6 +32,10 @@ body {
   font-weight: var(--font-weight-regular);
   line-height: normal;
   font-size: var(--font-size-1_4rem);
+
+  @include respond("phone") {
+    overflow-x: hidden;
+  }
 }
 
 a:link,
