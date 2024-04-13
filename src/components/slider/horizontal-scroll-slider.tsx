@@ -43,12 +43,12 @@ const HorizontalScrollSlider: React.FC<SliderData> = ({ sliderData }) => {
             spaceBetween: 30
           },
           1200: {
-            slidesPerView: 3.5,
-            spaceBetween: 40
+            slidesPerView: 3.8,
+            spaceBetween: 30
           },
 
           900: {
-            slidesPerView: 2.5,
+            slidesPerView: 3.5,
             spaceBetween: 40
           },
 

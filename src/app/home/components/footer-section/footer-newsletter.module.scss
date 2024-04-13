@@ -71,6 +71,11 @@
     align-items: center;
     gap: 1rem;
 
+    @media only screen and (max-width: 28.125em) {
+      display: block;
+      flex-direction: column;
+    }
+
     &-input {
       width: 41rem;
       border-radius: var(--border-radius-small);
@@ -93,9 +98,21 @@
         border: 1px solid var(--border-semantic-red);
         outline: 1px solid var(--border-semantic-red);
       }
+
+      @include respond("phone") {
+        width: 31rem;
+      }
+
+      @media only screen and (max-width: 28.125em) {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
     }
 
     &-btn {
+      @media only screen and (max-width: 28.125em) {
+        width: 100%;
+      }
       &:hover {
         background-color: var(--bg-light-blue) !important;
         color: var(--text-dark);

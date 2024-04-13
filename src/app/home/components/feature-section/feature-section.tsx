@@ -36,6 +36,7 @@ function FeatureSection({ features }: Props) {
                 custom={i}
                 initial="hidden"
                 whileInView="visible"
+                viewport={{ once: true }}
               >
                 <Image
                   width={70}

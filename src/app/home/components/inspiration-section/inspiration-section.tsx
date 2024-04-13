@@ -34,6 +34,7 @@ function InspirationSection() {
               initial="hidden"
               whileInView="visible"
               className={styles["blog-wrapper"]}
+              viewport={{ once: true }}
             >
               <Link href="#" className={styles.blog}>
                 <CardBlog

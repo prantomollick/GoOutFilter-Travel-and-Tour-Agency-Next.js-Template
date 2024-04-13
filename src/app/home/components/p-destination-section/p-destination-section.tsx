@@ -121,6 +121,7 @@ function PdestinationSection() {
               duration: 1
             }
           }}
+          viewport={{ once: true }}
         >
           <div className={styles["d-slider-section"]}>
             <div className={styles["section-head"]}>
